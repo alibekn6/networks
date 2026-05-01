@@ -1,0 +1,562 @@
+[
+  {
+    "id": "routing-q01",
+    "module": "routing",
+    "source": "itexam-srwe-m14",
+    "type": "single",
+    "stem": "Which feature on a Cisco router permits the forwarding of traffic for which there is no specific route?",
+    "choices": [
+      "next-hop",
+      "gateway of last resort",
+      "route source",
+      "outgoing interface"
+    ],
+    "answer": [1],
+    "explain_short": "A default static route acts as the gateway of last resort: when no specific entry matches a destination, the router uses this route to forward the packet.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Build the Routing Table — Default Route",
+      "quote": "A default route has a /0 prefix length. This means that no bits need to match the destination IP address for this route entry to be used. If there are no routes with a match longer than 0 bits, the default route is used to forward the packet. The default route is sometimes referred to as a gateway of last resort."
+    },
+    "tags": ["routing", "default-route", "gateway-of-last-resort"]
+  },
+  {
+    "id": "routing-q02",
+    "module": "routing",
+    "source": "itexam-srwe-m14",
+    "type": "multi",
+    "stem": "Which three advantages are provided by static routing? (Choose three.)",
+    "choices": [
+      "Static routing does not advertise over the network, thus providing better security.",
+      "Configuration of static routes is error-free.",
+      "Static routes scale well as the network grows.",
+      "Static routing typically uses less network bandwidth and fewer CPU operations than dynamic routing does.",
+      "The path a static route uses to send data is known.",
+      "No intervention is required to maintain changing route information."
+    ],
+    "answer": [0, 3, 4],
+    "explain_short": "Static routes are not advertised (more secure), use fewer resources than dynamic routing, and the administrator-defined path is explicitly known. They are error-prone and don't scale.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Static or Dynamic? (Cont.)",
+      "quote": "Static routes are useful for smaller networks with only one path to an outside network. They also provide security in a larger network for certain types of traffic, or links to other networks that need more control."
+    },
+    "tags": ["routing", "static-vs-dynamic"]
+  },
+  {
+    "id": "routing-q03",
+    "module": "routing",
+    "source": "itexam-srwe-m14",
+    "type": "multi",
+    "stem": "What are two functions of dynamic routing protocols? (Choose two.)",
+    "choices": [
+      "to maintain routing tables",
+      "to assure low router overhead",
+      "to avoid exposing network information",
+      "to discover the network",
+      "to choose the path that is specified by the administrator"
+    ],
+    "answer": [0, 3],
+    "explain_short": "Dynamic routing protocols discover remote networks and maintain the routing table. Low overhead and admin-defined paths are properties of static routing.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Dynamic Routing Protocol Concepts",
+      "quote": "The purpose of dynamic routing protocols includes the following: Discovery of remote networks, Maintaining up-to-date routing information, Choosing the best path to destination networks, Ability to find a new best path if the current path is no longer available."
+    },
+    "tags": ["routing", "dynamic-routing"]
+  },
+  {
+    "id": "routing-q04",
+    "module": "routing",
+    "source": "itexam-srwe-m14",
+    "type": "single",
+    "stem": "What is an advantage of using dynamic routing protocols instead of static routing?",
+    "choices": [
+      "easier to implement",
+      "more secure in controlling routing updates",
+      "fewer router resource overhead requirements",
+      "ability to actively search for new routes if the current path becomes unavailable"
+    ],
+    "answer": [3],
+    "explain_short": "Dynamic protocols can automatically reroute when a topology change occurs. Static routing is more secure and uses fewer resources, but it cannot adapt by itself.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Dynamic Routing Protocol Concepts",
+      "quote": "The purpose of dynamic routing protocols includes the following: Discovery of remote networks, Maintaining up-to-date routing information, Choosing the best path to destination networks, Ability to find a new best path if the current path is no longer available."
+    },
+    "tags": ["routing", "dynamic-vs-static"]
+  },
+  {
+    "id": "routing-q05",
+    "module": "routing",
+    "source": "itexam-srwe-m14",
+    "type": "single",
+    "stem": "What happens to a static route entry in a routing table when the outgoing interface associated with that route goes into the down state?",
+    "choices": [
+      "The static route is removed from the routing table.",
+      "The router polls neighbors for a replacement route.",
+      "The router automatically redirects the static route to use another interface.",
+      "The static route remains in the table because it was defined as static."
+    ],
+    "answer": [0],
+    "explain_short": "When the interface bound to a static route goes down, the route is invalidated and removed from the routing table until the interface comes back up.",
+    "explain_lecture": null,
+    "tags": ["routing", "static-routes", "interface-down"]
+  },
+  {
+    "id": "routing-q06",
+    "module": "routing",
+    "source": "itexam-srwe-m14",
+    "type": "single",
+    "stem": "When would it be more beneficial to use a dynamic routing protocol instead of static routing?",
+    "choices": [
+      "in an organization where routers suffer from performance issues",
+      "on a stub network that has a single exit point",
+      "in an organization with a smaller network that is not expected to grow in size",
+      "on a network where there is a lot of topology changes"
+    ],
+    "answer": [3],
+    "explain_short": "Dynamic routing automatically adapts to topology changes, so it is best when the network changes often. Stub or small static networks favor static routing.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Static or Dynamic? (Cont.)",
+      "quote": "Dynamic routing protocols are scalable and automatically determine better routes if there is a change in the topology."
+    },
+    "tags": ["routing", "dynamic-vs-static"]
+  },
+  {
+    "id": "routing-q07",
+    "module": "routing",
+    "source": "itexam-srwe-m14",
+    "type": "single",
+    "stem": "Which route would be used to forward a packet with a source IP address of 192.168.10.1 and a destination IP address of 10.1.1.1?",
+    "choices": [
+      "C 192.168.10.0/30 is directly connected, GigabitEthernet0/1",
+      "O 10.1.1.0/24 [110/65] via 192.168.200.2, 00:01:20, Serial0/1/0",
+      "S* 0.0.0.0/0 [1/0] via 172.16.1.1",
+      "S 10.1.0.0/16 is directly connected, GigabitEthernet0/0"
+    ],
+    "answer": [1],
+    "explain_short": "Best path = longest match. Even though OSPF (AD 110) is less trustworthy than the static /16, the /24 OSPF route matches more far-left bits of 10.1.1.1.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Best Path Equals Longest Match",
+      "quote": "The longest match is the route in the routing table that has the greatest number of far-left matching bits with the destination IP address of the packet. The longest match is always the preferred route."
+    },
+    "tags": ["routing", "longest-match", "best-path"]
+  },
+  {
+    "id": "routing-q08",
+    "module": "routing",
+    "source": "itexam-srwe-m14",
+    "type": "single",
+    "stem": "What is the administrative distance value of a route learned via RIP?",
+    "choices": ["1", "110", "120", "90"],
+    "answer": [2],
+    "explain_short": "RIP has AD = 120. Connected = 0, static = 1, EIGRP internal = 90, OSPF = 110, RIP = 120.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Administrative Distance (Cont.)",
+      "quote": "Directly connected 0, Static route 1, EIGRP summary route 5, External BGP 20, Internal EIGRP 90, OSPF 110, IS-IS 115, RIP 120, External EIGRP 170, Internal BGP 200."
+    },
+    "tags": ["routing", "administrative-distance", "rip"]
+  },
+  {
+    "id": "routing-q09",
+    "module": "routing",
+    "source": "itexam-srwe-m14",
+    "type": "single",
+    "stem": "Which value in a routing table represents trustworthiness and is used by the router to determine which route to install into the routing table when there are multiple routes toward the same destination?",
+    "choices": [
+      "administrative distance",
+      "metric",
+      "outgoing interface",
+      "routing protocol"
+    ],
+    "answer": [0],
+    "explain_short": "Administrative Distance (AD) is the per-source trustworthiness value. Lower AD wins when the same prefix is learned from multiple sources. Metric breaks ties within one protocol.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Administrative Distance",
+      "quote": "Cisco IOS uses what is known as the administrative distance (AD) to determine the route to install into the IP routing table. The AD represents the \"trustworthiness\" of the route. The lower the AD, the more trustworthy the route source."
+    },
+    "tags": ["routing", "administrative-distance"]
+  },
+  {
+    "id": "routing-q10",
+    "module": "routing",
+    "source": "itexam-srwe-m14",
+    "type": "single",
+    "stem": "Refer to the routing table for R1 (gateway of last resort is not set):\n\n  172.19.115.0/26 is variably subnetted, 7 subnets, 3 masks\n  O 172.19.115.0/26 [110/10] via 172.19.39.1, Serial0/0/0\n  O 172.19.115.64/26 [110/20] via 172.19.39.6, Serial0/0/1\n  O 172.19.115.128/26 [110/10] via 172.19.39.1, Serial0/0/0\n  C 172.19.115.192/27 is directly connected, GigabitEthernet0/0\n  L 172.19.115.193/27 is directly connected, GigabitEthernet0/0\n  C 172.19.115.224/27 is directly connected, GigabitEthernet0/1\n  L 172.19.115.225/27 is directly connected, GigabitEthernet0/1\n\nWhich interface will be the exit interface to forward a packet destined for 172.19.115.206?",
+    "choices": [
+      "GigabitEthernet0/1",
+      "None, the packet will be dropped.",
+      "GigabitEthernet0/0",
+      "Serial0/0/1"
+    ],
+    "answer": [2],
+    "explain_short": "172.19.115.206 falls inside 172.19.115.192/27 (range .192–.223). That entry is directly connected on G0/0, so the packet exits G0/0.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Best Path Equals Longest Match",
+      "quote": "The longest match is the route in the routing table that has the greatest number of far-left matching bits with the destination IP address of the packet. The longest match is always the preferred route."
+    },
+    "tags": ["routing", "longest-match", "exhibit"]
+  },
+  {
+    "id": "routing-q11",
+    "module": "routing",
+    "source": "itexam-srwe-m14",
+    "type": "single",
+    "stem": "Refer to the topology where PC A and PC B are on a stub LAN behind R1, which connects to Edge (the ISP-facing router). What routing solution will allow both PC A and PC B to access the Internet with the minimum amount of router CPU and network bandwidth utilization?",
+    "choices": [
+      "Configure a dynamic routing protocol between R1 and Edge and advertise all routes.",
+      "Configure a static route from R1 to Edge and a dynamic route from Edge to R1.",
+      "Configure a static default route from R1 to Edge, a default route from Edge to the Internet, and a static route from Edge to R1.",
+      "Configure a dynamic route from R1 to Edge and a static route from Edge to R1."
+    ],
+    "answer": [2],
+    "explain_short": "Stub networks should use static + default routes — no protocol overhead, no advertisements. R1 needs a default route out, Edge needs a static route back to R1's LAN, and Edge needs its own default to the ISP.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Static or Dynamic?",
+      "quote": "Static routes are commonly used in the following scenarios: As a default route forwarding packets to a service provider; For routes outside the routing domain and not learned by the dynamic routing protocol; When the network administrator wants to explicitly define the path for a specific network; For routing between stub networks."
+    },
+    "tags": ["routing", "static-vs-dynamic", "stub-network"]
+  },
+  {
+    "id": "routing-q12",
+    "module": "routing",
+    "source": "itexam-srwe-m14",
+    "type": "single",
+    "stem": "Refer to the exhibit. The IT administrator enters a new static route on a router whose table already contains a RIP-learned route to 172.16.1.0/24 and a default route. What would happen after the IT administrator enters the new static route for 172.16.1.0?",
+    "choices": [
+      "The 172.16.1.0 static route would be entered into the running-config but not shown in the routing table.",
+      "The 172.16.1.0 route learned from RIP would be replaced with the 172.16.1.0 static route.",
+      "The 0.0.0.0 default route would be replaced with the 172.16.1.0 static route.",
+      "The 172.16.1.0 static route is added to the existing routes in the routing table."
+    ],
+    "answer": [1],
+    "explain_short": "Static routes have AD 1; RIP has AD 120. When two sources offer the same prefix, the one with the lower AD replaces the other in the routing table.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Administrative Distance",
+      "quote": "Cisco IOS uses what is known as the administrative distance (AD) to determine the route to install into the IP routing table. The AD represents the \"trustworthiness\" of the route. The lower the AD, the more trustworthy the route source."
+    },
+    "tags": ["routing", "administrative-distance", "static-vs-rip"]
+  },
+  {
+    "id": "routing-q13",
+    "module": "routing",
+    "source": "itexam-srwe-m14",
+    "type": "single",
+    "stem": "What route would have the lowest administrative distance?",
+    "choices": [
+      "a route received through the OSPF routing protocol",
+      "a directly connected network",
+      "a static route",
+      "a route received through the EIGRP routing protocol"
+    ],
+    "answer": [1],
+    "explain_short": "Directly connected networks have AD = 0, the lowest possible value (most trusted). Static = 1, EIGRP internal = 90, OSPF = 110.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Administrative Distance (Cont.)",
+      "quote": "Directly connected 0, Static route 1, EIGRP summary route 5, External BGP 20, Internal EIGRP 90, OSPF 110, IS-IS 115, RIP 120, External EIGRP 170, Internal BGP 200."
+    },
+    "tags": ["routing", "administrative-distance"]
+  },
+  {
+    "id": "routing-q14",
+    "module": "routing",
+    "source": "itexam-srwe-m14",
+    "type": "single",
+    "stem": "A network administrator configures the interface fa0/0 on the router R1 with the command ip address 172.16.1.254 255.255.255.0. However, when the administrator issues the command show ip route, the routing table does not show the directly connected network. What is the possible cause of the problem?",
+    "choices": [
+      "The subnet mask is incorrect for the IPv4 address.",
+      "The configuration needs to be saved first.",
+      "The interface fa0/0 has not been activated.",
+      "No packets with a destination network of 172.16.1.0 have been sent to R1."
+    ],
+    "answer": [2],
+    "explain_short": "A directly connected network appears in the routing table only when the interface is up/up: configured with an IP, no shutdown, and receiving carrier. Saving config is not required.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Directly Connected Networks",
+      "quote": "To learn about any remote networks, the router must have at least one active interface configured with an IP address and subnet mask (prefix length). This is known as a directly connected network or a directly connected route. Routers add a directly connected route to its routing table when an interface is configured with an IP address and is activated."
+    },
+    "tags": ["routing", "directly-connected", "interface"]
+  },
+  {
+    "id": "routing-q15",
+    "module": "routing",
+    "source": "itexam-srwe-m14",
+    "type": "multi",
+    "stem": "What are two advantages of static routing over dynamic routing? (Choose two.)",
+    "choices": [
+      "Static routing is more secure because it does not advertise over the network.",
+      "Static routing scales well with expanding networks.",
+      "Static routing requires very little knowledge of the network for correct implementation.",
+      "Static routing uses fewer router resources than dynamic routing.",
+      "Static routing is relatively easy to configure for large networks."
+    ],
+    "answer": [0, 3],
+    "explain_short": "Static routing does not send routing updates (more secure) and consumes no extra CPU/memory/bandwidth for advertisements. It does NOT scale and demands deep network knowledge.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Static or Dynamic? (Cont.) — comparison table",
+      "quote": "Resource Usage: Dynamic Routing — Uses CPU, memory, and link bandwidth; Static Routing — No additional resources needed. Security: Dynamic — Security must be configured; Static — Security is inherent."
+    },
+    "tags": ["routing", "static-vs-dynamic"]
+  },
+  {
+    "id": "routing-q16",
+    "module": "routing",
+    "source": "itexam-srwe-m14",
+    "type": "single",
+    "stem": "Refer to the routing table on R1 (gateway of last resort is not set), which contains OSPF entries for 192.168.139.0/26, 192.168.139.64/26, 192.168.139.128/26 plus directly connected /27s for 192.168.139.192 (G0/0) and 192.168.139.224 (G0/1). Which interface will be the exit interface to forward a data packet that has the destination IP address 192.168.139.244?",
+    "choices": [
+      "GigabitEthernet0/1",
+      "None, the packet will be dropped.",
+      "Serial0/0/1",
+      "GigabitEthernet0/0"
+    ],
+    "answer": [0],
+    "explain_short": "192.168.139.244 falls in 192.168.139.224/27 (range .224–.255), which is directly connected on G0/1. Longest match wins.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Best Path Equals Longest Match",
+      "quote": "The longest match is the route in the routing table that has the greatest number of far-left matching bits with the destination IP address of the packet. The longest match is always the preferred route."
+    },
+    "tags": ["routing", "longest-match", "exhibit"]
+  },
+  {
+    "id": "routing-q17",
+    "module": "routing",
+    "source": "itexam-srwe-m14",
+    "type": "single",
+    "stem": "Refer to the routing table on R1 (gateway of last resort is not set). Among the entries is S 192.168.71.0/26 [1/0] via 192.168.70.1, Serial0/0/0. Which interface will be the exit interface to forward a packet to 192.168.71.52?",
+    "choices": [
+      "The packet will take the gateway of last resort.",
+      "GigabitEthernet0/1",
+      "Serial0/0/0",
+      "None, the packet will be dropped."
+    ],
+    "answer": [2],
+    "explain_short": "192.168.71.52 falls inside 192.168.71.0/26 (range .0–.63). That static route points out Serial0/0/0.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Best Path Equals Longest Match",
+      "quote": "The longest match is the route in the routing table that has the greatest number of far-left matching bits with the destination IP address of the packet. The longest match is always the preferred route."
+    },
+    "tags": ["routing", "longest-match", "exhibit"]
+  },
+  {
+    "id": "routing-q18",
+    "module": "routing",
+    "source": "itexam-srwe-m14",
+    "type": "single",
+    "stem": "Refer to the routing table on R1 (gateway of last resort is not set), with OSPF entries for 10.55.99.0/26, .64/26, .128/26 and connected /27s for .192 (G0/0) and .224 (G0/1). Which interface will be the exit interface to forward a packet with destination 10.55.99.78?",
+    "choices": [
+      "None, the packet will be dropped.",
+      "GigabitEthernet0/0",
+      "GigabitEthernet0/1",
+      "Serial0/0/1"
+    ],
+    "answer": [3],
+    "explain_short": "10.55.99.78 falls inside 10.55.99.64/26 (range .64–.127). That OSPF route points via 10.55.18.6, Serial0/0/1.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Best Path Equals Longest Match",
+      "quote": "The longest match is the route in the routing table that has the greatest number of far-left matching bits with the destination IP address of the packet. The longest match is always the preferred route."
+    },
+    "tags": ["routing", "longest-match", "exhibit"]
+  },
+  {
+    "id": "routing-q19",
+    "module": "routing",
+    "source": "itexam-srwe-m14",
+    "type": "single",
+    "stem": "Refer to the routing table on R1 (gateway of last resort is not set), with OSPF entries for 10.3.86.0/26 (via 10.3.2.1, S0/0/0), .64/26 (via 10.3.2.6, S0/0/1), .128/26 (via 10.3.2.1, S0/0/0), plus connected /27s for .192 (G0/0) and .224 (G0/1). Which interface will be the exit interface to forward a packet to 10.3.86.2?",
+    "choices": [
+      "GigabitEthernet0/1",
+      "Serial0/0/1",
+      "GigabitEthernet0/0",
+      "Serial0/0/0"
+    ],
+    "answer": [3],
+    "explain_short": "10.3.86.2 falls inside 10.3.86.0/26 (range .0–.63). The OSPF entry points via 10.3.2.1 out Serial0/0/0.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Best Path Equals Longest Match",
+      "quote": "The longest match is the route in the routing table that has the greatest number of far-left matching bits with the destination IP address of the packet. The longest match is always the preferred route."
+    },
+    "tags": ["routing", "longest-match", "exhibit"]
+  },
+  {
+    "id": "routing-q20",
+    "module": "routing",
+    "source": "itexam-srwe-m14",
+    "type": "single",
+    "stem": "Refer to the routing table on R1 (gateway of last resort is not set), with OSPF entries for 172.25.128.0/26, .64/26, .128/26 plus connected /27s for .192 (G0/0) and .224 (G0/1). Which interface will be the exit interface to forward a packet with destination 172.25.128.244?",
+    "choices": [
+      "GigabitEthernet0/0",
+      "GigabitEthernet0/1",
+      "None, the packet will be dropped.",
+      "Serial0/0/1"
+    ],
+    "answer": [1],
+    "explain_short": "172.25.128.244 falls inside 172.25.128.224/27 (range .224–.255), which is directly connected on G0/1.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Best Path Equals Longest Match",
+      "quote": "The longest match is the route in the routing table that has the greatest number of far-left matching bits with the destination IP address of the packet. The longest match is always the preferred route."
+    },
+    "tags": ["routing", "longest-match", "exhibit"]
+  },
+  {
+    "id": "routing-q21",
+    "module": "routing",
+    "source": "itexam-srwe-m14",
+    "type": "multi",
+    "stem": "Refer to the topology: HostA on a LAN reaches ServerB on a remote network through RouterA (the default gateway), then through SwitchB, and finally to ServerB. Which two statements correctly describe the addressing that HostA will generate as the packet leaves HostA? (Choose two.)",
+    "choices": [
+      "A packet with the destination IP address of RouterA.",
+      "A frame with the destination MAC address of SwitchA.",
+      "A packet with the destination IP address of ServerB.",
+      "A frame with the destination MAC address of RouterA.",
+      "A frame with the destination MAC address of ServerB.",
+      "A packet with the destination IP address of RouterB."
+    ],
+    "answer": [2, 3],
+    "explain_short": "Destination IP is end-to-end (ServerB) and never changes. Destination MAC is hop-by-hop, so on the local LAN it is the MAC of the default gateway (RouterA).",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Packet Forwarding Decision Process — Forward to Next-Hop Router",
+      "quote": "If the route entry indicates that the destination IP address is on a remote network, meaning a device on network that is not directly connected. The packet must be forwarded to the next-hop router. The next-hop address is indicated in the route entry."
+    },
+    "tags": ["routing", "forwarding", "encapsulation"]
+  },
+  {
+    "id": "routing-q22",
+    "module": "routing",
+    "source": "itexam-srwe-m14",
+    "type": "single",
+    "stem": "Refer to the topology where PC A (192.168.10.10) sends a request to Server B (192.168.12.16) through R1. What IPv4 address is used in the destination field of the packet as the packet leaves PC A?",
+    "choices": [
+      "192.168.11.1",
+      "192.168.10.1",
+      "192.168.12.16",
+      "192.168.10.10"
+    ],
+    "answer": [2],
+    "explain_short": "The destination IP address in a packet is the final endpoint and never changes between source and destination, only the L2 frame's MAC addresses change at each hop.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Packet Forwarding Decision Process — Forward to Next-Hop Router",
+      "quote": "If the forwarding router and the next-hop router are on an Ethernet network, a similar process (ARP and ICMPv6 Neighbor Discovery) will occur for determining the destination MAC address of the packet as described previously. The difference is that the router will search for the IP address of the next-hop router in its ARP table or neighbor cache, instead of the destination IP address of the packet."
+    },
+    "tags": ["routing", "forwarding", "destination-ip"]
+  },
+  {
+    "id": "routing-q23",
+    "module": "routing",
+    "source": "itexam-srwe-m14",
+    "type": "single",
+    "stem": "What does R1 use as the MAC address of the destination when constructing the frame that will go from R1 to Server B (which is on a directly connected Ethernet LAN)?",
+    "choices": [
+      "If the destination MAC address that corresponds to the IPv4 address is not in the ARP cache, R1 sends an ARP request.",
+      "R1 uses the destination MAC address of S1.",
+      "The packet is encapsulated into a PPP frame, and R1 adds the PPP destination address to the frame.",
+      "R1 leaves the field blank and forwards the data to the PC."
+    ],
+    "answer": [0],
+    "explain_short": "On a directly connected Ethernet, R1 needs the destination MAC for the next L2 hop. If it is not cached, R1 sends an ARP request to learn the MAC.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Packet Forwarding Decision Process — Forward to Directly Connected Network",
+      "quote": "To encapsulate the packet in the Ethernet frame, the router needs to determine the destination MAC address associated with the destination IP address of the packet. The process varies based on whether the packet is an IPv4 or IPv6 packet."
+    },
+    "tags": ["routing", "forwarding", "arp"]
+  },
+  {
+    "id": "routing-q-fill-1",
+    "module": "routing",
+    "source": "itexam-srwe-m14",
+    "type": "fill",
+    "stem": "The best path in a routing table is the one with the greatest number of far-left matching bits with the destination IP address of the packet. This is known as the _______ match.",
+    "answer": "longest",
+    "alt_answers": ["longest prefix"],
+    "explain_short": "Cisco routers always pick the longest-prefix match — the route entry whose prefix length covers the most far-left bits of the destination address.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Best Path Equals Longest Match",
+      "quote": "The best path in the routing table is also known as the longest match. The longest match is the route in the routing table that has the greatest number of far-left matching bits with the destination IP address of the packet."
+    },
+    "tags": ["routing", "longest-match", "fill"]
+  },
+  {
+    "id": "routing-q-fill-2",
+    "module": "routing",
+    "source": "itexam-srwe-m14",
+    "type": "fill",
+    "stem": "In a routing table, the route source code _______ identifies a directly connected network on a router interface.",
+    "answer": "C",
+    "alt_answers": ["c"],
+    "explain_short": "Code C means a directly connected network. L marks the interface's local /32 (or /128) host route. S is static, O is OSPF, R is RIP.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Route Sources",
+      "quote": "L - Identifies the address assigned to a router interface. C - Identifies a directly connected network. S - Identifies a static route created to reach a specific network. O - Identifies a dynamically learned network from another router using the OSPF routing protocol. * - This route is a candidate for a default route."
+    },
+    "tags": ["routing", "route-codes", "fill"]
+  },
+  {
+    "id": "routing-q-fill-3",
+    "module": "routing",
+    "source": "itexam-srwe-m14",
+    "type": "fill",
+    "stem": "The _______ _______ value identifies the trustworthiness of a route source. A lower value is preferred. (Two words.)",
+    "answer": "administrative distance",
+    "alt_answers": ["administrative-distance"],
+    "explain_short": "Administrative distance (AD) ranks route sources. Connected = 0, Static = 1, EIGRP = 90, OSPF = 110, RIP = 120.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Administrative Distance",
+      "quote": "Cisco IOS uses what is known as the administrative distance (AD) to determine the route to install into the IP routing table. The AD represents the \"trustworthiness\" of the route. The lower the AD, the more trustworthy the route source."
+    },
+    "tags": ["routing", "administrative-distance", "fill"]
+  },
+  {
+    "id": "routing-q-fill-4",
+    "module": "routing",
+    "source": "itexam-srwe-m14",
+    "type": "fill",
+    "stem": "An IPv4 default route has a destination prefix of _______/0. (Fill in the dotted-decimal network address.)",
+    "answer": "0.0.0.0",
+    "explain_short": "The IPv4 default route is 0.0.0.0/0 — a /0 prefix length means zero bits need to match, so it matches every destination as a last resort.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Default Route",
+      "quote": "A default route has an IPv4 route entry of 0.0.0.0/0 or an IPv6 route entry of ::/0. This means that zero or no bits need to match between the destination IP address and the default route."
+    },
+    "tags": ["routing", "default-route", "fill"]
+  },
+  {
+    "id": "routing-q-cli-1",
+    "module": "routing",
+    "source": "itexam-srwe-m14",
+    "type": "cli",
+    "stem": "On a Cisco router, enter the command that displays the IPv4 routing table, including all directly connected, static, and dynamically learned routes.",
+    "prefix": "R1#",
+    "answer": "show ip route",
+    "alt_answers": ["sh ip route"],
+    "explain_short": "show ip route is the standard verification command for the IPv4 routing table. Use show ipv6 route for IPv6.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Verification Commands",
+      "quote": "Common verification commands include the following: show ip interface brief, show running-config interface interface-type number, show interfaces, show ip interface, show ip route, ping. In each case, replace ip with ipv6 for the IPv6 version of the command."
+    },
+    "tags": ["routing", "cli", "verification"]
+  }
+]

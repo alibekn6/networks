@@ -1,0 +1,17 @@
+{
+  "modules": [
+    { "id": "ipv4", "title": "Network Layer / IPv4", "src": "B1 ITN 8, 11", "file": "module-ipv4.json", "color": "m-ipv4" },
+    { "id": "ipv6", "title": "IPv6 Addressing", "src": "B1 ITN 12", "file": "module-ipv6.json", "color": "m-ipv6" },
+    { "id": "icmp", "title": "ICMP", "src": "B1 ITN 13", "file": "module-icmp.json", "color": "m-icmp" },
+    { "id": "routing", "title": "Routing Concepts", "src": "B2 SRWE 14", "file": "module-routing.json", "color": "m-routing" },
+    { "id": "static", "title": "Static Routing", "src": "B2 SRWE 15", "file": "module-static.json", "color": "m-routing" },
+    { "id": "ospf", "title": "OSPF (single-area)", "src": "B3 ENSA 1, 2", "file": "module-ospf.json", "color": "m-ospf" },
+    { "id": "nat", "title": "NAT", "src": "B3 ENSA 6", "file": "module-nat.json", "color": "m-nat" },
+    { "id": "transport", "title": "Transport Layer", "src": "B1 ITN 14", "file": "module-transport.json", "color": "m-transport" },
+    { "id": "application", "title": "Application Layer", "src": "B1 ITN 15", "file": "module-application.json", "color": "m-application" },
+    { "id": "acl", "title": "ACLs / Security", "src": "B3 ENSA 4, 5", "file": "module-acl.json", "color": "m-acl" }
+  ],
+  "pools": [
+    { "id": "lastyear", "title": "Last-Year Real Endterm 2025", "file": "pool-lastyear.json" }
+  ]
+}

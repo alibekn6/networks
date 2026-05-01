@@ -1,0 +1,422 @@
+[
+  {
+    "id": "icmp-q01",
+    "module": "icmp",
+    "source": "itexam-itn-m13",
+    "type": "single",
+    "stem": "A technician uses the ping 127.0.0.1 command. What is the technician testing?",
+    "choices": [
+      "the TCP/IP stack on a network host",
+      "connectivity between two adjacent Cisco devices",
+      "connectivity between a PC and the default gateway",
+      "connectivity between two PCs on the same network",
+      "physical connectivity of a particular PC and the network"
+    ],
+    "answer": [0],
+    "explain_short": "127.0.0.1 is the IPv4 loopback. A successful ping confirms only that the local TCP/IP stack and NIC driver are working — no traffic actually leaves the host.",
+    "explain_lecture": {
+      "module": "ITN-13",
+      "slide": "Ping and Traceroute Tests — Ping the Loopback",
+      "quote": "A response from 127.0.0.1 for IPv4, or ::1 for IPv6, indicates that IP is properly installed on the host."
+    },
+    "tags": ["icmp", "ping", "loopback"]
+  },
+  {
+    "id": "icmp-q02",
+    "module": "icmp",
+    "source": "itexam-itn-m13",
+    "type": "single",
+    "stem": "An administrator is trying to troubleshoot connectivity between PC1 and PC2 and uses the tracert command from PC1 to do it. The only successful response is from the first device along the path on the same LAN as PC1. Where should the administrator begin troubleshooting?",
+    "choices": ["PC2", "R1", "SW2", "R2", "SW1"],
+    "answer": [1],
+    "explain_short": "Tracert shows the only reply came from R1 (the default gateway). Anything beyond R1 is failing, so begin troubleshooting at R1.",
+    "explain_lecture": {
+      "module": "ITN-13",
+      "slide": "Ping and Traceroute Tests — Traceroute – Test the Path",
+      "quote": "Traceroute (tracert) is a utility that is used to test the path between two hosts and provide a list of hops that were successfully reached along that path."
+    },
+    "tags": ["icmp", "traceroute", "troubleshooting"]
+  },
+  {
+    "id": "icmp-q03",
+    "module": "icmp",
+    "source": "itexam-itn-m13",
+    "type": "single",
+    "stem": "Which protocol is used by the traceroute command to send and receive echo-requests and echo-replies?",
+    "choices": ["SNMP", "ICMP", "Telnet", "TCP"],
+    "answer": [1],
+    "explain_short": "Traceroute uses ICMP echo request/reply (or in some implementations UDP probes), and ICMP Time Exceeded for the intermediate-hop discoveries.",
+    "explain_lecture": {
+      "module": "ITN-13",
+      "slide": "Ping and Traceroute Tests — Traceroute – Test the Path",
+      "quote": "Traceroute makes use of a function of the TTL field in IPv4 and the Hop Limit field in IPv6 in the Layer 3 headers, along with the ICMP Time Exceeded message."
+    },
+    "tags": ["icmp", "traceroute", "protocol"]
+  },
+  {
+    "id": "icmp-q04",
+    "module": "icmp",
+    "source": "itexam-itn-m13",
+    "type": "single",
+    "stem": "Which ICMPv6 message is sent when the IPv6 hop limit field of a packet is decremented to zero and the packet cannot be forwarded?",
+    "choices": [
+      "network unreachable",
+      "time exceeded",
+      "protocol unreachable",
+      "port unreachable"
+    ],
+    "answer": [1],
+    "explain_short": "When Hop Limit (IPv6) or TTL (IPv4) hits 0, the router drops the packet and sends an ICMP Time Exceeded back to the source.",
+    "explain_lecture": {
+      "module": "ITN-13",
+      "slide": "ICMP Messages — Time Exceeded",
+      "quote": "When the Time to Live (TTL) field in a packet is decremented to 0, an ICMPv4 Time Exceeded message will be sent to the source host. ICMPv6 also sends a Time Exceeded message. Instead of the IPv4 TTL field, ICMPv6 uses the IPv6 Hop Limit field to determine if the packet has expired."
+    },
+    "tags": ["icmp", "icmpv6", "time-exceeded", "hop-limit"]
+  },
+  {
+    "id": "icmp-q05",
+    "module": "icmp",
+    "source": "itexam-itn-m13",
+    "type": "single",
+    "stem": "A user executes a traceroute over IPv6. At what point would a router in the path to the destination device drop the packet?",
+    "choices": [
+      "when the value of the Hop Limit field reaches 255",
+      "when the value of the Hop Limit field reaches zero",
+      "when the router receives an ICMP time exceeded message",
+      "when the target host responds with an ICMP echo reply message"
+    ],
+    "answer": [1],
+    "explain_short": "Each router decrements Hop Limit. The router that decrements it to 0 drops the packet and returns ICMPv6 Time Exceeded.",
+    "explain_lecture": {
+      "module": "ITN-13",
+      "slide": "ICMP Messages — Time Exceeded",
+      "quote": "ICMPv6 also sends a Time Exceeded message. Instead of the IPv4 TTL field, ICMPv6 uses the IPv6 Hop Limit field to determine if the packet has expired."
+    },
+    "tags": ["icmp", "icmpv6", "hop-limit", "traceroute"]
+  },
+  {
+    "id": "icmp-q06",
+    "module": "icmp",
+    "source": "itexam-itn-m13",
+    "type": "single",
+    "stem": "What is the purpose of ICMP messages?",
+    "choices": [
+      "to inform routers about network topology changes",
+      "to ensure the delivery of an IP packet",
+      "to provide feedback of IP packet transmissions",
+      "to monitor the process of a domain name to IP address resolution"
+    ],
+    "answer": [2],
+    "explain_short": "ICMP is the feedback mechanism for IP — it reports problems (unreachable, expired, etc.) but does NOT make IP reliable.",
+    "explain_lecture": {
+      "module": "ITN-13",
+      "slide": "ICMP Messages — ICMPv4 and ICMPv6 Messages",
+      "quote": "Internet Control Message Protocol (ICMP) provides feedback about issues related to the processing of IP packets under certain conditions."
+    },
+    "tags": ["icmp", "purpose"]
+  },
+  {
+    "id": "icmp-q07",
+    "module": "icmp",
+    "source": "itexam-itn-m13",
+    "type": "single",
+    "stem": "What source IP address does a router use by default when the traceroute command is issued?",
+    "choices": [
+      "the highest configured IP address on the router",
+      "a loopback IP address",
+      "the IP address of the outbound interface",
+      "the lowest configured IP address on the router"
+    ],
+    "answer": [2],
+    "explain_short": "By default, a Cisco router uses the IP of the egress interface as the source. You can override with extended ping/traceroute syntax.",
+    "explain_lecture": null,
+    "tags": ["icmp", "traceroute", "router"]
+  },
+  {
+    "id": "icmp-q08",
+    "module": "icmp",
+    "source": "itexam-itn-m13",
+    "type": "single",
+    "stem": "A user issues a ping 192.135.250.103 command and receives a response that includes a code of 1. What does this code represent?",
+    "choices": [
+      "host unreachable",
+      "protocol unreachable",
+      "port unreachable",
+      "network unreachable"
+    ],
+    "answer": [0],
+    "explain_short": "ICMPv4 Destination Unreachable codes: 0=net unreachable, 1=host unreachable, 2=protocol unreachable, 3=port unreachable.",
+    "explain_lecture": {
+      "module": "ITN-13",
+      "slide": "ICMP Messages — Destination or Service Unreachable",
+      "quote": "A few Destination Unreachable codes for ICMPv4 are as follows:\n0 - Net unreachable\n1 - Host unreachable\n2 - Protocol unreachable\n3 - Port unreachable"
+    },
+    "tags": ["icmp", "icmpv4", "destination-unreachable", "codes"]
+  },
+  {
+    "id": "icmp-q09",
+    "module": "icmp",
+    "source": "itexam-itn-m13",
+    "type": "single",
+    "stem": "A user issues a ping 198.133.219.8 command and receives a response that includes a code of 0. What does this code represent?",
+    "choices": [
+      "network unreachable",
+      "protocol unreachable",
+      "port unreachable",
+      "host unreachable"
+    ],
+    "answer": [0],
+    "explain_short": "ICMPv4 Destination Unreachable code 0 = Net (network) unreachable.",
+    "explain_lecture": {
+      "module": "ITN-13",
+      "slide": "ICMP Messages — Destination or Service Unreachable",
+      "quote": "A few Destination Unreachable codes for ICMPv4 are as follows:\n0 - Net unreachable\n1 - Host unreachable\n2 - Protocol unreachable\n3 - Port unreachable"
+    },
+    "tags": ["icmp", "icmpv4", "destination-unreachable", "codes"]
+  },
+  {
+    "id": "icmp-q10",
+    "module": "icmp",
+    "source": "itexam-itn-m13",
+    "type": "single",
+    "stem": "A user issues a ping 10.10.14.67 command and receives a response that includes a code of 0. What does this code represent?",
+    "choices": [
+      "network unreachable",
+      "protocol unreachable",
+      "port unreachable",
+      "host unreachable"
+    ],
+    "answer": [0],
+    "explain_short": "An IPv4 ping returning code 0 in a Destination Unreachable means Net Unreachable — the router has no route to that network.",
+    "explain_lecture": {
+      "module": "ITN-13",
+      "slide": "ICMP Messages — Destination or Service Unreachable",
+      "quote": "A few Destination Unreachable codes for ICMPv4 are as follows:\n0 - Net unreachable\n1 - Host unreachable\n2 - Protocol unreachable\n3 - Port unreachable"
+    },
+    "tags": ["icmp", "icmpv4", "destination-unreachable", "codes"]
+  },
+  {
+    "id": "icmp-q11",
+    "module": "icmp",
+    "source": "itexam-itn-m13",
+    "type": "single",
+    "stem": "A user issues a ping 2001:db8:FACE:39::10 command and receives a response that includes a code of 3. What does this code represent?",
+    "choices": [
+      "address unreachable",
+      "network unreachable",
+      "host unreachable",
+      "protocol unreachable"
+    ],
+    "answer": [0],
+    "explain_short": "ICMPv6 Destination Unreachable codes: 0=no route, 1=admin prohibited, 2=beyond scope, 3=address unreachable, 4=port unreachable.",
+    "explain_lecture": {
+      "module": "ITN-13",
+      "slide": "ICMP Messages — Destination or Service Unreachable",
+      "quote": "A few Destination Unreachable codes for ICMPv6 are as follows:\n0 - No route to destination\n1 - Communication with the destination is administratively prohibited (e.g., firewall)\n2 – Beyond scope of the source address\n3 - Address unreachable\n4 - Port unreachable"
+    },
+    "tags": ["icmp", "icmpv6", "destination-unreachable", "codes"]
+  },
+  {
+    "id": "icmp-q12",
+    "module": "icmp",
+    "source": "itexam-itn-m13",
+    "type": "single",
+    "stem": "A user issues a ping 2001:db8:FACE:39::10 command and receives a response that includes a code of 2. What does this code represent?",
+    "choices": [
+      "beyond scope of the source address",
+      "communication with the destination administratively prohibited",
+      "address unreachable",
+      "no route to destination"
+    ],
+    "answer": [0],
+    "explain_short": "ICMPv6 Destination Unreachable code 2 = beyond scope of the source address.",
+    "explain_lecture": {
+      "module": "ITN-13",
+      "slide": "ICMP Messages — Destination or Service Unreachable",
+      "quote": "A few Destination Unreachable codes for ICMPv6 are as follows:\n0 - No route to destination\n1 - Communication with the destination is administratively prohibited (e.g., firewall)\n2 – Beyond scope of the source address\n3 - Address unreachable\n4 - Port unreachable"
+    },
+    "tags": ["icmp", "icmpv6", "destination-unreachable", "codes"]
+  },
+  {
+    "id": "icmp-q13",
+    "module": "icmp",
+    "source": "itexam-itn-m13",
+    "type": "single",
+    "stem": "A user issues a ping fe80:65ab:dcc1::100 command and receives a response that includes a code of 3. What does this code represent?",
+    "choices": [
+      "address unreachable",
+      "communication with the destination administratively prohibited",
+      "beyond scope of the source address",
+      "no route to destination"
+    ],
+    "answer": [0],
+    "explain_short": "ICMPv6 Destination Unreachable code 3 = address unreachable (host present in the network table is not reachable).",
+    "explain_lecture": {
+      "module": "ITN-13",
+      "slide": "ICMP Messages — Destination or Service Unreachable",
+      "quote": "A few Destination Unreachable codes for ICMPv6 are as follows:\n0 - No route to destination\n1 - Communication with the destination is administratively prohibited (e.g., firewall)\n2 – Beyond scope of the source address\n3 - Address unreachable\n4 - Port unreachable"
+    },
+    "tags": ["icmp", "icmpv6", "destination-unreachable", "codes"]
+  },
+  {
+    "id": "icmp-q14",
+    "module": "icmp",
+    "source": "itexam-itn-m13",
+    "type": "single",
+    "stem": "A user issues a ping fe80:65ab:dcc1::100 command and receives a response that includes a code of 4. What does this code represent?",
+    "choices": [
+      "port unreachable",
+      "host unreachable",
+      "protocol unreachable",
+      "network unreachable"
+    ],
+    "answer": [0],
+    "explain_short": "ICMPv6 code 4 = port unreachable (the destination port is closed).",
+    "explain_lecture": {
+      "module": "ITN-13",
+      "slide": "ICMP Messages — Destination or Service Unreachable",
+      "quote": "A few Destination Unreachable codes for ICMPv6 are as follows:\n0 - No route to destination\n1 - Communication with the destination is administratively prohibited (e.g., firewall)\n2 – Beyond scope of the source address\n3 - Address unreachable\n4 - Port unreachable"
+    },
+    "tags": ["icmp", "icmpv6", "destination-unreachable", "codes"]
+  },
+  {
+    "id": "icmp-q15",
+    "module": "icmp",
+    "source": "itexam-itn-m13",
+    "type": "single",
+    "stem": "A user issues a ping 2001:db8:3040:114::88 command and receives a response that includes a code of 4. What does this code represent?",
+    "choices": [
+      "port unreachable",
+      "host unreachable",
+      "protocol unreachable",
+      "network unreachable"
+    ],
+    "answer": [0],
+    "explain_short": "ICMPv6 Destination Unreachable code 4 = port unreachable.",
+    "explain_lecture": {
+      "module": "ITN-13",
+      "slide": "ICMP Messages — Destination or Service Unreachable",
+      "quote": "A few Destination Unreachable codes for ICMPv6 are as follows:\n0 - No route to destination\n1 - Communication with the destination is administratively prohibited (e.g., firewall)\n2 – Beyond scope of the source address\n3 - Address unreachable\n4 - Port unreachable"
+    },
+    "tags": ["icmp", "icmpv6", "destination-unreachable", "codes"]
+  },
+  {
+    "id": "icmp-q16",
+    "module": "icmp",
+    "source": "itexam-itn-m13",
+    "type": "fill",
+    "stem": "Type the name of the ICMPv6 message a router sends every 200 seconds to inform IPv6 hosts of the network prefix and default gateway (two-word answer).",
+    "answer": "Router Advertisement",
+    "alt_answers": ["RA", "router advertisement", "router-advertisement", "Router Advertisement (RA)"],
+    "explain_short": "Routers periodically multicast Router Advertisements (RAs) so hosts can build a SLAAC GUA, learn the prefix, and pick the default gateway.",
+    "explain_lecture": {
+      "module": "ITN-13",
+      "slide": "ICMP Messages — ICMPv6 Messages (Cont.)",
+      "quote": "RA messages are sent by IPv6-enabled routers every 200 seconds to provide addressing information to IPv6-enabled hosts."
+    },
+    "tags": ["icmp", "icmpv6", "ra", "ndp"]
+  },
+  {
+    "id": "icmp-q17",
+    "module": "icmp",
+    "source": "itexam-itn-m13",
+    "type": "fill",
+    "stem": "Type the two-word ICMP message that ping uses to test reachability of a remote host (the request type, exact term as used by Cisco/RFC).",
+    "answer": "Echo Request",
+    "alt_answers": ["echo request", "ICMP Echo Request", "Echo"],
+    "explain_short": "Ping sends an ICMP Echo Request and expects an Echo Reply from the destination.",
+    "explain_lecture": {
+      "module": "ITN-13",
+      "slide": "ICMP Messages — Host Reachability",
+      "quote": "ICMP Echo Message can be used to test the reachability of a host on an IP network."
+    },
+    "tags": ["icmp", "ping", "echo-request"]
+  },
+  {
+    "id": "icmp-q18",
+    "module": "icmp",
+    "source": "itexam-itn-m13",
+    "type": "multi",
+    "stem": "Which two ICMP messages are common to both ICMPv4 and ICMPv6? (Choose two.)",
+    "choices": [
+      "Destination or Service Unreachable",
+      "Time Exceeded",
+      "Router Advertisement",
+      "Neighbor Solicitation",
+      "Redirect (Router)"
+    ],
+    "answer": [0, 1],
+    "explain_short": "Both ICMPv4 and ICMPv6 share Host reachability (Echo), Destination Unreachable, and Time Exceeded. RA/RS/NS/NA are ICMPv6-only (Neighbor Discovery).",
+    "explain_lecture": {
+      "module": "ITN-13",
+      "slide": "ICMP Messages — ICMPv4 and ICMPv6 Messages",
+      "quote": "The ICMP messages common to both ICMPv4 and ICMPv6 include:\nHost reachability\nDestination or Service Unreachable\nTime exceeded"
+    },
+    "tags": ["icmp", "icmpv4", "icmpv6"]
+  },
+  {
+    "id": "icmp-q19",
+    "module": "icmp",
+    "source": "itexam-itn-m13",
+    "type": "multi",
+    "stem": "Which two ICMPv6 messages are used by Neighbor Discovery for address resolution (replacing IPv4 ARP)? (Choose two.)",
+    "choices": [
+      "Router Solicitation",
+      "Router Advertisement",
+      "Neighbor Solicitation",
+      "Neighbor Advertisement",
+      "Redirect"
+    ],
+    "answer": [2, 3],
+    "explain_short": "ICMPv6 NS/NA replace ARP — a host sends Neighbor Solicitation to a solicited-node multicast and the target replies with Neighbor Advertisement containing its MAC.",
+    "explain_lecture": {
+      "module": "ITN-13",
+      "slide": "ICMP Messages — ICMPv6 Messages",
+      "quote": "Messaging between IPv6 devices, including duplicate address detection and address resolution are as follows:\nNeighbor Solicitation (NS) message\nNeighbor Advertisement (NA) message"
+    },
+    "tags": ["icmp", "icmpv6", "ndp", "ns-na"]
+  },
+  {
+    "id": "icmp-q20",
+    "module": "icmp",
+    "source": "itexam-itn-m13",
+    "type": "single",
+    "stem": "How does traceroute discover each hop along a path?",
+    "choices": [
+      "It sends ICMP Redirect messages to each router in turn.",
+      "It progressively increments the TTL/Hop Limit of each probe so each successive router replies with Time Exceeded.",
+      "It queries the routing table of each upstream router via SNMP.",
+      "It floods the path with ARP requests until the destination replies."
+    ],
+    "answer": [1],
+    "explain_short": "Traceroute sets TTL=1 for the first probe (R1 replies Time Exceeded), TTL=2 for the second (R2 replies), and so on until the destination is reached or max hops.",
+    "explain_lecture": {
+      "module": "ITN-13",
+      "slide": "Ping and Traceroute Tests — Traceroute – Test the Path (Cont.)",
+      "quote": "The first message sent from traceroute will have a TTL field value of 1. This causes the TTL to time out at the first router. This router then responds with a ICMPv4 Time Exceeded message. Traceroute then progressively increments the TTL field (2, 3, 4...) for each sequence of messages."
+    },
+    "tags": ["icmp", "traceroute", "ttl"]
+  },
+  {
+    "id": "icmp-q21",
+    "module": "icmp",
+    "source": "itexam-itn-m13",
+    "type": "single",
+    "stem": "What does an asterisk (*) in traceroute output indicate for a given hop?",
+    "choices": [
+      "The hop is the destination.",
+      "The hop replied successfully.",
+      "A lost or unreplied probe — the router did not respond in time or is configured not to reply.",
+      "The TTL has been incremented."
+    ],
+    "answer": [2],
+    "explain_short": "An asterisk means the probe was lost or that hop did not reply (often blocked ICMP). It does NOT necessarily mean the path is broken.",
+    "explain_lecture": {
+      "module": "ITN-13",
+      "slide": "Ping and Traceroute Tests — Traceroute – Test the Path",
+      "quote": "Traceroute provides round-trip time for each hop along the path and indicates if a hop fails to respond. An asterisk (*) is used to indicate a lost or unreplied packet."
+    },
+    "tags": ["icmp", "traceroute", "output"]
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "name": "netquiz",
+  "version": "0.1.0",
+  "description": "CCNA endterm trainer — pure HTML/CSS/JS",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve . -l 5173",
+    "deploy": "npx vercel --prod"
+  }
+}

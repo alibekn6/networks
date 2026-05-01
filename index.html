@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>NetQuiz — CCNA Endterm Trainer</title>
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="home">
+<header class="hero">
+  <div class="container">
+    <h1>NetQuiz</h1>
+    <p class="tagline">CSCI 2109 endterm trainer · CCNA v7</p>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="featured">
+    <a class="card card-feature" href="quiz.html?pool=lastyear&mode=test&time=60">
+      <span class="badge">Real exam</span>
+      <h2>Last-year endterm</h2>
+      <p>50 questions · 60 min · graded at end</p>
+      <span class="cta">Start</span>
+    </a>
+    <a class="card card-feature alt" href="quiz.html?pool=mock&mode=test&n=38&time=60">
+      <span class="badge">Mock</span>
+      <h2>Mock endterm</h2>
+      <p>38 randomized · 60 min · matches exam format</p>
+      <span class="cta">Start</span>
+    </a>
+  </section>
+
+  <h3 class="section-title">Drill by topic</h3>
+  <section class="modules" id="moduleGrid">
+    <!-- module cards injected by app.js -->
+  </section>
+
+  <section class="footer-stats" id="stats">
+    <!-- stats injected -->
+  </section>
+
+</main>
+
+<nav class="bottom-nav">
+  <a class="active" href="index.html">Home</a>
+  <a href="quiz.html?pool=wrong&mode=practice">Wrong-only</a>
+  <a href="#" id="resetBtn">Reset</a>
+</nav>
+
+<script type="module" src="assets/app.js"></script>
+</body>
+</html>

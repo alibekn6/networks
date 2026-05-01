@@ -1,0 +1,157 @@
+[
+  {
+    "id": "ly-q01",
+    "module": "ipv4",
+    "source": "lastyear-2025-photo1-q1",
+    "type": "single",
+    "stem": "Which address prefix range is reserved for IPv4 loopback?",
+    "choices": [
+      "240.0.0.0-254.255.255.255",
+      "224.0.0.0-239.255.255.255",
+      "169.254.0.0-169.254.255.255",
+      "127.0.0.0-127.255.255.255"
+    ],
+    "answer": [3],
+    "explain_short": "127.0.0.0/8 is reserved for loopback (127.0.0.1 is the typical address used for self-tests).",
+    "explain_lecture": {
+      "module": "ITN-11",
+      "slide": "Special-Use Addresses",
+      "quote": "Loopback addresses (127.0.0.0/8 or 127.0.0.1 to 127.255.255.255) are used by a host to direct traffic to itself. The 224.0.0.0/4 range is reserved for multicast, and 169.254.0.0/16 is link-local."
+    },
+    "tags": ["ipv4", "special-addresses"]
+  },
+  {
+    "id": "ly-q03",
+    "module": "ipv4",
+    "source": "lastyear-2025-photo1-q3",
+    "type": "multi",
+    "stem": "Which addresses are valid private addresses? (Choose all that apply.)",
+    "choices": [
+      "198.133.219.17",
+      "192.168.1.245",
+      "10.15.250.5",
+      "128.107.12.117",
+      "172.31.1.25"
+    ],
+    "answer": [1, 2, 4],
+    "explain_short": "RFC 1918 private blocks: 10.0.0.0/8, 172.16.0.0/12 (172.16-31.x.x), and 192.168.0.0/16. Other choices are public.",
+    "explain_lecture": {
+      "module": "ITN-11",
+      "slide": "Private vs Public IPv4 Addresses",
+      "quote": "Private addresses are defined in RFC 1918 and include 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16. They cannot be routed on the public internet and are translated via NAT."
+    },
+    "tags": ["ipv4", "private-addresses", "rfc1918"]
+  },
+  {
+    "id": "ly-q05",
+    "module": "ipv6",
+    "source": "lastyear-2025-photo1-q5",
+    "type": "single",
+    "stem": "What is used in the EUI-64 process to create an IPv6 interface ID on an IPv6-enabled interface?",
+    "choices": [
+      "the MAC address of the IPv6 enabled interface",
+      "a randomly generated 64-bit hexadecimal address",
+      "an IPv6 address that is provided by a DHCPv6 server",
+      "an IPv4 address that is configured on the interface"
+    ],
+    "answer": [0],
+    "explain_short": "EUI-64 takes the 48-bit MAC, splits it, inserts FFFE in the middle, and flips the 7th bit of the first byte (U/L bit).",
+    "explain_lecture": {
+      "module": "ITN-12",
+      "slide": "Dynamic Addressing for IPv6 GUAs (EUI-64)",
+      "quote": "The EUI-64 process uses the 48-bit Ethernet MAC address of the client. The MAC address is then split and the 16-bit value FFFE (in hexadecimal) is inserted between the OUI and the device identifier. The 7th bit of the first byte is inverted."
+    },
+    "tags": ["ipv6", "eui-64", "interface-id"]
+  },
+  {
+    "id": "ly-q09",
+    "module": "ipv4",
+    "source": "lastyear-2025-photo1-q9",
+    "type": "single",
+    "stem": "What is the prefix length notation for the subnet mask 255.255.255.224?",
+    "choices": ["/25", "/26", "/27", "/28"],
+    "answer": [2],
+    "explain_short": "224 = 11100000 → 3 bits set in the last octet. 24 + 3 = /27.",
+    "explain_lecture": {
+      "module": "ITN-11",
+      "slide": "IPv4 Subnet Mask — Prefix Length",
+      "quote": "A prefix length is a less cumbersome method used to identify a subnet mask address. The prefix length is the number of bits set to 1 in the subnet mask. It is written in 'slash notation'."
+    },
+    "tags": ["ipv4", "subnetting", "prefix-length"]
+  },
+  {
+    "id": "ly-q11",
+    "module": "ipv6",
+    "source": "lastyear-2025-photo1-q11",
+    "type": "single",
+    "stem": "Which of these addresses is the shortest abbreviation for the IP address: 3FFE:1044:0000:0000:00AB:0000:0000:0057?",
+    "choices": [
+      "3FFE:1044::AB::57",
+      "3FFE:1044::00AB::0057",
+      "3FFE:1044:0:0:AB::57",
+      "3FFE:1044:0:0:00AB::0057",
+      "3FFE:1044:0000:0000:00AB::57"
+    ],
+    "answer": [2],
+    "explain_short": "Rule 1: drop leading zeros in each hextet. Rule 2: replace ONE longest run of all-zero hextets with ::. You can only use :: once.",
+    "explain_lecture": {
+      "module": "ITN-12",
+      "slide": "IPv6 Address Formats — Compression",
+      "quote": "Rule 2 — Omit All 0 Segments: A double colon (::) can replace any single, contiguous string of one or more 16-bit segments (hextets) consisting of all 0s. The double colon (::) can only be used once within an address."
+    },
+    "tags": ["ipv6", "compression"]
+  },
+  {
+    "id": "ly-q49",
+    "module": "ipv4",
+    "source": "lastyear-2025-photo4-q49",
+    "type": "single",
+    "stem": "A site administrator has been told that a particular network at the site must accommodate 30 hosts. Which subnet mask would be used that contains the required number of host bits?",
+    "choices": [
+      "255.255.255.0",
+      "255.255.255.128",
+      "255.255.255.224",
+      "255.255.255.240"
+    ],
+    "answer": [2],
+    "explain_short": "30 hosts → need 5 host bits (2^5 - 2 = 30). 32 - 5 = /27 → 255.255.255.224.",
+    "explain_lecture": {
+      "module": "ITN-11",
+      "slide": "Subnet a /24 Network — Host Calculation",
+      "quote": "Use the formula 2^h - 2 (where h is the number of host bits) to calculate usable host addresses per subnet. With 5 host bits: 2^5 - 2 = 30 usable hosts. /27 = 255.255.255.224."
+    },
+    "tags": ["ipv4", "subnetting", "vlsm", "calc"]
+  },
+  {
+    "id": "ly-q-fill-1",
+    "module": "transport",
+    "source": "lastyear-2025-photo2-q23",
+    "type": "fill",
+    "stem": "At the transport layer, TCP uses the _______ in the header of each TCP segment to reassemble the segments into the correct order.",
+    "answer": "sequence numbers",
+    "alt_answers": ["sequence number"],
+    "explain_short": "TCP uses sequence numbers to reorder segments at the destination. Acknowledgement numbers tell the sender what was received.",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "TCP Reliable Delivery — Reordering",
+      "quote": "Sequence numbers in the segment header indicate how to reassemble the segments into the correct order at the destination. The receiving TCP process places the segment data into a receiving buffer."
+    },
+    "tags": ["tcp", "transport", "sequence-numbers"]
+  },
+  {
+    "id": "ly-q-cli-1",
+    "module": "static",
+    "source": "synthetic-cli-demo",
+    "type": "cli",
+    "stem": "On router R1, configure a default static route via next-hop 209.165.200.1.",
+    "prefix": "R1(config)#",
+    "answer": "ip route 0.0.0.0 0.0.0.0 209.165.200.1",
+    "explain_short": "A default route uses the wildcard network 0.0.0.0 with mask 0.0.0.0 (matches everything), pointing to the next-hop IP.",
+    "explain_lecture": {
+      "module": "SRWE-15",
+      "slide": "Default Static Route",
+      "quote": "A default static route is a route that matches all packets. Use ip route 0.0.0.0 0.0.0.0 {next-hop-ip | exit-intf}. It is commonly called a 'quad-zero' route."
+    },
+    "tags": ["static-routing", "default-route", "cli"]
+  }
+]

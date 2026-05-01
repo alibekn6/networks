@@ -1,0 +1,767 @@
+[
+  {
+    "id": "transport-q01",
+    "module": "transport",
+    "source": "itexam-itn-m14",
+    "type": "single",
+    "stem": "Which action is performed by a client when establishing communication with a server via the use of UDP at the transport layer?",
+    "choices": [
+      "The client sets the window size for the session.",
+      "The client sends an ISN to the server to start the 3-way handshake.",
+      "The client randomly selects a source port number.",
+      "The client sends a synchronization segment to begin the session."
+    ],
+    "answer": [
+      2
+    ],
+    "explain_short": "UDP is connectionless — there is no handshake or session setup. The client just chooses a random ephemeral source port and sends datagrams to the server's well-known port.",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "UDP Client Processes",
+      "quote": "The UDP client process dynamically selects a port number from the range of port numbers and uses this as the source port for the conversation."
+    },
+    "tags": [
+      "udp",
+      "client",
+      "source-port"
+    ]
+  },
+  {
+    "id": "transport-q02",
+    "module": "transport",
+    "source": "itexam-itn-m14",
+    "type": "single",
+    "stem": "Which transport layer feature is used to guarantee session establishment?",
+    "choices": [
+      "UDP ACK flag",
+      "TCP 3-way handshake",
+      "UDP sequence number",
+      "TCP port number"
+    ],
+    "answer": [
+      1
+    ],
+    "explain_short": "TCP's three-way handshake (SYN, SYN-ACK, ACK) negotiates and synchronizes the session before any data is sent. UDP has no session.",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "TCP Connection Establishment",
+      "quote": "Step 1: The initiating client requests a client-to-server communication session with the server. Step 2: The server acknowledges the client-to-server communication session and requests a server-to-client communication session. Step 3: The initiating client acknowledges the server-to-client communication session."
+    },
+    "tags": [
+      "tcp",
+      "handshake",
+      "session"
+    ]
+  },
+  {
+    "id": "transport-q03",
+    "module": "transport",
+    "source": "itexam-itn-m14",
+    "type": "single",
+    "stem": "What is the complete range of TCP and UDP well-known ports?",
+    "choices": [
+      "0 to 255",
+      "0 to 1023",
+      "256 – 1023",
+      "1024 – 49151"
+    ],
+    "answer": [
+      1
+    ],
+    "explain_short": "IANA defines well-known ports as 0–1023. Registered ports are 1024–49151; dynamic/private ports are 49152–65535.",
+    "explain_lecture": null,
+    "tags": [
+      "ports",
+      "well-known",
+      "ranges"
+    ]
+  },
+  {
+    "id": "transport-q04",
+    "module": "transport",
+    "source": "itexam-itn-m14",
+    "type": "single",
+    "stem": "What is a socket?",
+    "choices": [
+      "the combination of the source and destination IP address and source and destination Ethernet address",
+      "the combination of a source IP address and port number or a destination IP address and port number",
+      "the combination of the source and destination sequence and acknowledgment numbers",
+      "the combination of the source and destination sequence numbers and port numbers"
+    ],
+    "answer": [
+      1
+    ],
+    "explain_short": "A socket = IP address + port. The combination uniquely identifies one endpoint of a conversation.",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "Port numbers — Socket Pairs",
+      "quote": "The combination of the source IP address and source port number, or the destination IP address and destination port number is known as a socket."
+    },
+    "tags": [
+      "socket",
+      "ip",
+      "port"
+    ]
+  },
+  {
+    "id": "transport-q05",
+    "module": "transport",
+    "source": "itexam-itn-m14",
+    "type": "single",
+    "stem": "A PC is downloading a large file from a server. The TCP window is 1000 bytes. The server is sending the file using 100-byte segments. How many segments will the server send before it requires an acknowledgment from the PC?",
+    "choices": [
+      "1 segment",
+      "10 segments",
+      "100 segments",
+      "1000 segments"
+    ],
+    "answer": [
+      1
+    ],
+    "explain_short": "TCP window = max bytes the sender can transmit before needing an ACK. 1000 ÷ 100 = 10 segments fit in the window, so the server sends 10 segments and then waits for an acknowledgement.",
+    "explain_lecture": null,
+    "tags": [
+      "tcp",
+      "window",
+      "acknowledgement",
+      "calc"
+    ]
+  },
+  {
+    "id": "transport-q06",
+    "module": "transport",
+    "source": "itexam-itn-m14",
+    "type": "single",
+    "stem": "Which factor determines TCP window size?",
+    "choices": [
+      "the amount of data to be transmitted",
+      "the number of services included in the TCP segment",
+      "the amount of data the destination can process at one time",
+      "the amount of data the source is capable of sending at one time"
+    ],
+    "answer": [
+      2
+    ],
+    "explain_short": "TCP window size is the amount of data the destination can receive and process before sending an acknowledgement — set by the receiver based on its buffer/processing capacity.",
+    "explain_lecture": null,
+    "tags": [
+      "tcp",
+      "window",
+      "flow-control"
+    ]
+  },
+  {
+    "id": "transport-q07",
+    "module": "transport",
+    "source": "itexam-itn-m14",
+    "type": "single",
+    "stem": "What does a client do when it has UDP datagrams to send?",
+    "choices": [
+      "It just sends the datagrams.",
+      "It queries the server to see if it is ready to receive data.",
+      "It sends a simplified three-way handshake to the server.",
+      "It sends to the server a segment with the SYN flag set to synchronize the conversation."
+    ],
+    "answer": [
+      0
+    ],
+    "explain_short": "UDP is connectionless. The client just builds the datagram and sends it — no handshake, no flow control, no acknowledgment.",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "UDP Communication — UDP Datagram Reassembly",
+      "quote": "UDP does not track sequence numbers the way TCP does. UDP has no way to reorder the datagrams into their transmission order. UDP simply reassembles the data in the order that it was received and forwards it to the application."
+    },
+    "tags": [
+      "udp",
+      "connectionless"
+    ]
+  },
+  {
+    "id": "transport-q08",
+    "module": "transport",
+    "source": "itexam-itn-m14",
+    "type": "multi",
+    "stem": "Which three fields are used in a UDP segment header? (Choose three.)",
+    "choices": [
+      "Window Size",
+      "Length",
+      "Source Port",
+      "Acknowledgment Number",
+      "Checksum",
+      "Sequence Number"
+    ],
+    "answer": [
+      1,
+      2,
+      4
+    ],
+    "explain_short": "The UDP header has only 4 fields (8 bytes total): source port, destination port, length, and checksum.",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "UDP Overview — UDP Header",
+      "quote": "The UDP header is far simpler than the TCP header because it only has four fields and requires 8 bytes (i.e. 64 bits)."
+    },
+    "tags": [
+      "udp",
+      "header",
+      "fields"
+    ]
+  },
+  {
+    "id": "transport-q09",
+    "module": "transport",
+    "source": "itexam-itn-m14",
+    "type": "multi",
+    "stem": "What are two roles of the transport layer in data communication on a network? (Choose two.)",
+    "choices": [
+      "identifying the proper application for each communication stream",
+      "tracking the individual communication between applications on the source and destination hosts",
+      "providing frame delimiting to identify bits making up a frame",
+      "performing a cyclic redundancy check on the frame for errors",
+      "providing the interface between applications and the underlying network over which messages are transmitted"
+    ],
+    "answer": [
+      0,
+      1
+    ],
+    "explain_short": "The transport layer tracks individual conversations between applications and segments/reassembles application data into transport-layer PDUs.",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "Transportation of Data — Transport Layer Responsibilities",
+      "quote": "The transport layer has the following responsibilities: Tracking individual conversations; Segmenting data and reassembling segments; Adds header information; Identify, separate, and manage multiple conversations."
+    },
+    "tags": [
+      "transport",
+      "responsibilities"
+    ]
+  },
+  {
+    "id": "transport-q10",
+    "module": "transport",
+    "source": "itexam-itn-m14",
+    "type": "single",
+    "stem": "What information is used by TCP to reassemble and reorder received segments?",
+    "choices": [
+      "port numbers",
+      "sequence numbers",
+      "acknowledgment numbers",
+      "fragment numbers"
+    ],
+    "answer": [
+      1
+    ],
+    "explain_short": "TCP uses sequence numbers in the segment header to put segments back into the correct order at the receiver.",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "Reliability and Flow Control — TCP Reliability- Guaranteed and Ordered Delivery",
+      "quote": "All the data must be received and the data in these segments must be reassembled into the original order. Sequence numbers are assigned in the header of each packet to achieve this goal."
+    },
+    "tags": [
+      "tcp",
+      "sequence-numbers",
+      "reordering"
+    ]
+  },
+  {
+    "id": "transport-q11",
+    "module": "transport",
+    "source": "itexam-itn-m14",
+    "type": "single",
+    "stem": "What important information is added to the TCP/IP transport layer header to ensure communication and connectivity with a remote network device?",
+    "choices": [
+      "timing and synchronization",
+      "destination and source port numbers",
+      "destination and source physical addresses",
+      "destination and source logical network addresses"
+    ],
+    "answer": [
+      1
+    ],
+    "explain_short": "Port numbers in the transport-layer header identify the source and destination applications, so the receiver knows which process should get the data.",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "Port Numbers — Multiple Separate Communications",
+      "quote": "The source port number is associated with the originating application on the local host whereas the destination port number is associated with the destination application on the remote host."
+    },
+    "tags": [
+      "transport",
+      "ports"
+    ]
+  },
+  {
+    "id": "transport-q12",
+    "module": "transport",
+    "source": "itexam-itn-m14",
+    "type": "multi",
+    "stem": "Which two characteristics are associated with UDP sessions? (Choose two.)",
+    "choices": [
+      "Destination devices receive traffic with minimal delay.",
+      "Transmitted data segments are tracked.",
+      "Destination devices reassemble messages and pass them to an application.",
+      "Received data is unacknowledged.",
+      "Unacknowledged data packets are retransmitted."
+    ],
+    "answer": [
+      0,
+      3
+    ],
+    "explain_short": "UDP is connectionless and best-effort: no tracking, no acknowledgements, minimal delay. Lost segments are not retransmitted by UDP itself.",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "Transportation of Data — User Datagram Protocol (UDP)",
+      "quote": "UDP provides the basic functions for delivering datagrams between the appropriate applications, with very little overhead and data checking. UDP is a connectionless protocol. UDP is known as a best-effort delivery protocol because there is no acknowledgment that the data is received at the destination."
+    },
+    "tags": [
+      "udp",
+      "characteristics"
+    ]
+  },
+  {
+    "id": "transport-q13",
+    "module": "transport",
+    "source": "itexam-itn-m14",
+    "type": "single",
+    "stem": "Which flag in the TCP header is used in response to a received FIN in order to terminate connectivity between two network devices?",
+    "choices": [
+      "FIN",
+      "ACK",
+      "SYN",
+      "RST"
+    ],
+    "answer": [
+      1
+    ],
+    "explain_short": "The ACK flag is set in response to a received FIN to acknowledge the half-close. Termination uses two FIN/ACK pairs (one each direction).",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "TCP Communication Process — Session Termination",
+      "quote": "Step 1: When the client has no more data to send in the stream, it sends a segment with the FIN flag set. Step 2: The server sends an ACK to acknowledge the receipt of the FIN to terminate the session from client to server."
+    },
+    "tags": [
+      "tcp",
+      "flags",
+      "fin",
+      "ack",
+      "termination"
+    ]
+  },
+  {
+    "id": "transport-q14",
+    "module": "transport",
+    "source": "itexam-itn-m14",
+    "type": "single",
+    "stem": "Which protocol or service uses UDP for a client-to-server communication and TCP for server-to-server communication?",
+    "choices": [
+      "HTTP",
+      "FTP",
+      "DNS",
+      "SMTP"
+    ],
+    "answer": [
+      2
+    ],
+    "explain_short": "DNS uses UDP port 53 for typical client lookups (small, fast) and TCP port 53 for zone transfers and large responses.",
+    "explain_lecture": null,
+    "tags": [
+      "dns",
+      "tcp",
+      "udp",
+      "ports"
+    ]
+  },
+  {
+    "id": "transport-q15",
+    "module": "transport",
+    "source": "itexam-itn-m14",
+    "type": "single",
+    "stem": "What is a characteristic of UDP?",
+    "choices": [
+      "UDP datagrams take the same path and arrive in the correct order at the destination.​",
+      "Applications that use UDP are always considered unreliable.​",
+      "UDP reassembles the received datagrams in the order they were received.",
+      "UDP only passes data to the network when the destination is ready to receive the data."
+    ],
+    "answer": [
+      2
+    ],
+    "explain_short": "UDP is connectionless, has no acknowledgements and no reordering — it simply reassembles data in the order it arrives and hands it to the application.",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "UDP Communication — UDP Datagram Reassembly",
+      "quote": "UDP has no way to reorder the datagrams into their transmission order. UDP simply reassembles the data in the order that it was received and forwards it to the application."
+    },
+    "tags": [
+      "udp",
+      "characteristics"
+    ]
+  },
+  {
+    "id": "transport-q16",
+    "module": "transport",
+    "source": "itexam-itn-m14",
+    "type": "single",
+    "stem": "What kind of port must be requested from IANA in order to be used with a specific application?",
+    "choices": [
+      "registered port",
+      "private port",
+      "dynamic port",
+      "source port"
+    ],
+    "answer": [
+      0
+    ],
+    "explain_short": "Registered ports (1024–49151) are assigned by IANA to a requesting entity for use with a specific process or application.",
+    "explain_lecture": null,
+    "tags": [
+      "ports",
+      "iana",
+      "registered"
+    ]
+  },
+  {
+    "id": "transport-q17",
+    "module": "transport",
+    "source": "itexam-itn-m14",
+    "type": "multi",
+    "stem": "Which three application layer protocols use TCP? (Choose three.)",
+    "choices": [
+      "SMTP",
+      "FTP",
+      "SNMP",
+      "HTTP",
+      "TFTP",
+      "DHCP"
+    ],
+    "answer": [
+      0,
+      1,
+      3
+    ],
+    "explain_short": "Applications that need reliable, in-order delivery use TCP. Common examples: HTTP/HTTPS, SMTP, FTP, Telnet, POP3.",
+    "explain_lecture": null,
+    "tags": [
+      "tcp",
+      "application-protocols"
+    ]
+  },
+  {
+    "id": "transport-q18",
+    "module": "transport",
+    "source": "itexam-itn-m14",
+    "type": "multi",
+    "stem": "Which three statements characterize UDP? (Choose three.)",
+    "choices": [
+      "UDP provides basic connectionless transport layer functions.",
+      "UDP provides connection-oriented, fast transport of data at Layer 3.",
+      "UDP relies on application layer protocols for error detection.",
+      "UDP is a low overhead protocol that does not provide sequencing or flow control mechanisms.",
+      "UDP relies on IP for error detection and recovery.",
+      "UDP provides sophisticated flow control mechanisms."
+    ],
+    "answer": [
+      0,
+      2,
+      3
+    ],
+    "explain_short": "UDP is connectionless, lightweight, and stateless — no handshake, no acknowledgements, low overhead, used for time-sensitive traffic.",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "UDP Overview — UDP Features",
+      "quote": "UDP features include the following: Data is reconstructed in the order that it is received. Any segments that are lost are not resent. There is no session establishment. The sending is not informed about resource availability."
+    },
+    "tags": [
+      "udp",
+      "characteristics"
+    ]
+  },
+  {
+    "id": "transport-q19",
+    "module": "transport",
+    "source": "itexam-itn-m14",
+    "type": "multi",
+    "stem": "Which two fields are included in the TCP header but not in the UDP header? (Choose two.)",
+    "choices": [
+      "window",
+      "checksum",
+      "source port",
+      "destination port",
+      "sequence number"
+    ],
+    "answer": [
+      0,
+      4
+    ],
+    "explain_short": "TCP carries Sequence Number and Window fields (for ordering and flow control) which UDP does not.",
+    "explain_lecture": null,
+    "tags": [
+      "tcp",
+      "udp",
+      "header-fields"
+    ]
+  },
+  {
+    "id": "transport-q20",
+    "module": "transport",
+    "source": "itexam-itn-m14",
+    "type": "single",
+    "stem": "Which field in the TCP header indicates the status of the three-way handshake process?",
+    "choices": [
+      "window",
+      "reserved",
+      "checksum",
+      "control bits"
+    ],
+    "answer": [
+      3
+    ],
+    "explain_short": "The TCP Control Bits (flags) field carries SYN, ACK, FIN, RST, PSH, URG — these drive the handshake and termination state machine.",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "TCP Communication Process — TCP Three-Way Handshake Analysis (Cont.)",
+      "quote": "The six control bit flags are as follows: URG - Urgent pointer field significant; ACK - Acknowledgment flag used in connection establishment and session termination; PSH - Push function; RST - Reset the connection when an error or timeout occurs; SYN - Synchronize sequence numbers used in connection establishment; FIN - No more data from sender and used in session termination."
+    },
+    "tags": [
+      "tcp",
+      "flags",
+      "handshake"
+    ]
+  },
+  {
+    "id": "transport-q21",
+    "module": "transport",
+    "source": "itexam-itn-m14",
+    "type": "single",
+    "stem": "Why does HTTP use TCP as the transport layer protocol?",
+    "choices": [
+      "to ensure the fastest possible download speed",
+      "because HTTP is a best-effort protocol",
+      "because transmission errors can be tolerated easily",
+      "because HTTP requires reliable delivery"
+    ],
+    "answer": [
+      3
+    ],
+    "explain_short": "HTTP delivers web pages where every byte matters and order matters; it relies on TCP to provide reliable, in-order, flow-controlled delivery.",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "Transportation of Data — The Right Transport Layer Protocol for the Right Application",
+      "quote": "If it is important that all the data arrives and that it can be processed in its proper sequence, TCP is used as the transport protocol."
+    },
+    "tags": [
+      "http",
+      "tcp",
+      "reliability"
+    ]
+  },
+  {
+    "id": "transport-q22",
+    "module": "transport",
+    "source": "itexam-itn-m14",
+    "type": "multi",
+    "stem": "Which two types of applications are best suited for UDP? (Choose two.)",
+    "choices": [
+      "applications that need data flow control",
+      "applications that require reliable delivery",
+      "applications that handle reliability themselves",
+      "applications that need the reordering of segments",
+      "applications that can tolerate some data loss, but require little or no delay"
+    ],
+    "answer": [
+      2,
+      4
+    ],
+    "explain_short": "UDP suits apps that tolerate some loss but need low delay (live video/voice) and apps that handle their own reliability (SNMP, TFTP, DNS queries).",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "UDP Overview — Applications that use UDP",
+      "quote": "Live video and multimedia applications - These applications can tolerate some data loss but require little or no delay. Examples include VoIP and live streaming video. ... Applications that handle reliability themselves - Unidirectional communications where flow control, error detection, acknowledgments, and error recovery is not required, or can be handled by the application. Examples include SNMP and TFTP."
+    },
+    "tags": [
+      "udp",
+      "use-cases"
+    ]
+  },
+  {
+    "id": "transport-q23",
+    "module": "transport",
+    "source": "itexam-itn-m14",
+    "type": "single",
+    "stem": "How are port numbers used in the TCP/IP encapsulation process?",
+    "choices": [
+      "Source port numbers and destination port numbers are not necessary when UDP is the transport layer protocol being used for the communication.",
+      "Source port and destination port numbers are randomly generated.",
+      "If multiple conversations occur that are using the same service, the source port number is used to track the separate conversations.",
+      "Destination port numbers are assigned automatically and cannot be changed."
+    ],
+    "answer": [
+      2
+    ],
+    "explain_short": "Both TCP and UDP encapsulate the segment with a source port (originating app on local host) and a destination port (target app on remote host).",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "Port Numbers — Multiple Separate Communications",
+      "quote": "TCP and UDP transport layer protocols use port numbers to manage multiple, simultaneous conversations."
+    },
+    "tags": [
+      "ports",
+      "encapsulation"
+    ]
+  },
+  {
+    "id": "transport-q24",
+    "module": "transport",
+    "source": "itexam-itn-m14",
+    "type": "multi",
+    "stem": "In what two situations would UDP be better than TCP as the preferred transport protocol? (Choose two.)",
+    "choices": [
+      "when applications need to guarantee that a packet arrives intact, in sequence, and unduplicated",
+      "when a faster delivery mechanism is needed",
+      "when delivery overhead is not an issue",
+      "when applications do not need to guarantee delivery of the data",
+      "when destination port numbers are dynamic"
+    ],
+    "answer": [
+      1,
+      3
+    ],
+    "explain_short": "UDP is preferred for live multimedia (low latency tolerated) and for simple request-reply transactions where retransmission can be done by the application quickly.",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "Transportation of Data — The Right Transport Layer Protocol for the Right Application",
+      "quote": "UDP is also used by request-and-reply applications where the data is minimal, and retransmission can be done quickly."
+    },
+    "tags": [
+      "udp",
+      "tcp",
+      "use-cases"
+    ]
+  },
+  {
+    "id": "transport-q25",
+    "module": "transport",
+    "source": "itexam-itn-m14",
+    "type": "multi",
+    "stem": "What are three responsibilities of the transport layer? (Choose three.)",
+    "choices": [
+      "meeting the reliability requirements of applications, if any",
+      "multiplexing multiple communication streams from many users or applications on the same network",
+      "identifying the applications and services on the client and server that should handle transmitted data",
+      "directing packets towards the destination network",
+      "formatting data into a compatible form for receipt by the destination devices",
+      "conducting error detection of the contents in frames"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain_short": "Transport layer responsibilities include tracking individual conversations, segmenting data and reassembling segments, and identifying applications via port numbers.",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "Transportation of Data — Transport Layer Responsibilities",
+      "quote": "The transport layer has the following responsibilities: Tracking individual conversations; Segmenting data and reassembling segments; Adds header information; Identify, separate, and manage multiple conversations; Uses segmentation and multiplexing to enable different communication conversations to be interleaved on the same network."
+    },
+    "tags": [
+      "transport",
+      "responsibilities"
+    ]
+  },
+  {
+    "id": "transport-q26",
+    "module": "transport",
+    "source": "itexam-itn-m14",
+    "type": "single",
+    "stem": "Which scenario describes a function provided by the transport layer?",
+    "choices": [
+      "A student is using a classroom VoIP phone to call home. The unique identifier burned into the phone is a transport layer address used to contact another network device on the same network.",
+      "A student is playing a short web-based movie with sound. The movie and sound are encoded within the transport layer header.",
+      "A student has two web browser windows open in order to access two web sites. The transport layer ensures the correct web page is delivered to the correct browser window.",
+      "A corporate worker is accessing a web server located on a corporate network. The transport layer formats the screen so the web page appears properly no matter what device is being used to view the web site."
+    ],
+    "answer": [
+      2
+    ],
+    "explain_short": "A core transport-layer function is identifying the source/destination application via port numbers so multiple conversations can run over a single IP.",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "Port Numbers — Multiple Separate Communications",
+      "quote": "TCP and UDP transport layer protocols use port numbers to manage multiple, simultaneous conversations. The source port number is associated with the originating application on the local host whereas the destination port number is associated with the destination application on the remote host."
+    },
+    "tags": [
+      "transport",
+      "ports"
+    ]
+  },
+  {
+    "id": "transport-q27",
+    "module": "transport",
+    "source": "itexam-itn-m14",
+    "type": "single",
+    "stem": "A PC that is communicating with a web server has a TCP window size of 6,000 bytes when sending data and a packet size of 1,500 bytes. Which byte of information will the web server acknowledge after it has received two packets of data from the PC?",
+    "choices": [
+      "3001",
+      "6001",
+      "4500",
+      "6000"
+    ],
+    "answer": [
+      0
+    ],
+    "explain_short": "Window = 6000, packet = 1500. After 2 packets received (3000 bytes, sequence 1..3000), the next byte expected is 3001 — that is what the server acknowledges.",
+    "explain_lecture": null,
+    "tags": [
+      "tcp",
+      "window",
+      "ack",
+      "calc"
+    ]
+  },
+  {
+    "id": "transport-q28",
+    "module": "transport",
+    "source": "itexam-itn-m14",
+    "type": "single",
+    "stem": "A PC that is communicating with a web server has a TCP window size of 6,000 bytes when sending data and a packet size of 1,500 bytes. Which byte of information will the web server acknowledge after it has received three packets of data from the PC?",
+    "choices": [
+      "4501",
+      "6001",
+      "6000",
+      "4500"
+    ],
+    "answer": [
+      0
+    ],
+    "explain_short": "After 3 packets (4500 bytes), the next expected byte = 4501. TCP ACKs the next byte expected, not the last byte received.",
+    "explain_lecture": null,
+    "tags": [
+      "tcp",
+      "window",
+      "ack",
+      "calc"
+    ]
+  },
+  {
+    "id": "transport-q29",
+    "module": "transport",
+    "source": "itexam-itn-m14",
+    "type": "single",
+    "stem": "A PC that is communicating with a web server has a TCP window size of 6,000 bytes when sending data and a packet size of 1,500 bytes. Which byte of information will the web server acknowledge after it has received four packets of data from the PC?",
+    "choices": [
+      "6001",
+      "3001",
+      "1501",
+      "1500"
+    ],
+    "answer": [
+      0
+    ],
+    "explain_short": "After 4 packets (6000 bytes — the full window), the next byte expected = 6001.",
+    "explain_lecture": null,
+    "tags": [
+      "tcp",
+      "window",
+      "ack",
+      "calc"
+    ]
+  }
+]

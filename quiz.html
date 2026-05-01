@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Quiz · NetQuiz</title>
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="quiz">
+
+<header class="quiz-bar">
+  <a href="index.html" class="back">Exit</a>
+  <div class="progress-wrap">
+    <div class="progress" id="progress"></div>
+    <span id="progressText">0 / 0</span>
+  </div>
+  <div class="timer" id="timer">--:--</div>
+</header>
+
+<main class="container">
+  <article class="qcard" id="qcard">
+    <!-- question rendered here -->
+  </article>
+
+  <div class="qfooter" id="qfooter">
+    <button id="submitBtn" class="btn primary" disabled>Submit</button>
+    <button id="nextBtn" class="btn primary hidden">Next</button>
+    <button id="finishBtn" class="btn primary hidden">Finish</button>
+  </div>
+</main>
+
+<script type="module" src="assets/quiz.js"></script>
+</body>
+</html>

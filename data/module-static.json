@@ -1,0 +1,671 @@
+[
+  {
+    "id": "static-q01",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "single",
+    "stem": "What is a characteristic of a static route that matches all packets?",
+    "choices": [
+      "It uses a single network address to send multiple static routes to one destination address.",
+      "It identifies the gateway IP address to which the router sends all IP packets for which it does not have a learned or static route.",
+      "It backs up a route already discovered by a dynamic routing protocol.",
+      "It is configured with a higher administrative distance than the original dynamic routing protocol has."
+    ],
+    "answer": [1],
+    "explain_short": "A default static route (0.0.0.0/0 or ::/0) matches all destinations. It tells the router where to forward any packet that has no more specific match in the table.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Default Route",
+      "quote": "A default route has an IPv4 route entry of 0.0.0.0/0 or an IPv6 route entry of ::/0. This means that zero or no bits need to match between the destination IP address and the default route."
+    },
+    "tags": ["static", "default-route"]
+  },
+  {
+    "id": "static-q02",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "cli",
+    "stem": "Refer to the diagram. Router A connects LAN A (192.168.5.0/24) on its own interface, links to router B over 192.168.3.0/24 (B = 192.168.3.2), and B connects to LAN C (192.168.4.0/24). Configure on router A a static route to direct traffic from LAN A that is destined for LAN C.",
+    "prefix": "A(config)#",
+    "answer": "ip route 192.168.4.0 255.255.255.0 192.168.3.2",
+    "alt_answers": [
+      "ip route 192.168.4.0 255.255.255.0 192.168.3.2 ",
+      "ip route 192.168.4.0 /24 192.168.3.2"
+    ],
+    "explain_short": "Destination network is LAN C (192.168.4.0/24). Next hop from A's perspective is B's interface on the shared link, 192.168.3.2.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Static Routes",
+      "quote": "Static routes are manually configured. They define an explicit path between two networking devices. They are not automatically updated and must be manually reconfigured if the network topology changes."
+    },
+    "tags": ["static", "cli", "ip-route"]
+  },
+  {
+    "id": "static-q03",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "multi",
+    "stem": "On which two routers would a default static route be configured? (Choose two.)",
+    "choices": [
+      "any router where a backup route to dynamic routing is needed for reliability",
+      "the router that serves as the gateway of last resort",
+      "any router running an IOS prior to 12.0",
+      "stub router connection to the rest of the corporate or campus network",
+      "edge router connection to the ISP"
+    ],
+    "answer": [3, 4],
+    "explain_short": "Default static routes belong on routers with only one path out — stub routers and edge/ISP routers. The default points TO the gateway, not on the gateway itself.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Static or Dynamic?",
+      "quote": "Static routes are commonly used in the following scenarios: As a default route forwarding packets to a service provider; For routes outside the routing domain and not learned by the dynamic routing protocol; When the network administrator wants to explicitly define the path for a specific network; For routing between stub networks."
+    },
+    "tags": ["static", "default-route", "stub"]
+  },
+  {
+    "id": "static-q04",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "single",
+    "stem": "Refer to the topology. The link between routers A and C runs EIGRP and is the primary link to the Internet. The administrator needs a floating static route via the Ethernet segment to router B that avoids recursive lookups and any potential next-hop issues caused by the multiaccess nature of the Ethernet segment. What should the administrator configure?",
+    "choices": [
+      "Create a static route pointing to 10.1.1.1 with an AD of 95.",
+      "Create a fully specified static route pointing to Fa0/0 with an AD of 1.",
+      "Create a fully specified static route pointing to Fa0/0 with an AD of 95.",
+      "Create a static route pointing to 10.1.1.1 with an AD of 1.",
+      "Create a static route pointing to Fa0/0 with an AD of 1."
+    ],
+    "answer": [2],
+    "explain_short": "Internal EIGRP has AD 90, so the floating static must have AD > 90 (95 works). On a multiaccess segment, fully specify both exit interface AND next-hop IP to avoid recursion and ARP problems.",
+    "explain_lecture": null,
+    "tags": ["static", "floating-static", "fully-specified"]
+  },
+  {
+    "id": "static-q05",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "single",
+    "stem": "What is a characteristic of a floating static route?",
+    "choices": [
+      "When it is configured, it creates a gateway of last resort.",
+      "It is used to provide load balancing between static routes.",
+      "It is simply a static route with 0.0.0.0/0 as the destination IPv4 address.",
+      "It is configured with a higher administrative distance than the original dynamic routing protocol has."
+    ],
+    "answer": [3],
+    "explain_short": "A floating static route is a backup route. Its AD must be higher than the AD of the primary route, so it sits dormant until the primary disappears.",
+    "explain_lecture": null,
+    "tags": ["static", "floating-static"]
+  },
+  {
+    "id": "static-q06",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "single",
+    "stem": "What network prefix and prefix-length combination is used to create a default static route that will match any IPv6 destination?",
+    "choices": ["FFFF::/128", "::1/64", "::/128", "::/0"],
+    "answer": [3],
+    "explain_short": "The IPv6 default route is ::/0 — all-zero address with a /0 prefix length, matching every IPv6 destination.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Default Route",
+      "quote": "A default route has an IPv4 route entry of 0.0.0.0/0 or an IPv6 route entry of ::/0. This means that zero or no bits need to match between the destination IP address and the default route."
+    },
+    "tags": ["static", "default-route", "ipv6"]
+  },
+  {
+    "id": "static-q07",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "single",
+    "stem": "Consider the command: ip route 192.168.10.0 255.255.255.0 10.10.10.2 5\nWhat does the 5 at the end of the command signify?",
+    "choices": [
+      "exit interface",
+      "maximum number of hops to the 192.168.10.0/24 network",
+      "metric",
+      "administrative distance"
+    ],
+    "answer": [3],
+    "explain_short": "The optional trailing number at the end of an ip route command sets the administrative distance. AD 5 turns this into a floating static route.",
+    "explain_lecture": null,
+    "tags": ["static", "administrative-distance", "floating-static"]
+  },
+  {
+    "id": "static-q08",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "single",
+    "stem": "Refer to the routing table for R2 (gateway of last resort is not set):\n\n  10.0.0.0/30 is subnetted, 2 subnets\n  C 10.0.0.0 is directly connected, Serial0/0/0\n  C 10.0.0.4 is directly connected, Serial0/0/1\n  192.168.10.0/26 is subnetted, 3 subnets\n  S 192.168.10.0 is directly connected, Serial0/0/0\n  C 192.168.10.64 is directly connected, FastEthernet0/0\n  S 192.168.10.128 [1/0] via 10.0.0.6\n\nWhat will router R2 do with a packet destined for 192.168.10.129?",
+    "choices": [
+      "send the packet out interface FastEthernet0/0",
+      "send the packet out interface Serial0/0/1",
+      "drop the packet",
+      "send the packet out interface Serial0/0/0"
+    ],
+    "answer": [1],
+    "explain_short": "192.168.10.128/26 is reached via next-hop 10.0.0.6. Recursive lookup: 10.0.0.6 falls inside 10.0.0.4/30, which is on Serial0/0/1.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Best Path Equals Longest Match",
+      "quote": "The longest match is the route in the routing table that has the greatest number of far-left matching bits with the destination IP address of the packet. The longest match is always the preferred route."
+    },
+    "tags": ["static", "recursive-lookup", "exhibit"]
+  },
+  {
+    "id": "static-q09",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "single",
+    "stem": "An administrator issues the command: ipv6 route 2001:db8:acad:1::/32 gigabitethernet0/0 2001:db8:acad:6::1 100\nWhat administrative distance is assigned to this route?",
+    "choices": ["0", "1", "32", "100"],
+    "answer": [3],
+    "explain_short": "The trailing 100 in the ipv6 route command is the administrative distance. /32 is the prefix length and 2001:db8:acad:6::1 is the next hop.",
+    "explain_lecture": null,
+    "tags": ["static", "ipv6", "administrative-distance"]
+  },
+  {
+    "id": "static-q10",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "single",
+    "stem": "Refer to the exhibit: R1 has G0/1 facing R2, where R2's link-local address is fe80::2. Which default static route command would allow R1 to potentially reach all unknown networks on the Internet via R2?",
+    "choices": [
+      "R1(config)# ipv6 route 2001:db8:32::/64 G0/0",
+      "R1(config)# ipv6 route ::/0 G0/0 fe80::2",
+      "R1(config)# ipv6 route 2001:db8:32::/64 G0/1 fe80::2",
+      "R1(config)# ipv6 route ::/0 G0/1 fe80::2"
+    ],
+    "answer": [3],
+    "explain_short": "Default IPv6 prefix is ::/0. When the next hop is a link-local address (fe80::), you must also specify the exit interface — here, G0/1 toward R2.",
+    "explain_lecture": null,
+    "tags": ["static", "ipv6", "default-route", "link-local"]
+  },
+  {
+    "id": "static-q11",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "single",
+    "stem": "Refer to the exhibit. The network engineer wants to use the primary ISP connection for all external connectivity, with the backup ISP connection used only if the primary fails. Which set of commands accomplishes this goal?",
+    "choices": [
+      "ip route 0.0.0.0 0.0.0.0 s0/0/0\nip route 0.0.0.0 0.0.0.0 s0/1/0",
+      "ip route 0.0.0.0 0.0.0.0 s0/0/0\nip route 0.0.0.0 0.0.0.0 s0/1/0 10",
+      "ip route 198.133.219.24 255.255.255.252\nip route 64.100.210.80 255.255.255.252 10",
+      "ip route 198.133.219.24 255.255.255.252\nip route 64.100.210.80 255.255.255.252"
+    ],
+    "answer": [1],
+    "explain_short": "The primary default route uses default AD 1; the backup is a floating default with AD 10. Without the AD difference, both would load-balance instead of failing over.",
+    "explain_lecture": null,
+    "tags": ["static", "floating-static", "default-route"]
+  },
+  {
+    "id": "static-q12",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "single",
+    "stem": "Refer to the exhibit. Park (a stub LAN 172.16.67.0/24 reached via 192.168.14.2) connects to Alta, which connects to the Internet via S0/0/0. Alta also has LAN 10.0.234.0/24. Which set of commands will configure static routes so that Park and Alta can a) forward packets to each LAN and b) direct all other traffic to the Internet?",
+    "choices": [
+      "Park(config)# ip route 0.0.0.0 0.0.0.0 192.168.14.1\nAlta(config)# ip route 10.0.234.0 255.255.255.0 192.168.14.2\nAlta(config)# ip route 0.0.0.0 0.0.0.0 s0/0/0",
+      "Park(config)# ip route 0.0.0.0 0.0.0.0 192.168.14.1\nAlta(config)# ip route 10.0.234.0 255.255.255.0 192.168.14.2\nAlta(config)# ip route 198.18.222.0 255.255.255.255 s0/0/0",
+      "Park(config)# ip route 172.16.67.0 255.255.255.0 192.168.14.1\nPark(config)# ip route 0.0.0.0 0.0.0.0 192.168.14.1\nAlta(config)# ip route 10.0.234.0 255.255.255.0 192.168.14.2",
+      "Park(config)# ip route 172.16.67.0 255.255.255.0 192.168.14.1\nAlta(config)# ip route 10.0.234.0 255.255.255.0 192.168.14.2\nAlta(config)# ip route 0.0.0.0 0.0.0.0 s0/0/1"
+    ],
+    "answer": [0],
+    "explain_short": "Park is a stub: it only needs a default route toward Alta. Alta needs a static back to Park's LAN (10.0.234.0/24) and its own default toward the Internet via S0/0/0.",
+    "explain_lecture": null,
+    "tags": ["static", "default-route", "stub"]
+  },
+  {
+    "id": "static-q13",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "single",
+    "stem": "Refer to the exhibit. A small company uses static routing. Users on the R2 LAN report that they cannot be reached from R1's LAN, although R1 has a default route to the Internet and R2 has a default route to R1. What is the issue?",
+    "choices": [
+      "R1 needs a static route to the R2 LAN.",
+      "R2 needs a static route to the R1 LANs.",
+      "R1 needs a default route to R2.",
+      "R2 needs a static route to the Internet.",
+      "R1 and R2 must use a dynamic routing protocol."
+    ],
+    "answer": [0],
+    "explain_short": "R1's only default route points to the ISP, so packets for R2's LAN leak to the Internet. R1 needs an explicit static route for R2's LAN pointing to R2.",
+    "explain_lecture": null,
+    "tags": ["static", "troubleshoot"]
+  },
+  {
+    "id": "static-q14",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "single",
+    "stem": "Refer to the exhibit. An administrator is attempting to install an IPv6 static route on R1 to reach the network attached to R2. After the static route command is entered, connectivity still fails. The next-hop address, prefix, and destination network are all correct, but the wrong outgoing interface was specified. What error has been made in the static route configuration?",
+    "choices": [
+      "The next hop address is incorrect.",
+      "The interface is incorrect.",
+      "The destination network is incorrect.",
+      "The network prefix is incorrect."
+    ],
+    "answer": [1],
+    "explain_short": "If everything else is right but the route does not work, the exit interface specified is wrong — packets are being sent out the wrong port and never reach R2.",
+    "explain_lecture": null,
+    "tags": ["static", "ipv6", "troubleshoot"]
+  },
+  {
+    "id": "static-q15",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "single",
+    "stem": "Refer to the exhibit. The IPv6 routing table shows the entry: S 2001:DB8:CAFE:4::1/128 [1/0] via 2001:DB8:CAFE:1::2. How was this host route installed in the routing table?",
+    "choices": [
+      "The route was dynamically created by router R1.",
+      "The route was dynamically learned from another router.",
+      "The route was manually entered by an administrator.",
+      "The route was automatically installed when an IP address was configured on an active interface."
+    ],
+    "answer": [2],
+    "explain_short": "The S code marks a static route, manually entered by the admin. /128 host routes can also be auto-installed for the router's own interface (those use code L, not S).",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Route Sources",
+      "quote": "S - Identifies a static route created to reach a specific network."
+    },
+    "tags": ["static", "ipv6", "host-route"]
+  },
+  {
+    "id": "static-q16",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "single",
+    "stem": "Refer to the exhibit. A ping from R1 to 10.1.1.2 (the directly connected serial link) is successful, but pings from R1 to any address in 192.168.2.0/24 fail. What is the cause of this problem?",
+    "choices": [
+      "There is no gateway of last resort at R1.",
+      "The static route for 192.168.2.0 is incorrectly configured.",
+      "A default route is not configured on R1.",
+      "The serial interface between the two routers is down."
+    ],
+    "answer": [1],
+    "explain_short": "Layer 1/2 between R1 and R2 is fine (10.1.1.2 ping works), so the failure is at layer 3 — the static route to 192.168.2.0/24 has a bad parameter (mask or next hop).",
+    "explain_lecture": null,
+    "tags": ["static", "troubleshoot"]
+  },
+  {
+    "id": "static-q17",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "single",
+    "stem": "Refer to the exhibit. An administrator tries to install a default static route on R1 to reach Site B on R2. After entering the static route command, the route is still not in R1's routing table. The netmask and exit interface are valid, and the destination network field is 0.0.0.0. What is preventing the route from installing in the routing table?",
+    "choices": [
+      "The netmask is incorrect.",
+      "The exit interface is missing.",
+      "The next hop address is incorrect.",
+      "The destination network is incorrect."
+    ],
+    "answer": [2],
+    "explain_short": "When the next-hop address given is not on a directly connected network, the recursive lookup fails and the route never gets installed. Use the IP of R2's serial interface.",
+    "explain_lecture": null,
+    "tags": ["static", "default-route", "troubleshoot"]
+  },
+  {
+    "id": "static-q18",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "single",
+    "stem": "Refer to the exhibit. The Branch router has an OSPF neighbor relationship with HQ over the 198.51.0.4/30 link. The 198.51.0.8/30 link should serve as backup. The command ip route 0.0.0.0 0.0.0.0 S0/1/1 100 was issued on Branch, and now traffic uses the backup link even when OSPF is up. Which change should be made so that traffic uses the backup only when OSPF is down?",
+    "choices": [
+      "Add the next hop neighbor address of 198.51.0.8.",
+      "Change the administrative distance to 1.",
+      "Change the destination network to 198.51.0.5.",
+      "Change the administrative distance to 120."
+    ],
+    "answer": [3],
+    "explain_short": "OSPF AD = 110. The floating static must have AD > 110 to lose to OSPF. AD 100 is too low, AD 120 (greater than 110) works.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Administrative Distance (Cont.)",
+      "quote": "Directly connected 0, Static route 1, EIGRP summary route 5, External BGP 20, Internal EIGRP 90, OSPF 110, IS-IS 115, RIP 120, External EIGRP 170, Internal BGP 200."
+    },
+    "tags": ["static", "floating-static", "ospf"]
+  },
+  {
+    "id": "static-q19",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "single",
+    "stem": "When an IPv6 static route is configured, the next-hop address can be …",
+    "choices": [
+      "a destination host route with a /128 prefix.",
+      "the \"show ipv6 route static\" command.",
+      "an IPv6 link-local address on the adjacent router.",
+      "the interface type and interface number."
+    ],
+    "answer": [2],
+    "explain_short": "A link-local (fe80::/10) address on the adjacent router is a valid next hop for an IPv6 static route. When using a link-local next hop, the exit interface must also be specified.",
+    "explain_lecture": null,
+    "tags": ["static", "ipv6", "link-local"]
+  },
+  {
+    "id": "static-q20",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "multi",
+    "stem": "What two pieces of information are needed in a fully specified static route to eliminate recursive lookups? (Choose two.)",
+    "choices": [
+      "the interface ID of the next-hop neighbor",
+      "the interface ID exit interface",
+      "the IP address of the exit interface",
+      "the IP address of the next-hop neighbor",
+      "the administrative distance for the destination network"
+    ],
+    "answer": [1, 3],
+    "explain_short": "A fully specified static route includes BOTH the local exit interface AND the next-hop IP address. This avoids both recursion and ARP ambiguity on multiaccess links.",
+    "explain_lecture": null,
+    "tags": ["static", "fully-specified"]
+  },
+  {
+    "id": "static-q21",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "cli",
+    "stem": "Refer to the exhibit. Configure on R2 an IPv6 static route to 2001:db8:10:12::/64 that uses S0/0/0 as the exit interface, so that packets from PC2 reach PC1 without any recursive lookup by R2.",
+    "prefix": "R2(config)#",
+    "answer": "ipv6 route 2001:db8:10:12::/64 S0/0/0",
+    "alt_answers": [
+      "ipv6 route 2001:db8:10:12::/64 s0/0/0",
+      "ipv6 route 2001:DB8:10:12::/64 Serial0/0/0",
+      "ipv6 route 2001:db8:10:12::/64 Serial0/0/0"
+    ],
+    "explain_short": "A directly attached static route uses only the exit interface as the next-hop reference, so the router does not need to recursively look up an IP — perfect for point-to-point links.",
+    "explain_lecture": null,
+    "tags": ["static", "ipv6", "cli", "directly-attached"]
+  },
+  {
+    "id": "static-q22",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "single",
+    "stem": "Refer to the exhibit. Which static route would an IT technician enter to create a backup route to the 172.16.1.0/24 network that is only used if the primary RIP-learned route fails?",
+    "choices": [
+      "ip route 172.16.1.0 255.255.255.0 s0/0/0",
+      "ip route 172.16.1.0 255.255.255.0 s0/0/0 121",
+      "ip route 172.16.1.0 255.255.255.0 s0/0/0 111",
+      "ip route 172.16.1.0 255.255.255.0 s0/0/0 91"
+    ],
+    "answer": [1],
+    "explain_short": "RIP AD = 120. A floating static must have AD > 120, so 121 is correct. 91, 111 would each preempt RIP and become the primary route.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Administrative Distance (Cont.)",
+      "quote": "Directly connected 0, Static route 1, EIGRP summary route 5, External BGP 20, Internal EIGRP 90, OSPF 110, IS-IS 115, RIP 120, External EIGRP 170, Internal BGP 200."
+    },
+    "tags": ["static", "floating-static", "rip"]
+  },
+  {
+    "id": "static-q23",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "single",
+    "stem": "When an IPv6 static route is configured as a backup to a static route already in the routing table, the \"distance\" parameter is used with …",
+    "choices": [
+      "the \"show ipv6 route static\" command.",
+      "an administrative distance of 2.",
+      "a destination host route with a /128 prefix.",
+      "the interface type and interface number."
+    ],
+    "answer": [1],
+    "explain_short": "Static routes default to AD 1. To make a backup floating static, give it any AD higher than 1 — AD 2 is the minimum that still floats above the primary static.",
+    "explain_lecture": null,
+    "tags": ["static", "floating-static", "ipv6"]
+  },
+  {
+    "id": "static-q24",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "single",
+    "stem": "A router has used the OSPF protocol to learn a route to the 172.16.32.0/19 network. Which command will implement a backup floating static route to this network?",
+    "choices": [
+      "ip route 172.16.0.0 255.255.224.0 S0/0/0 100",
+      "ip route 172.16.0.0 255.255.240.0 S0/0/0 200",
+      "ip route 172.16.32.0 255.255.224.0 S0/0/0 200",
+      "ip route 172.16.32.0 255.255.0.0 S0/0/0 100"
+    ],
+    "answer": [2],
+    "explain_short": "OSPF AD = 110, so the floating static needs AD > 110 (200 works). The destination must match: 172.16.32.0/19 = 172.16.32.0 with mask 255.255.224.0.",
+    "explain_lecture": null,
+    "tags": ["static", "floating-static", "ospf"]
+  },
+  {
+    "id": "static-q25",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "single",
+    "stem": "Consider the command: ip route 192.168.10.0 255.255.255.0 10.10.10.2 5\nHow would an administrator test this configuration?",
+    "choices": [
+      "Delete the default gateway route on the router.",
+      "Manually shut down the router interface used as a primary route.",
+      "Ping from the 192.168.10.0 network to the 10.10.10.2 address.",
+      "Ping any valid address on the 192.168.10.0/24 network."
+    ],
+    "answer": [1],
+    "explain_short": "A floating static only appears in the table after the primary route disappears. To force this, shutdown the primary's interface — then the floating static activates and can be tested.",
+    "explain_lecture": null,
+    "tags": ["static", "floating-static", "test"]
+  },
+  {
+    "id": "static-q26",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "single",
+    "stem": "Refer to the exhibit. Which type of IPv6 static route is configured by the command: ipv6 route 2001:db8:1:1::/64 2001:db8:1:2::1 (next-hop IP only, no exit interface)?",
+    "choices": [
+      "floating static route",
+      "fully specified static route",
+      "recursive static route",
+      "directly attached static route"
+    ],
+    "answer": [2],
+    "explain_short": "When only the next-hop IP is given, the router must do a second routing-table lookup to find the exit interface for that IP. That second lookup is what makes the route 'recursive'.",
+    "explain_lecture": null,
+    "tags": ["static", "ipv6", "recursive"]
+  },
+  {
+    "id": "static-q27",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "single",
+    "stem": "When an IPv6 static route is configured, it is first necessary to configure …",
+    "choices": [
+      "the next-hop address of two different adjacent routers.",
+      "the \"ipv6 unicast-routing\" command.",
+      "an IPv6 link-local address on the adjacent router.",
+      "an administrative distance of 2."
+    ],
+    "answer": [1],
+    "explain_short": "By default, Cisco routers do not forward IPv6 packets. Enable IPv6 routing globally with the ipv6 unicast-routing command before configuring any IPv6 static route.",
+    "explain_lecture": null,
+    "tags": ["static", "ipv6", "ipv6-unicast-routing"]
+  },
+  {
+    "id": "static-q28",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "single",
+    "stem": "When an IPv6 static route is configured, a fully-specified configuration should be used with …",
+    "choices": [
+      "::/0.",
+      "the \"ipv6 unicast-routing\" command.",
+      "the next-hop address of two different adjacent routers.",
+      "a directly connected multiaccess network."
+    ],
+    "answer": [3],
+    "explain_short": "On a multiaccess Ethernet (more than one possible next hop), use a fully specified static route — both interface and next-hop IP — to remove ambiguity about which neighbor receives the packet.",
+    "explain_lecture": null,
+    "tags": ["static", "fully-specified", "multiaccess"]
+  },
+  {
+    "id": "static-q29",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "single",
+    "stem": "When an IPv6 static route is configured, the installation of the route can be verified with …",
+    "choices": [
+      "a destination host route with a /128 prefix.",
+      "the interface type and interface number.",
+      "the \"show ipv6 route static\" command.",
+      "an administrative distance of 2."
+    ],
+    "answer": [2],
+    "explain_short": "show ipv6 route static filters the IPv6 routing table to display only static entries — the standard verification for IPv6 static routes.",
+    "explain_lecture": null,
+    "tags": ["static", "ipv6", "verification"]
+  },
+  {
+    "id": "static-q30",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "cli",
+    "stem": "Refer to the exhibit. R1 has two LANs and is connected to R2 over 2001:db8:1:3::/64 (R2 = 2001:db8:1:3::2). Configure on R1 a static route so that traffic from both LANs reaches the 2001:db8:1:4::/64 remote network behind R2.",
+    "prefix": "R1(config)#",
+    "answer": "ipv6 route 2001:db8:1:4::/64 2001:db8:1:3::2",
+    "alt_answers": [
+      "ipv6 route 2001:db8:1:4::/64 2001:DB8:1:3::2"
+    ],
+    "explain_short": "The destination network is 2001:db8:1:4::/64. Next hop from R1's view is R2's link address on the shared subnet, 2001:db8:1:3::2.",
+    "explain_lecture": null,
+    "tags": ["static", "ipv6", "cli"]
+  },
+  {
+    "id": "static-q31",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "multi",
+    "stem": "Refer to the exhibit. Router A has a static route: ip route 10.0.0.0 255.0.0.0 172.16.40.2. What two commands will change the next-hop address for the 10.0.0.0/8 network from 172.16.40.2 to 192.168.1.2? (Choose two.)",
+    "choices": [
+      "A(config)# ip route 10.0.0.0 255.0.0.0 192.168.1.2",
+      "A(config)# ip route 10.0.0.0 255.0.0.0 s0/0/0",
+      "A(config)# no ip address 10.0.0.1 255.0.0.0 172.16.40.2",
+      "A(config)# no network 10.0.0.0 255.0.0.0 172.16.40.2",
+      "A(config)# no ip route 10.0.0.0 255.0.0.0 172.16.40.2"
+    ],
+    "answer": [0, 4],
+    "explain_short": "There is no 'edit' verb for static routes — you must remove the old one with 'no ip route ...' and then enter the new one with the new next-hop.",
+    "explain_lecture": null,
+    "tags": ["static", "cli", "no-ip-route"]
+  },
+  {
+    "id": "static-q32",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "single",
+    "stem": "When an IPv6 static route is configured, it is possible that the same IPv6 link-local address is used for …",
+    "choices": [
+      "a destination host route with a /128 prefix.",
+      "the \"ipv6 unicast-routing\" command.",
+      "the next-hop address of two different adjacent routers.",
+      "an administrative distance of 2."
+    ],
+    "answer": [2],
+    "explain_short": "Link-local addresses (fe80::/10) are only unique on a single link. Two different neighbors on different interfaces can each have the same link-local address, which is why specifying the exit interface is required.",
+    "explain_lecture": null,
+    "tags": ["static", "ipv6", "link-local"]
+  },
+  {
+    "id": "static-q33",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "single",
+    "stem": "Given the IPv6 static route command:\n  ipv6 route 2001:0DB8::/32 2001:0DB8:3000::1\nWhich type of static route is configured here?",
+    "choices": [
+      "Floating static",
+      "Recursive static",
+      "Directly attached static",
+      "Fully specified static"
+    ],
+    "answer": [1],
+    "explain_short": "The command supplies only a next-hop address (no exit interface), so the router must look up that next hop in the routing table to find the actual exit interface — that is a recursive static route.",
+    "explain_lecture": null,
+    "tags": ["static", "ipv6", "recursive"]
+  },
+  {
+    "id": "static-q-fill-1",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "fill",
+    "stem": "A static route configured with an administrative distance higher than the primary route is called a _______ static route. It only appears in the routing table when the primary route fails.",
+    "answer": "floating",
+    "explain_short": "A floating static route stays out of the table until its primary disappears. Common AD values: 5–254 depending on what it floats above (RIP=120, OSPF=110, EIGRP=90).",
+    "explain_lecture": null,
+    "tags": ["static", "floating-static", "fill"]
+  },
+  {
+    "id": "static-q-fill-2",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "fill",
+    "stem": "The default administrative distance of any static route (when no AD is specified at the end of the command) is _______.",
+    "answer": "1",
+    "explain_short": "Static routes default to AD 1, second only to directly connected networks (AD 0). That is why a static route always wins over OSPF (110), RIP (120), or EIGRP (90).",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Administrative Distance (Cont.)",
+      "quote": "Directly connected 0, Static route 1, EIGRP summary route 5, External BGP 20, Internal EIGRP 90, OSPF 110, IS-IS 115, RIP 120, External EIGRP 170, Internal BGP 200."
+    },
+    "tags": ["static", "administrative-distance", "fill"]
+  },
+  {
+    "id": "static-q-cli-1",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "cli",
+    "stem": "On R1, configure an IPv4 default static route that uses the next-hop IP 209.165.200.1.",
+    "prefix": "R1(config)#",
+    "answer": "ip route 0.0.0.0 0.0.0.0 209.165.200.1",
+    "alt_answers": [
+      "ip route 0.0.0.0 0.0.0.0 209.165.200.1 ",
+      "ip route 0.0.0.0 0 209.165.200.1"
+    ],
+    "explain_short": "A default static route uses 0.0.0.0/0 as the destination so it matches every IPv4 destination — the 'quad-zero' route.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Default Route",
+      "quote": "A default route has an IPv4 route entry of 0.0.0.0/0 or an IPv6 route entry of ::/0. This means that zero or no bits need to match between the destination IP address and the default route."
+    },
+    "tags": ["static", "cli", "default-route"]
+  },
+  {
+    "id": "static-q-cli-2",
+    "module": "static",
+    "source": "itexam-srwe-m15",
+    "type": "cli",
+    "stem": "On R1, configure an IPv6 default static route that points out interface Serial0/0/0 toward the ISP.",
+    "prefix": "R1(config)#",
+    "answer": "ipv6 route ::/0 Serial0/0/0",
+    "alt_answers": [
+      "ipv6 route ::/0 s0/0/0",
+      "ipv6 route ::/0 serial0/0/0",
+      "ipv6 route ::/0 S0/0/0"
+    ],
+    "explain_short": "::/0 is the IPv6 default prefix; specifying the exit interface only creates a directly attached default route. Make sure ipv6 unicast-routing is enabled first.",
+    "explain_lecture": null,
+    "tags": ["static", "ipv6", "cli", "default-route"]
+  },
+  {
+    "id": "static-q-m16-1",
+    "module": "static",
+    "source": "itexam-srwe-m16",
+    "type": "single",
+    "stem": "A user reports that PC0 cannot visit the web server www.server.com on the remote LAN. Connectivity inside the local LAN is fine, IP addressing is correct, and the DNS server is reachable from the local router. After inspecting both routers, no routing protocol is running and no static routes are configured between HQ and Branch. What is the cause of the problem?",
+    "choices": [
+      "The clock rate on one of the serial links is configured incorrectly.",
+      "A serial interface on Branch is configured incorrectly.",
+      "The DNS server address on PC0 is configured incorrectly.",
+      "Routing between HQ and Branch is configured incorrectly."
+    ],
+    "answer": [3],
+    "explain_short": "If neither static nor dynamic routing is configured between two routers, packets between their LANs have no path and will be dropped. Configure static routes (or a routing protocol).",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Build the Routing Table",
+      "quote": "Remote Networks: Networks that are not directly connected to the router. Routers learn about remote networks in two ways: Static routes - Added to the routing table when a route is manually configured. Dynamic routing protocols - Added to the routing table when routing protocols dynamically learn about the remote network."
+    },
+    "tags": ["static", "troubleshoot", "m16"]
+  }
+]

@@ -1,0 +1,541 @@
+[
+  {
+    "id": "nat-q01",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "multi",
+    "stem": "Which two statements accurately describe an advantage or a disadvantage when deploying NAT for IPv4 in a network? (Choose two.)",
+    "choices": [
+      "NAT improves packet handling.",
+      "NAT adds authentication capability to IPv4.",
+      "NAT will impact negatively on switch performance.",
+      "NAT causes routing tables to include more information.",
+      "NAT provides a solution to slow down the IPv4 address depletion.",
+      "NAT introduces problems for some applications that require end-to-end connectivity."
+    ],
+    "answer": [4, 5],
+    "explain_short": "NAT lets many private hosts share a few public IPs (slowing IPv4 depletion) but breaks end-to-end connectivity for apps that need it (e.g., some VoIP, IPsec).",
+    "explain_lecture": null,
+    "tags": ["nat", "advantages", "disadvantages"]
+  },
+  {
+    "id": "nat-q02",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "single",
+    "stem": "A network administrator wants to examine the active NAT translations on a border router. Which command would perform the task?",
+    "choices": [
+      "Router# show ip nat translations",
+      "Router# show ip nat statistics",
+      "Router# clear ip nat translations",
+      "Router# debug ip nat translations"
+    ],
+    "answer": [0],
+    "explain_short": "show ip nat translations lists currently active mappings. show ip nat statistics gives counters; clear removes entries; debug streams events.",
+    "explain_lecture": null,
+    "tags": ["nat", "verification", "show-commands"]
+  },
+  {
+    "id": "nat-q03",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "multi",
+    "stem": "What are two tasks to perform when configuring static NAT? (Choose two.)",
+    "choices": [
+      "Configure a NAT pool.",
+      "Create a mapping between the inside local and outside local addresses.",
+      "Identify the participating interfaces as inside or outside interfaces.",
+      "Define the inside global address on the server.",
+      "Define the outside global address."
+    ],
+    "answer": [1, 2],
+    "explain_short": "Static NAT requires a 1-to-1 mapping (inside local <-> inside global) plus tagging interfaces as ip nat inside / ip nat outside. A NAT pool is for dynamic NAT only.",
+    "explain_lecture": null,
+    "tags": ["nat", "static-nat", "configuration"]
+  },
+  {
+    "id": "nat-q04",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "single",
+    "stem": "What is a disadvantage of NAT?",
+    "choices": [
+      "There is no end-to-end addressing.",
+      "The router does not need to alter the checksum of the IPv4 packets.",
+      "The internal hosts have to use a single public IPv4 address for external communication.",
+      "The costs of readdressing hosts can be significant for a publicly addressed network."
+    ],
+    "answer": [0],
+    "explain_short": "NAT rewrites IP headers, so true end-to-end addressing (and traceability) is lost. The router must recompute the checksum because of the change.",
+    "explain_lecture": null,
+    "tags": ["nat", "disadvantages"]
+  },
+  {
+    "id": "nat-q05",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "single",
+    "stem": "Refer to the exhibit. From the perspective of R1, the NAT router, which address is the inside global address? (Topology: PC1 192.168.0.10 -> R1 inside 192.168.0.1 / outside 209.165.200.225 -> ISP 209.165.200.254.)",
+    "choices": [
+      "192.168.0.10",
+      "192.168.0.1",
+      "209.165.200.225",
+      "209.165.200.254"
+    ],
+    "answer": [2],
+    "explain_short": "Inside Global = the public IP that the inside host appears as on the outside. That is the NAT router's outside-facing public address, 209.165.200.225.",
+    "explain_lecture": null,
+    "tags": ["nat", "inside-global", "address-types"]
+  },
+  {
+    "id": "nat-q06",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "single",
+    "stem": "Refer to the exhibit. Given that R1 is configured with a single static NAT entry mapping 192.168.0.10 to 209.165.200.255, how many hosts on the internal LAN off R1 can have simultaneous NAT translations on R1?",
+    "choices": ["244", "10", "1", "255"],
+    "answer": [2],
+    "explain_short": "Static NAT is a 1:1 mapping. Only the single host 192.168.0.10 is translated; all other internal hosts have no NAT entry.",
+    "explain_lecture": null,
+    "tags": ["nat", "static-nat"]
+  },
+  {
+    "id": "nat-q07",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "multi",
+    "stem": "Refer to the exhibit. A network administrator has just configured address translation and is verifying the configuration with show ip nat statistics output (Total translations: 2 (Static), 0 (Dynamic); 1 extended; Outside interface listed; access-list 1; pool NAT). What three things can the administrator verify? (Choose three.)",
+    "choices": [
+      "A standard access list numbered 1 was used as part of the configuration process.",
+      "Three addresses from the NAT pool are being used by hosts.",
+      "Address translation is working.",
+      "One port on the router is not participating in the address translation.",
+      "The name of the NAT pool is refCount.",
+      "Two types of NAT are enabled."
+    ],
+    "answer": [0, 2, 5],
+    "explain_short": "ACL 1 is referenced; hits/misses confirm translation is happening; the Total translations line shows both static and dynamic (overload) NAT are configured.",
+    "explain_lecture": null,
+    "tags": ["nat", "verification", "show-ip-nat-statistics"]
+  },
+  {
+    "id": "nat-q08",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "single",
+    "stem": "Refer to the exhibit. NAT is configured on RT1 and RT2. PC (172.16.1.10, gw 172.16.1.254) sends a request to a web server (203.0.113.10) via RT1 (inside global 209.165.200.245) and RT2. What IPv4 address is the source IP address in the packet between RT2 and the web server?",
+    "choices": [
+      "192.168.1.5",
+      "203.0.113.10",
+      "172.16.1.254",
+      "172.16.1.10",
+      "209.165.200.245",
+      "192.0.2.2"
+    ],
+    "answer": [4],
+    "explain_short": "On the public segment between RT2 and the web server, the source has been translated to PC's inside global address, 209.165.200.245.",
+    "explain_lecture": null,
+    "tags": ["nat", "inside-global", "packet-flow"]
+  },
+  {
+    "id": "nat-q09",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "single",
+    "stem": "Refer to the exhibit. Based on the show ip nat translations output (two entries with the SAME inside global IP but DIFFERENT port numbers), what type of NAT has been implemented?",
+    "choices": [
+      "dynamic NAT with a pool of two public IP addresses",
+      "PAT using an external interface",
+      "static NAT with a NAT pool",
+      "static NAT with one entry"
+    ],
+    "answer": [1],
+    "explain_short": "PAT (NAT overload) is the only NAT type that tracks port numbers; multiple sessions sharing one inside global address differentiated by port = PAT.",
+    "explain_lecture": null,
+    "tags": ["nat", "pat", "overload"]
+  },
+  {
+    "id": "nat-q10",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "single",
+    "stem": "Refer to the exhibit. From the perspective of users behind the NAT router, what type of NAT address is 209.165.201.1 (the public IP on the NAT router's outside interface used to represent inside hosts)?",
+    "choices": [
+      "inside global",
+      "outside global",
+      "outside local",
+      "inside local"
+    ],
+    "answer": [0],
+    "explain_short": "Inside Global = the public IP used to represent an internal host to the outside world. The NAT router's translated address for inside traffic is the inside global.",
+    "explain_lecture": null,
+    "tags": ["nat", "inside-global", "address-types"]
+  },
+  {
+    "id": "nat-q11",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "multi",
+    "stem": "Refer to the exhibit. Static NAT is being configured with: ip nat inside source static A B. PC1 (10.0.254.5) needs to reach internal web server 10.1.0.13, exposed publicly as 209.165.201.1. What two values complete the static NAT command? (Choose two.)",
+    "choices": [
+      "A = 209.165.201.2",
+      "A = 10.1.0.13",
+      "B = 209.165.201.7",
+      "B = 10.0.254.5",
+      "B = 209.165.201.1"
+    ],
+    "answer": [1, 4],
+    "explain_short": "Syntax is ip nat inside source static <inside-local> <inside-global>. Inside local = real server 10.1.0.13; inside global = the public IP 209.165.201.1.",
+    "explain_lecture": null,
+    "tags": ["nat", "static-nat", "configuration"]
+  },
+  {
+    "id": "nat-q12",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "single",
+    "stem": "What is the purpose of the overload keyword in the ip nat inside source list 1 pool NAT_POOL overload command?",
+    "choices": [
+      "It allows many inside hosts to share one or a few inside global addresses.",
+      "It allows a list of internal hosts to communicate with a specific group of external hosts.",
+      "It allows external hosts to initiate sessions with internal hosts.",
+      "It allows a pool of inside global addresses to be used by internal hosts."
+    ],
+    "answer": [0],
+    "explain_short": "overload turns dynamic NAT into PAT: the router multiplexes many inside hosts onto one (or a few) public addresses by tracking unique L4 port numbers.",
+    "explain_lecture": null,
+    "tags": ["nat", "pat", "overload", "configuration"]
+  },
+  {
+    "id": "nat-q13",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "single",
+    "stem": "Refer to the exhibit. R1 is doing PAT (overload) for the 10.6.15.0/24 inside network using the public address 209.165.200.225 on its outside interface. Which source address is being used by R1 for packets being forwarded to the Internet?",
+    "choices": [
+      "10.6.15.2",
+      "209.165.202.141",
+      "198.51.100.3",
+      "209.165.200.225"
+    ],
+    "answer": [3],
+    "explain_short": "After PAT, the source IP on outbound packets is the router's inside global address (209.165.200.225); the original 10.6.15.x is hidden.",
+    "explain_lecture": null,
+    "tags": ["nat", "pat", "inside-global"]
+  },
+  {
+    "id": "nat-q14",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "single",
+    "stem": "Refer to the exhibit. The NAT configuration applied to ERtr is: access-list 1 permit 10.0.0.0 0.255.255.255; ip nat pool corp 209.165.201.6 209.165.201.30 netmask 255.255.255.224; ip nat inside source list 1 pool corp overload; ip nat inside source static 10.10.10.55 209.165.201.4; gi0/0 ip nat inside; s0/0/0 ip nat outside. The output of show ip nat translations shows zero entries. What can be determined about the NAT status?",
+    "choices": [
+      "Static NAT is working, but dynamic NAT is not.",
+      "Dynamic NAT is working, but static NAT is not.",
+      "Not enough information is given to determine if both static and dynamic NAT are working.",
+      "NAT is working."
+    ],
+    "answer": [2],
+    "explain_short": "An empty translations table only proves no traffic has triggered NAT yet (interfaces could be down, no inside hosts active, etc.). The config itself looks valid.",
+    "explain_lecture": null,
+    "tags": ["nat", "troubleshooting", "verification"]
+  },
+  {
+    "id": "nat-q15",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "single",
+    "stem": "What does NAT overloading use to track multiple internal hosts that use one inside global address?",
+    "choices": [
+      "port numbers",
+      "IP addresses",
+      "autonomous system numbers",
+      "MAC addresses"
+    ],
+    "answer": [0],
+    "explain_short": "PAT (NAT overload) keeps a unique source TCP/UDP port per session so it can demultiplex return traffic back to the right internal host using the same single public IP.",
+    "explain_lecture": null,
+    "tags": ["nat", "pat", "ports"]
+  },
+  {
+    "id": "nat-q16",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "single",
+    "stem": "What type of address is 192.168.7.98?",
+    "choices": ["public", "private"],
+    "answer": [1],
+    "explain_short": "192.168.0.0/16 is one of the three RFC 1918 private blocks (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16).",
+    "explain_lecture": null,
+    "tags": ["nat", "private-addresses", "rfc1918"]
+  },
+  {
+    "id": "nat-q17",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "single",
+    "stem": "Refer to the exhibit. R1 is configured for static NAT mapping inside host 192.168.0.10 to public address 209.165.200.225. What IP address will Internet hosts use to reach PC1?",
+    "choices": [
+      "192.168.0.1",
+      "192.168.0.10",
+      "209.165.201.1",
+      "209.165.200.225"
+    ],
+    "answer": [3],
+    "explain_short": "External hosts can only reach an inside host via its inside global (public) address. The static NAT maps PC1's 192.168.0.10 to the inside global 209.165.200.225.",
+    "explain_lecture": null,
+    "tags": ["nat", "static-nat", "inside-global"]
+  },
+  {
+    "id": "nat-q18",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "single",
+    "stem": "What type of address is 64.100.190.189?",
+    "choices": ["public", "private"],
+    "answer": [0],
+    "explain_short": "64.100.190.189 is not within any RFC 1918 range (10/8, 172.16/12, 192.168/16), so it is a public/global IPv4 address.",
+    "explain_lecture": null,
+    "tags": ["nat", "public-addresses"]
+  },
+  {
+    "id": "nat-q19",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "single",
+    "stem": "Refer to the exhibit. The static NAT configuration on R1 has interface Fa0/0 set as ip nat inside but interface S0/0/0 has no NAT direction configured. What has to be done in order to complete the static NAT configuration on R1?",
+    "choices": [
+      "Interface Fa0/0 should be configured with the command no ip nat inside.",
+      "Interface S0/0/0 should be configured with the command ip nat outside.",
+      "R1 should be configured with the command ip nat inside source static 209.165.200.200 192.168.11.11.",
+      "R1 should be configured with the command ip nat inside source static 209.165.200.1 192.168.11.11."
+    ],
+    "answer": [1],
+    "explain_short": "NAT requires at least one inside (ip nat inside) and one outside (ip nat outside) interface. The outside interface S0/0/0 still needs ip nat outside.",
+    "explain_lecture": null,
+    "tags": ["nat", "configuration", "interfaces"]
+  },
+  {
+    "id": "nat-q20",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "single",
+    "stem": "In NAT terms, what address type refers to the globally routable IPv4 address of a destination host on the Internet?",
+    "choices": [
+      "outside global",
+      "inside global",
+      "outside local",
+      "inside local"
+    ],
+    "answer": [0],
+    "explain_short": "Outside Global = the real public IP of an external destination host. Inside addresses describe local hosts; outside local is how that destination is seen from inside.",
+    "explain_lecture": null,
+    "tags": ["nat", "outside-global", "address-types"]
+  },
+  {
+    "id": "nat-q21",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "multi",
+    "stem": "Refer to the exhibit (show ip nat translations output: --- 209.165.200.235  192.168.10.10  ---  ---). Which two statements are correct? (Choose two.)",
+    "choices": [
+      "The output is the result of the show ip nat translations command.",
+      "The host with the address 209.165.200.235 will respond to requests by using a source address of 192.168.10.10.",
+      "The output is the result of the show ip nat statistics command.",
+      "Traffic with the destination address of a public web server will be sourced from the IP of 192.168.1.10.",
+      "The host with the address 209.165.200.235 will respond to requests by using a source address of 209.165.200.235."
+    ],
+    "answer": [0, 1],
+    "explain_short": "The format (Pro / Inside global / Inside local / Outside local / Outside global) is from show ip nat translations. The static entry lets external hosts reach 192.168.10.10 by using 209.165.200.235 as its destination.",
+    "explain_lecture": null,
+    "tags": ["nat", "static-nat", "verification"]
+  },
+  {
+    "id": "nat-q22",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "single",
+    "stem": "Refer to the exhibit. show ip nat translations on RT2 shows: --- 192.0.2.88 192.168.254.253 --- ---  and  tcp 192.0.2.254:port 192.168.2.20:port  198.51.100.5:port  198.51.100.5:port. Which statement correctly describes the NAT translation on RT2?",
+    "choices": [
+      "The traffic from a source IPv4 address of 192.168.254.253 is being translated to 192.0.2.88 by means of static NAT.",
+      "The traffic from a source IPv4 address of 192.0.2.88 is being translated by router RT2 to reach a destination IPv4 address of 192.168.254.253.",
+      "The traffic from a source IPv4 public address that originates traffic on the internet would be able to reach private internal IPv4 addresses.",
+      "The traffic from a source IPv4 address of 192.168.2.20 is being translated by router RT2 to reach a destination IPv4 address of 192.0.2.254."
+    ],
+    "answer": [0],
+    "explain_short": "The first row has only Inside Global / Inside Local filled in (no outside), which is the signature of a static NAT entry: 192.168.254.253 (inside local) <-> 192.0.2.88 (inside global).",
+    "explain_lecture": null,
+    "tags": ["nat", "static-nat", "verification"]
+  },
+  {
+    "id": "nat-q23",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "single",
+    "stem": "What type of address is 10.100.126.126?",
+    "choices": ["private", "public"],
+    "answer": [0],
+    "explain_short": "10.0.0.0/8 is one of the RFC 1918 private blocks; 10.100.126.126 falls inside it.",
+    "explain_lecture": null,
+    "tags": ["nat", "private-addresses", "rfc1918"]
+  },
+  {
+    "id": "nat-q24",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "single",
+    "stem": "What is a disadvantage when both sides of a communication use PAT?",
+    "choices": [
+      "End-to-end IPv4 traceability is lost.",
+      "The flexibility of connections to the Internet is reduced.",
+      "The security of the communication is negatively impacted.",
+      "Host IPv4 addressing is complicated."
+    ],
+    "answer": [0],
+    "explain_short": "When PAT rewrites both source IP and source port (and the other side does the same), the original host identity is hidden behind translations on both ends; tracing a flow end-to-end becomes very difficult.",
+    "explain_lecture": null,
+    "tags": ["nat", "pat", "disadvantages"]
+  },
+  {
+    "id": "nat-q25",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "single",
+    "stem": "What two addresses are specified in a static NAT configuration?",
+    "choices": [
+      "the outside global and the outside local",
+      "the inside local and the outside global",
+      "the inside global and the outside local",
+      "the inside local and the inside global"
+    ],
+    "answer": [3],
+    "explain_short": "Static NAT (ip nat inside source static <inside-local> <inside-global>) maps the private inside-local IP to the public inside-global IP one-to-one.",
+    "explain_lecture": null,
+    "tags": ["nat", "static-nat", "configuration"]
+  },
+  {
+    "id": "nat-q26",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "single",
+    "stem": "What type of address is 128.107.240.239?",
+    "choices": ["public", "private"],
+    "answer": [0],
+    "explain_short": "128.107.x.x is outside all RFC 1918 ranges, so it is a public IPv4 address.",
+    "explain_lecture": null,
+    "tags": ["nat", "public-addresses"]
+  },
+  {
+    "id": "nat-q27",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "single",
+    "stem": "Refer to the exhibit. The configuration on R2 is: ip nat pool NAT-POOL2 ...; access-list 1 permit 192.168.0.0 0.0.255.255; ip nat inside source list 100 pool NAT-POOL2 overload. Why is the configuration incorrect?",
+    "choices": [
+      "NAT-POOL2 is bound to the wrong ACL.",
+      "The ACL does not define the list of addresses to be translated.",
+      "The overload keyword should not have been applied.",
+      "The static NAT entry is missing."
+    ],
+    "answer": [0],
+    "explain_short": "The ACL that defines who gets translated is ACL 1, but the ip nat inside source list command references ACL 100. PAT will not translate any traffic until they match.",
+    "explain_lecture": null,
+    "tags": ["nat", "pat", "troubleshooting", "acl"]
+  },
+  {
+    "id": "nat-q28",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "single",
+    "stem": "What type of address is 10.131.48.7?",
+    "choices": ["private", "public"],
+    "answer": [0],
+    "explain_short": "10.0.0.0/8 is RFC 1918 private; 10.131.48.7 is inside that range.",
+    "explain_lecture": null,
+    "tags": ["nat", "private-addresses", "rfc1918"]
+  },
+  {
+    "id": "nat-q29",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "single",
+    "stem": "What type of address is 10.19.6.7?",
+    "choices": ["private", "public"],
+    "answer": [0],
+    "explain_short": "10.0.0.0/8 is RFC 1918 private; 10.19.6.7 falls inside that block.",
+    "explain_lecture": null,
+    "tags": ["nat", "private-addresses", "rfc1918"]
+  },
+  {
+    "id": "nat-q30",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "single",
+    "stem": "What type of address is 64.101.198.197?",
+    "choices": ["public", "private"],
+    "answer": [0],
+    "explain_short": "64.101.198.197 is outside RFC 1918 ranges, so it is a public address.",
+    "explain_lecture": null,
+    "tags": ["nat", "public-addresses"]
+  },
+  {
+    "id": "nat-q31",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "single",
+    "stem": "What type of address is 192.168.7.126?",
+    "choices": ["private", "public"],
+    "answer": [0],
+    "explain_short": "192.168.0.0/16 is RFC 1918 private; 192.168.7.126 is in that block.",
+    "explain_lecture": null,
+    "tags": ["nat", "private-addresses", "rfc1918"]
+  },
+  {
+    "id": "nat-q32",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "single",
+    "stem": "What type of address is 198.133.219.148?",
+    "choices": ["private", "public"],
+    "answer": [1],
+    "explain_short": "198.133.219.148 (Cisco's old www address) is outside any RFC 1918 range, so it is public.",
+    "explain_lecture": null,
+    "tags": ["nat", "public-addresses"]
+  },
+  {
+    "id": "nat-q33",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "cli",
+    "stem": "On router R1, configure static NAT to map inside local host 192.168.11.11 to inside global address 209.165.200.200.",
+    "prefix": "R1(config)#",
+    "answer": "ip nat inside source static 192.168.11.11 209.165.200.200",
+    "explain_short": "Static NAT syntax: ip nat inside source static <inside-local> <inside-global>. After this, the inside and outside interfaces still need ip nat inside / ip nat outside applied.",
+    "explain_lecture": null,
+    "tags": ["nat", "static-nat", "cli"]
+  },
+  {
+    "id": "nat-q34",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "fill",
+    "stem": "NAT overloading (also known as Port Address Translation) tracks multiple internal hosts that share one inside global address by using unique _______ numbers.",
+    "answer": "port",
+    "alt_answers": ["ports", "port number", "port numbers", "tcp/udp port", "tcp/udp ports"],
+    "explain_short": "PAT differentiates simultaneous sessions by their unique source TCP/UDP port numbers, letting many inside hosts share one public IP.",
+    "explain_lecture": null,
+    "tags": ["nat", "pat", "ports"]
+  },
+  {
+    "id": "nat-q35",
+    "module": "nat",
+    "source": "itexam-ensa-m6",
+    "type": "fill",
+    "stem": "In NAT terminology, the _______ _______ address is the globally routable IPv4 address of a destination host on the Internet (the real address as seen on the outside network).",
+    "answer": "outside global",
+    "alt_answers": ["outside-global"],
+    "explain_short": "Outside Global = real public IP of the remote host on the Internet. (Outside Local = how that host is seen from the inside, often the same in basic NAT.)",
+    "explain_lecture": null,
+    "tags": ["nat", "outside-global", "address-types"]
+  }
+]

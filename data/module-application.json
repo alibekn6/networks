@@ -1,0 +1,818 @@
+[
+  {
+    "id": "application-q01",
+    "module": "application",
+    "source": "itexam-itn-m15",
+    "type": "multi",
+    "stem": "Which three statements describe a DHCP Discover message? (Choose three.)",
+    "choices": [
+      "The source MAC address is 48 ones (FF-FF-FF-FF-FF-FF).",
+      "The destination IP address is 255.255.255.255.",
+      "The message comes from a server offering an IP address.",
+      "The message comes from a client seeking an IP address.",
+      "All hosts receive the message, but only a DHCP server replies.",
+      "Only the DHCP server receives the message."
+    ],
+    "answer": [
+      1,
+      3,
+      4
+    ],
+    "explain_short": "A DHCPDISCOVER is sent by a client that has just booted/connected and has no IP. It is broadcast (UDP, dst 255.255.255.255, src 0.0.0.0, port 67) so any DHCP server on the segment can hear it.",
+    "explain_lecture": null,
+    "tags": [
+      "dhcp",
+      "discover",
+      "broadcast"
+    ]
+  },
+  {
+    "id": "application-q02",
+    "module": "application",
+    "source": "itexam-itn-m15",
+    "type": "multi",
+    "stem": "Which two protocols may devices use in the application process that sends email? (Choose two.)",
+    "choices": [
+      "HTTP",
+      "SMTP",
+      "POP",
+      "IMAP",
+      "DNS",
+      "POP3"
+    ],
+    "answer": [
+      1,
+      4
+    ],
+    "explain_short": "Sending mail uses SMTP. POP3 and IMAP are for retrieving mail from the server, not sending.",
+    "explain_lecture": {
+      "module": "ITN-15",
+      "slide": "Web and Email Protocols — Email Protocols",
+      "quote": "The email protocols used for operation are: Simple Mail Transfer Protocol (SMTP) – used to send mail. Post Office Protocol (POP) & IMAP – used for clients to receive mail."
+    },
+    "tags": [
+      "email",
+      "smtp",
+      "pop",
+      "imap"
+    ]
+  },
+  {
+    "id": "application-q03",
+    "module": "application",
+    "source": "itexam-itn-m15",
+    "type": "single",
+    "stem": "What is true about the Server Message Block protocol?",
+    "choices": [
+      "Different SMB message types have a different format.",
+      "Clients establish a long term connection to servers.",
+      "SMB messages cannot authenticate a session.",
+      "SMB uses the FTP protocol for communication."
+    ],
+    "answer": [
+      1
+    ],
+    "explain_short": "SMB is a client/server, request-response file/print sharing protocol that lets clients access remote resources as if they were local. It uses long-term connections.",
+    "explain_lecture": {
+      "module": "ITN-15",
+      "slide": "File Sharing Services — Server Message Block",
+      "quote": "The Server Message Block (SMB) is a client/server, request-response file sharing protocol. Servers can make their own resources available to clients on the network."
+    },
+    "tags": [
+      "smb",
+      "file-sharing"
+    ]
+  },
+  {
+    "id": "application-q04",
+    "module": "application",
+    "source": "itexam-itn-m15",
+    "type": "single",
+    "stem": "What is the function of the HTTP GET message?",
+    "choices": [
+      "to request an HTML page from a web server",
+      "to send error information from a web server to a web client",
+      "to upload content to a web server from a web client",
+      "to retrieve client email from an email server using TCP port 110"
+    ],
+    "answer": [
+      0
+    ],
+    "explain_short": "HTTP GET is a client request for data — the browser asks the server to send back an HTML page or other resource.",
+    "explain_lecture": {
+      "module": "ITN-15",
+      "slide": "Web and Email Protocols — HTTP and HTTPS",
+      "quote": "GET - This is a client request for data. A client (web browser) sends the GET message to the web server to request HTML pages."
+    },
+    "tags": [
+      "http",
+      "get"
+    ]
+  },
+  {
+    "id": "application-q05",
+    "module": "application",
+    "source": "itexam-itn-m15",
+    "type": "single",
+    "stem": "Which OSI layer provides the interface between the applications used to communicate and the underlying network over which messages are transmitted?",
+    "choices": [
+      "application",
+      "presentation",
+      "session",
+      "transport"
+    ],
+    "answer": [
+      0
+    ],
+    "explain_short": "The application layer (Layer 7) is the OSI layer that provides the interface between the user's applications and the underlying network.",
+    "explain_lecture": {
+      "module": "ITN-15",
+      "slide": "Application, Presentation, and Session — Application Layer",
+      "quote": "The application layer provides the interface between the applications used to communicate, and the underlying network over which messages are transmitted."
+    },
+    "tags": [
+      "osi",
+      "application-layer"
+    ]
+  },
+  {
+    "id": "application-q06",
+    "module": "application",
+    "source": "itexam-itn-m15",
+    "type": "single",
+    "stem": "Which networking model is being used when an author uploads one chapter document to a file server of a book publisher?",
+    "choices": [
+      "peer-to-peer",
+      "master-slave",
+      "client/server",
+      "point-to-point"
+    ],
+    "answer": [
+      2
+    ],
+    "explain_short": "A user uploading a chapter to a central file server is the classic client/server model: one device requests, a dedicated server responds.",
+    "explain_lecture": {
+      "module": "ITN-15",
+      "slide": "Peer-to-Peer — Client-Server Model",
+      "quote": "In the client/server model, the device requesting the information is called a client and the device responding to the request is called a server."
+    },
+    "tags": [
+      "client-server"
+    ]
+  },
+  {
+    "id": "application-q07",
+    "module": "application",
+    "source": "itexam-itn-m15",
+    "type": "single",
+    "stem": "What do the client/server and peer-to-peer network models have in common?",
+    "choices": [
+      "Both models have dedicated servers.",
+      "Both models support devices in server and client roles.",
+      "Both models require the use of TCP/IP-based protocols.",
+      "Both models are used only in the wired network environment."
+    ],
+    "answer": [
+      1
+    ],
+    "explain_short": "In both models clients and servers exist. In P2P there is no dedicated server, but a device can assume the server role to provide information to a device serving in the client role.",
+    "explain_lecture": {
+      "module": "ITN-15",
+      "slide": "Peer-to-Peer — Client-Server Model",
+      "quote": "Client and server processes are considered to be in the application layer."
+    },
+    "tags": [
+      "client-server",
+      "p2p"
+    ]
+  },
+  {
+    "id": "application-q08",
+    "module": "application",
+    "source": "itexam-itn-m15",
+    "type": "single",
+    "stem": "In what networking model would eDonkey, eMule, BitTorrent, Bitcoin, and LionShare be used?",
+    "choices": [
+      "peer-to-peer",
+      "client-based",
+      "master-slave",
+      "point-to-point"
+    ],
+    "answer": [
+      0
+    ],
+    "explain_short": "eDonkey, eMule, BitTorrent, and Bitcoin are decentralized peer-to-peer applications — every node can act as both a client and a server.",
+    "explain_lecture": {
+      "module": "ITN-15",
+      "slide": "Peer-to-Peer — Common P2P Applications",
+      "quote": "Common P2P networks include the following: BitTorrent; Direct Connect; eDonkey; Freenet."
+    },
+    "tags": [
+      "p2p",
+      "applications"
+    ]
+  },
+  {
+    "id": "application-q09",
+    "module": "application",
+    "source": "itexam-itn-m15",
+    "type": "single",
+    "stem": "What is a common protocol that is used with peer-to-peer applications such as WireShare, Bearshare, and Shareaza?",
+    "choices": [
+      "Ethernet",
+      "Gnutella",
+      "POP",
+      "SMTP"
+    ],
+    "answer": [
+      1
+    ],
+    "explain_short": "Gnutella is a common P2P file-sharing protocol used by applications like LimeWire, BearShare, and others.",
+    "explain_lecture": null,
+    "tags": [
+      "p2p",
+      "gnutella"
+    ]
+  },
+  {
+    "id": "application-q10",
+    "module": "application",
+    "source": "itexam-itn-m15",
+    "type": "single",
+    "stem": "What is a key characteristic of the peer-to-peer networking model?",
+    "choices": [
+      "wireless networking",
+      "social networking without the Internet",
+      "network printing using a print server",
+      "resource sharing without a dedicated server"
+    ],
+    "answer": [
+      3
+    ],
+    "explain_short": "In a P2P network every node can act as both client and server — there is no dedicated central server providing the resource.",
+    "explain_lecture": {
+      "module": "ITN-15",
+      "slide": "Peer-to-Peer — Peer-to-Peer Networks",
+      "quote": "In a peer-to-peer (P2P) network, two or more computers are connected via a network and can share resources (such as printers and files) without having a dedicated server. Every connected end device (known as a peer) can function as both a server and a client."
+    },
+    "tags": [
+      "p2p",
+      "characteristics"
+    ]
+  },
+  {
+    "id": "application-q11",
+    "module": "application",
+    "source": "itexam-itn-m15",
+    "type": "multi",
+    "stem": "The application layer of the TCP/IP model performs the functions of what three layers of the OSI model? (Choose three.)",
+    "choices": [
+      "physical",
+      "session",
+      "network",
+      "presentation",
+      "data link",
+      "transport",
+      "application"
+    ],
+    "answer": [
+      1,
+      3,
+      6
+    ],
+    "explain_short": "The TCP/IP application layer maps to the top three OSI layers: application, presentation, and session.",
+    "explain_lecture": {
+      "module": "ITN-15",
+      "slide": "Application, Presentation, and Session — Application Layer",
+      "quote": "The upper three layers of the OSI model (application, presentation, and session) define functions of the TCP/IP application layer."
+    },
+    "tags": [
+      "osi",
+      "tcp-ip",
+      "application-layer"
+    ]
+  },
+  {
+    "id": "application-q12",
+    "module": "application",
+    "source": "itexam-itn-m15",
+    "type": "single",
+    "stem": "What is an example of network communication that uses the client-server model?",
+    "choices": [
+      "A user uses eMule to download a file that is shared by a friend after the file location is determined.",
+      "A workstation initiates an ARP to find the MAC address of a receiving host.",
+      "A user prints a document by using a printer that is attached to a workstation of a coworker.",
+      "A workstation initiates a DNS request when the user types www.cisco.com in the address bar of a web browser."
+    ],
+    "answer": [
+      3
+    ],
+    "explain_short": "Typing a domain into a browser is the canonical client/server example — your PC (client) requests a page from a remote web server.",
+    "explain_lecture": null,
+    "tags": [
+      "client-server",
+      "dns"
+    ]
+  },
+  {
+    "id": "application-q13",
+    "module": "application",
+    "source": "itexam-itn-m15",
+    "type": "single",
+    "stem": "Which layer in the TCP/IP model is used for formatting, compressing, and encrypting data?",
+    "choices": [
+      "internetwork",
+      "session",
+      "presentation",
+      "application",
+      "network access"
+    ],
+    "answer": [
+      3
+    ],
+    "explain_short": "The presentation layer (OSI Layer 6) handles formatting, compression, and encryption/decryption of data for the application layer.",
+    "explain_lecture": {
+      "module": "ITN-15",
+      "slide": "Application, Presentation, and Session — Presentation and Session Layer",
+      "quote": "The presentation layer has three primary functions: Formatting, or presenting, data at the source device into a compatible format for receipt by the destination device; Compressing data in a way that can be decompressed by the destination device; Encrypting data for transmission and decrypting data upon receipt."
+    },
+    "tags": [
+      "osi",
+      "presentation-layer"
+    ]
+  },
+  {
+    "id": "application-q14",
+    "module": "application",
+    "source": "itexam-itn-m15",
+    "type": "single",
+    "stem": "What is an advantage of SMB over FTP?​",
+    "choices": [
+      "Only with SMB can data transfers occur in both directions.",
+      "Only SMB establishes two simultaneous connections with the client, making the data transfer faster.​",
+      "SMB is more reliable than FTP because SMB uses TCP and FTP uses UDP.​",
+      "SMB clients can establish a long-term connection to the server.​"
+    ],
+    "answer": [
+      3
+    ],
+    "explain_short": "SMB clients open a long-term connection to the server and access remote files as if they were local. FTP requires a fresh data connection per transfer.",
+    "explain_lecture": {
+      "module": "ITN-15",
+      "slide": "File Sharing Services — Server Message Block",
+      "quote": "Unlike the file sharing supported by FTP, clients establish a long-term connection to servers. After the connection is established, the user of the client can access the resources on the server as though the resource is local to the client host."
+    },
+    "tags": [
+      "smb",
+      "ftp"
+    ]
+  },
+  {
+    "id": "application-q15",
+    "module": "application",
+    "source": "itexam-itn-m15",
+    "type": "multi",
+    "stem": "A manufacturing company subscribes to certain hosted services from its ISP. The services that are required include hosted world wide web, file transfer, and e-mail. Which protocols represent these three key applications? (Choose three.)",
+    "choices": [
+      "FTP",
+      "HTTP",
+      "DNS",
+      "SNMP",
+      "DHCP",
+      "SMTP"
+    ],
+    "answer": [
+      0,
+      1,
+      5
+    ],
+    "explain_short": "A typical hosted bundle uses HTTP for web, SMTP for outgoing mail, and IMAP (or POP) for incoming mail.",
+    "explain_lecture": null,
+    "tags": [
+      "http",
+      "smtp",
+      "imap",
+      "isp"
+    ]
+  },
+  {
+    "id": "application-q16",
+    "module": "application",
+    "source": "itexam-itn-m15",
+    "type": "single",
+    "stem": "Which application layer protocol uses message types such as GET, PUT, and POST?",
+    "choices": [
+      "DNS",
+      "DHCP",
+      "SMTP",
+      "HTTP",
+      "POP3"
+    ],
+    "answer": [
+      3
+    ],
+    "explain_short": "GET, PUT, and POST are the three common HTTP message types — GET retrieves data, POST uploads form data, PUT uploads a resource.",
+    "explain_lecture": {
+      "module": "ITN-15",
+      "slide": "Web and Email Protocols — HTTP and HTTPS",
+      "quote": "HTTP is a request/response protocol that specifies the message types used for that communication. The three common message types are GET, POST, and PUT."
+    },
+    "tags": [
+      "http",
+      "methods"
+    ]
+  },
+  {
+    "id": "application-q17",
+    "module": "application",
+    "source": "itexam-itn-m15",
+    "type": "single",
+    "stem": "What type of information is contained in a DNS MX record?",
+    "choices": [
+      "the FQDN of the alias used to identify a service",
+      "the IP address for an FQDN entry",
+      "the domain name mapped to mail exchange servers",
+      "the IP address of an authoritative name server"
+    ],
+    "answer": [
+      2
+    ],
+    "explain_short": "A DNS MX (Mail eXchange) record points to the mail server responsible for accepting email for a domain.",
+    "explain_lecture": {
+      "module": "ITN-15",
+      "slide": "IP Addressing Services — DNS Message Format",
+      "quote": "Some of these record types are as follows: A - An end device IPv4 address; NS - An authoritative name server; AAAA - An end device IPv6 address (pronounced quad-A); MX - A mail exchange record."
+    },
+    "tags": [
+      "dns",
+      "mx-record"
+    ]
+  },
+  {
+    "id": "application-q18",
+    "module": "application",
+    "source": "itexam-itn-m15",
+    "type": "multi",
+    "stem": "Which three protocols operate at the application layer of the TCP/IP model? (Choose three.)",
+    "choices": [
+      "ARP",
+      "TCP",
+      "UDP",
+      "FTP",
+      "POP3",
+      "DHCP"
+    ],
+    "answer": [
+      3,
+      4,
+      5
+    ],
+    "explain_short": "FTP, DHCP, and POP3 are all application-layer protocols of the TCP/IP model.",
+    "explain_lecture": {
+      "module": "ITN-15",
+      "slide": "Application, Presentation, and Session — TCP/IP Application Layer Protocols",
+      "quote": "Some of the most widely known application layer protocols include HTTP, FTP, TFTP, IMAP and DNS."
+    },
+    "tags": [
+      "application-layer",
+      "protocols"
+    ]
+  },
+  {
+    "id": "application-q19",
+    "module": "application",
+    "source": "itexam-itn-m15",
+    "type": "single",
+    "stem": "Which protocol is used by a client to communicate securely with a web server?",
+    "choices": [
+      "SMTP",
+      "SMB",
+      "IMAP",
+      "HTTPS"
+    ],
+    "answer": [
+      3
+    ],
+    "explain_short": "HTTPS adds TLS/SSL on top of HTTP to encrypt the session — used whenever sensitive data is exchanged with a web server.",
+    "explain_lecture": {
+      "module": "ITN-15",
+      "slide": "Web and Email Protocols — HTTP and HTTPS",
+      "quote": "Note: HTTP is not a secure protocol. For secure communications sent across the internet, HTTPS should be used."
+    },
+    "tags": [
+      "https",
+      "tls"
+    ]
+  },
+  {
+    "id": "application-q20",
+    "module": "application",
+    "source": "itexam-itn-m15",
+    "type": "single",
+    "stem": "Which applications or services allow hosts to act as client and server at the same time?",
+    "choices": [
+      "client/server applications",
+      "email applications",
+      "P2P applications",
+      "authentication services"
+    ],
+    "answer": [
+      2
+    ],
+    "explain_short": "Peer-to-peer applications (e.g., BitTorrent, eDonkey) let each host act as client and server simultaneously.",
+    "explain_lecture": {
+      "module": "ITN-15",
+      "slide": "Peer-to-Peer — Peer-to-Peer Applications",
+      "quote": "A P2P application allows a device to act as both a client and a server within the same communication."
+    },
+    "tags": [
+      "p2p",
+      "applications"
+    ]
+  },
+  {
+    "id": "application-q21",
+    "module": "application",
+    "source": "itexam-itn-m15",
+    "type": "multi",
+    "stem": "What are two characteristics of peer-to-peer networks? (Choose two.)",
+    "choices": [
+      "scalability",
+      "one way data flow",
+      "decentralized resources",
+      "centralized user accounts",
+      "resource sharing without a dedicated server"
+    ],
+    "answer": [
+      2,
+      4
+    ],
+    "explain_short": "P2P networks are decentralized and let any peer act as both client and server. There is no dedicated central server.",
+    "explain_lecture": {
+      "module": "ITN-15",
+      "slide": "Peer-to-Peer — Peer-to-Peer Networks",
+      "quote": "In a peer-to-peer (P2P) network, two or more computers are connected via a network and can share resources (such as printers and files) without having a dedicated server. Every connected end device (known as a peer) can function as both a server and a client."
+    },
+    "tags": [
+      "p2p",
+      "characteristics"
+    ]
+  },
+  {
+    "id": "application-q22",
+    "module": "application",
+    "source": "itexam-itn-m15",
+    "type": "multi",
+    "stem": "Which three layers of the OSI model provide similar network services to those provided by the application layer of the TCP/IP model? (Choose three.)",
+    "choices": [
+      "physical layer",
+      "session layer",
+      "transport layer",
+      "application layer",
+      "presentation layer",
+      "data link layer"
+    ],
+    "answer": [
+      1,
+      3,
+      4
+    ],
+    "explain_short": "The OSI session, presentation, and application layers together provide the same end-user services that the single TCP/IP application layer provides.",
+    "explain_lecture": {
+      "module": "ITN-15",
+      "slide": "Application, Presentation, and Session — Application Layer",
+      "quote": "The upper three layers of the OSI model (application, presentation, and session) define functions of the TCP/IP application layer."
+    },
+    "tags": [
+      "osi",
+      "tcp-ip",
+      "layers"
+    ]
+  },
+  {
+    "id": "application-q23",
+    "module": "application",
+    "source": "itexam-itn-m15",
+    "type": "single",
+    "stem": "A client creates a packet to send to a server. The client is requesting TFTP service. What number will be used as the destination port number in the sending packet?",
+    "choices": [
+      "69",
+      "67",
+      "53",
+      "80"
+    ],
+    "answer": [
+      0
+    ],
+    "explain_short": "TFTP listens on UDP port 69 — a simple, lightweight file-transfer protocol with no authentication.",
+    "explain_lecture": {
+      "module": "ITN-15",
+      "slide": "Application, Presentation, and Session — TCP/IP Application Layer Protocols",
+      "quote": "Some of the most widely known application layer protocols include HTTP, FTP, TFTP, IMAP and DNS."
+    },
+    "tags": [
+      "ports",
+      "tftp",
+      "udp-69"
+    ]
+  },
+  {
+    "id": "application-q24",
+    "module": "application",
+    "source": "itexam-itn-m15",
+    "type": "single",
+    "stem": "A client creates a packet to send to a server. The client is requesting FTP service. What number will be used as the destination port number in the sending packet?",
+    "choices": [
+      "21",
+      "69",
+      "67",
+      "80"
+    ],
+    "answer": [
+      0
+    ],
+    "explain_short": "FTP control connection uses TCP port 21 (commands), and the data connection uses TCP port 20.",
+    "explain_lecture": {
+      "module": "ITN-15",
+      "slide": "File Sharing Services — File Transfer Protocol",
+      "quote": "Step 1 - The client establishes the first connection to the server for control traffic using TCP port 21. The traffic consists of client commands and server replies."
+    },
+    "tags": [
+      "ports",
+      "ftp",
+      "tcp-21"
+    ]
+  },
+  {
+    "id": "application-q25",
+    "module": "application",
+    "source": "itexam-itn-m15",
+    "type": "single",
+    "stem": "A client creates a packet to send to a server. The client is requesting SSH service. What number will be used as the destination port number in the sending packet?",
+    "choices": [
+      "22",
+      "69",
+      "67",
+      "80"
+    ],
+    "answer": [
+      0
+    ],
+    "explain_short": "SSH listens on TCP port 22 for secure remote management of network devices.",
+    "explain_lecture": null,
+    "tags": [
+      "ports",
+      "ssh",
+      "tcp-22"
+    ]
+  },
+  {
+    "id": "application-q26",
+    "module": "application",
+    "source": "itexam-itn-m15",
+    "type": "single",
+    "stem": "A client creates a packet to send to a server. The client is requesting HTTP service. What number will be used as the destination port number in the sending packet?",
+    "choices": [
+      "80",
+      "67",
+      "53",
+      "69"
+    ],
+    "answer": [
+      0
+    ],
+    "explain_short": "HTTP web servers listen on TCP port 80 by default (HTTPS uses 443).",
+    "explain_lecture": null,
+    "tags": [
+      "ports",
+      "http",
+      "tcp-80"
+    ]
+  },
+  {
+    "id": "application-q27",
+    "module": "application",
+    "source": "itexam-itn-m15",
+    "type": "single",
+    "stem": "A client creates a packet to send to a server. The client is requesting POP3 service. What number will be used as the destination port number in the sending packet?",
+    "choices": [
+      "110",
+      "67",
+      "53",
+      "69",
+      "443",
+      "161",
+      "80"
+    ],
+    "answer": [
+      0
+    ],
+    "explain_short": "POP3 servers listen on TCP port 110 for clients retrieving mail.",
+    "explain_lecture": {
+      "module": "ITN-15",
+      "slide": "Web and Email Protocols — SMTP, POP and IMAP (Cont.)",
+      "quote": "The server starts the POP service by passively listening on TCP port 110 for client connection requests."
+    },
+    "tags": [
+      "ports",
+      "pop3",
+      "tcp-110"
+    ]
+  },
+  {
+    "id": "application-q28",
+    "module": "application",
+    "source": "itexam-itn-m15",
+    "type": "single",
+    "stem": "A client creates a packet to send to a server. The client is requesting telnet service. What number will be used as the destination port number in the sending packet?",
+    "choices": [
+      "23",
+      "443",
+      "161",
+      "110"
+    ],
+    "answer": [
+      0
+    ],
+    "explain_short": "Telnet listens on TCP port 23 — unencrypted remote terminal access (replaced by SSH for security).",
+    "explain_lecture": null,
+    "tags": [
+      "ports",
+      "telnet",
+      "tcp-23"
+    ]
+  },
+  {
+    "id": "application-q29",
+    "module": "application",
+    "source": "itexam-itn-m15",
+    "type": "single",
+    "stem": "A client creates a packet to send to a server. The client is requesting SNMP service. What number will be used as the destination port number in the sending packet?",
+    "choices": [
+      "161",
+      "443",
+      "110",
+      "80"
+    ],
+    "answer": [
+      0
+    ],
+    "explain_short": "SNMP managers and agents communicate on UDP port 161 (and 162 for traps).",
+    "explain_lecture": null,
+    "tags": [
+      "ports",
+      "snmp",
+      "udp-161"
+    ]
+  },
+  {
+    "id": "application-q30",
+    "module": "application",
+    "source": "itexam-itn-m15",
+    "type": "single",
+    "stem": "A client creates a packet to send to a server. The client is requesting SMTP service. What number will be used as the destination port number in the sending packet?",
+    "choices": [
+      "25",
+      "443",
+      "161",
+      "110"
+    ],
+    "answer": [
+      0
+    ],
+    "explain_short": "SMTP servers listen on TCP port 25 for incoming mail from clients/MTAs.",
+    "explain_lecture": {
+      "module": "ITN-15",
+      "slide": "Web and Email Protocols — SMTP, POP and IMAP",
+      "quote": "When a client sends email, the client SMTP process connects with a server SMTP process on well-known port 25."
+    },
+    "tags": [
+      "ports",
+      "smtp",
+      "tcp-25"
+    ]
+  },
+  {
+    "id": "application-q31",
+    "module": "application",
+    "source": "itexam-itn-m15",
+    "type": "single",
+    "stem": "A client creates a packet to send to a server. The client is requesting HTTPS service. What number will be used as the destination port number in the sending packet?",
+    "choices": [
+      "443",
+      "161",
+      "110",
+      "80"
+    ],
+    "answer": [
+      0
+    ],
+    "explain_short": "HTTPS = HTTP over TLS, listens on TCP port 443.",
+    "explain_lecture": null,
+    "tags": [
+      "ports",
+      "https",
+      "tcp-443"
+    ]
+  }
+]

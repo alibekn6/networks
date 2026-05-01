@@ -1,0 +1,446 @@
+[
+  {
+    "id": "ipv6-q01",
+    "module": "ipv6",
+    "source": "itexam-itn-m12",
+    "type": "single",
+    "stem": "Which address is a valid IPv6 link-local unicast address?",
+    "choices": [
+      "FEC8:1::FFFF",
+      "FD80::1:1234",
+      "FE80::1:4545:6578:ABC1",
+      "FE0A::100:7788:998F",
+      "FC90:5678:4251:FFFF"
+    ],
+    "answer": [2],
+    "explain_short": "Link-local addresses live in fe80::/10 (first hextet fe80–febf). FE80::1:4545:6578:ABC1 is the only choice in that range.",
+    "explain_lecture": {
+      "module": "ITN-12",
+      "slide": "IPv6 Address Types — IPv6 LLA",
+      "quote": "IPv6 LLAs are in the fe80::/10 range."
+    },
+    "tags": ["ipv6", "link-local", "lla"]
+  },
+  {
+    "id": "ipv6-q02",
+    "module": "ipv6",
+    "source": "itexam-itn-m12",
+    "type": "single",
+    "stem": "Which of these addresses is the shortest abbreviation for the IP address: 3FFE:1044:0000:0000:00AB:0000:0000:0057?",
+    "choices": [
+      "3FFE:1044::AB::57",
+      "3FFE:1044::00AB::0057",
+      "3FFE:1044:0:0:AB::57",
+      "3FFE:1044:0:0:00AB::0057",
+      "3FFE:1044:0000:0000:00AB::57",
+      "3FFE:1044:0000:0000:00AB::0057"
+    ],
+    "answer": [2],
+    "explain_short": "Drop leading zeros in each hextet AND replace the longest run of all-zero hextets with :: (only once). The two zero hextets between AB and 57 are the longer run.",
+    "explain_lecture": {
+      "module": "ITN-12",
+      "slide": "IPv6 Address Representation — Rule 2 — Double Colon",
+      "quote": "A double colon (::) can replace any single, contiguous string of one or more 16-bit hextets consisting of all zeros."
+    },
+    "tags": ["ipv6", "compression"]
+  },
+  {
+    "id": "ipv6-q03",
+    "module": "ipv6",
+    "source": "itexam-itn-m12",
+    "type": "single",
+    "stem": "A network administrator has received the IPv6 prefix 2001:DB8::/48 for subnetting. Assuming the administrator does not subnet into the interface ID portion of the address space, how many subnets can the administrator create from the /48 prefix?",
+    "choices": ["16", "256", "4096", "65536"],
+    "answer": [3],
+    "explain_short": "Standard host prefix is /64. Subnet bits = 64 − 48 = 16. 2^16 = 65,536 subnets.",
+    "explain_lecture": {
+      "module": "ITN-12",
+      "slide": "Subnet an IPv6 Network — IPv6 Subnetting Example",
+      "quote": "Given the 2001:db8:acad::/48 global routing prefix with a 16 bit subnet ID. Allows 65,536 /64 subnets"
+    },
+    "tags": ["ipv6", "subnetting", "calc"]
+  },
+  {
+    "id": "ipv6-q04",
+    "module": "ipv6",
+    "source": "itexam-itn-m12",
+    "type": "single",
+    "stem": "Given IPv6 address prefix 2001:db8::/48, what will be the last subnet that is created if the subnet prefix is changed to /52?",
+    "choices": [
+      "2001:db8:0:f00::/52",
+      "2001:db8:0:8000::/52",
+      "2001:db8:0:f::/52",
+      "2001:db8:0:f000::/52"
+    ],
+    "answer": [3],
+    "explain_short": "/52 borrows 4 bits → 16 subnets. The 4 bits sit at the top of the 4th hextet, so subnets step by 0x1000: …:0::/52, …:1000::/52, …, …:f000::/52.",
+    "explain_lecture": null,
+    "tags": ["ipv6", "subnetting", "calc"]
+  },
+  {
+    "id": "ipv6-q05",
+    "module": "ipv6",
+    "source": "itexam-itn-m12",
+    "type": "fill",
+    "stem": "Consider the following range of addresses: 2001:0DB8:BC15:00A0:0000::, 2001:0DB8:BC15:00A1:0000::, 2001:0DB8:BC15:00A2:0000::, …, 2001:0DB8:BC15:00AF:0000::. The prefix-length for the range of addresses is _______ .",
+    "answer": "/60",
+    "alt_answers": ["60"],
+    "explain_short": "All addresses share 2001:0DB8:BC15:00A as common prefix; only the last hex digit of the 4th hextet varies (0–F = 4 bits). Common bits = 64 − 4 = 60 → /60.",
+    "explain_lecture": null,
+    "tags": ["ipv6", "subnetting", "prefix-length"]
+  },
+  {
+    "id": "ipv6-q06",
+    "module": "ipv6",
+    "source": "itexam-itn-m12",
+    "type": "single",
+    "stem": "What type of IPv6 address is FE80::1?",
+    "choices": ["loopback", "link-local", "multicast", "global unicast"],
+    "answer": [1],
+    "explain_short": "FE80::/10 is the link-local prefix. Loopback is ::1, multicast is FF00::/8, GUA starts with 2 or 3.",
+    "explain_lecture": {
+      "module": "ITN-12",
+      "slide": "IPv6 Address Types — IPv6 LLA",
+      "quote": "IPv6 LLAs are in the fe80::/10 range."
+    },
+    "tags": ["ipv6", "link-local", "address-types"]
+  },
+  {
+    "id": "ipv6-q07",
+    "module": "ipv6",
+    "source": "itexam-itn-m12",
+    "type": "single",
+    "stem": "What is used in the EUI-64 process to create an IPv6 interface ID on an IPv6 enabled interface?",
+    "choices": [
+      "the MAC address of the IPv6 enabled interface",
+      "a randomly generated 64-bit hexadecimal address",
+      "an IPv6 address that is provided by a DHCPv6 server",
+      "an IPv4 address that is configured on the interface"
+    ],
+    "answer": [0],
+    "explain_short": "EUI-64 takes the 48-bit MAC, splits it, inserts FFFE in the middle, and flips the 7th bit (U/L) of the first byte to produce a 64-bit interface ID.",
+    "explain_lecture": {
+      "module": "ITN-12",
+      "slide": "Dynamic Addressing for IPv6 GUAs — EUI-64 Process",
+      "quote": "A 16 bit value of fffe (in hexadecimal) is inserted into the middle of the 48-bit Ethernet MAC address of the client. The 7th bit of the client MAC address is reversed from binary 0 to 1."
+    },
+    "tags": ["ipv6", "eui-64", "interface-id"]
+  },
+  {
+    "id": "ipv6-q08",
+    "module": "ipv6",
+    "source": "itexam-itn-m12",
+    "type": "single",
+    "stem": "What is the prefix for the host address 2001:DB8:BC15:A:12AB::1/64?",
+    "choices": [
+      "2001:DB8:BC15",
+      "2001:DB8:BC15:A",
+      "2001:DB8:BC15:A:1",
+      "2001:DB8:BC15:A:12"
+    ],
+    "answer": [1],
+    "explain_short": "/64 → first 64 bits = first 4 hextets are the network prefix. So the prefix is 2001:DB8:BC15:A.",
+    "explain_lecture": null,
+    "tags": ["ipv6", "prefix-length"]
+  },
+  {
+    "id": "ipv6-q09",
+    "module": "ipv6",
+    "source": "itexam-itn-m12",
+    "type": "single",
+    "stem": "An IPv6 enabled device sends a data packet with the destination address of FF02::1. What is the target of this packet?",
+    "choices": [
+      "the one IPv6 device on the link that has been uniquely configured with this address",
+      "all IPv6 enabled devices on the local link or network",
+      "only IPv6 DHCP servers",
+      "only IPv6 configured routers"
+    ],
+    "answer": [1],
+    "explain_short": "FF02::1 is the all-nodes multicast address — every IPv6 device on the link processes it. FF02::2 is the all-routers group.",
+    "explain_lecture": {
+      "module": "ITN-12",
+      "slide": "IPv6 Multicast Addresses — Well-Known IPv6 Multicast Addresses",
+      "quote": "ff02::1 All-nodes multicast group - This is a multicast group that all IPv6-enabled devices join. A packet sent to this group is received and processed by all IPv6 interfaces on the link or network."
+    },
+    "tags": ["ipv6", "multicast", "ff02"]
+  },
+  {
+    "id": "ipv6-q10",
+    "module": "ipv6",
+    "source": "itexam-itn-m12",
+    "type": "single",
+    "stem": "Which IPv6 prefix is reserved for communication between devices on the same link?",
+    "choices": ["FC00::/7", "2001::/32", "FE80::/10", "FDFF::/7"],
+    "answer": [2],
+    "explain_short": "FE80::/10 is the link-local prefix. Link-local addresses are required on every IPv6 interface and are never routed off the link.",
+    "explain_lecture": {
+      "module": "ITN-12",
+      "slide": "IPv6 Address Types — IPv6 LLA",
+      "quote": "An IPv6 link-local address (LLA) enables a device to communicate with other IPv6-enabled devices on the same link and only on that link (subnet)."
+    },
+    "tags": ["ipv6", "link-local", "lla"]
+  },
+  {
+    "id": "ipv6-q11",
+    "module": "ipv6",
+    "source": "itexam-itn-m12",
+    "type": "single",
+    "stem": "Which type of IPv6 address refers to any unicast address that is assigned to multiple hosts?",
+    "choices": ["unique local", "global unicast", "link-local", "anycast"],
+    "answer": [3],
+    "explain_short": "Anycast: a single unicast address configured on multiple devices; routing delivers to the nearest one.",
+    "explain_lecture": {
+      "module": "ITN-12",
+      "slide": "IPv6 Address Types — Unicast, Multicast, Anycast",
+      "quote": "Anycast – This is any IPv6 unicast address that can be assigned to multiple devices. A packet sent to an anycast address is routed to the nearest device having that address."
+    },
+    "tags": ["ipv6", "anycast", "address-types"]
+  },
+  {
+    "id": "ipv6-q12",
+    "module": "ipv6",
+    "source": "itexam-itn-m12",
+    "type": "multi",
+    "stem": "What are two types of IPv6 unicast addresses? (Choose two.)",
+    "choices": ["multicast", "loopback", "link-local", "anycast", "broadcast"],
+    "answer": [1, 2],
+    "explain_short": "IPv6 unicast subtypes include global unicast, link-local, unique local, and loopback (::1). Multicast and anycast are separate categories; IPv6 has no broadcast.",
+    "explain_lecture": {
+      "module": "ITN-12",
+      "slide": "IPv6 Address Types — Types of IPv6 Unicast Addresses",
+      "quote": "Unlike IPv4 devices that have only a single address, IPv6 addresses typically have two unicast addresses: Global Unicast Address (GUA) – This is similar to a public IPv4 address. These are globally unique, internet-routable addresses. Link-local Address (LLA) - Required for every IPv6-enabled device and used to communicate with other devices on the same local link."
+    },
+    "tags": ["ipv6", "address-types", "unicast"]
+  },
+  {
+    "id": "ipv6-q13",
+    "module": "ipv6",
+    "source": "itexam-itn-m12",
+    "type": "single",
+    "stem": "Which service provides dynamic global IPv6 addressing to end devices without using a server that keeps a record of available IPv6 addresses?",
+    "choices": [
+      "stateful DHCPv6",
+      "SLAAC",
+      "static IPv6 addressing",
+      "stateless DHCPv6"
+    ],
+    "answer": [1],
+    "explain_short": "SLAAC lets a host build its own GUA from RA-supplied prefix + an interface ID (EUI-64 or random). No server keeps state.",
+    "explain_lecture": {
+      "module": "ITN-12",
+      "slide": "Dynamic Addressing for IPv6 GUAs — Method 1: SLAAC",
+      "quote": "SLAAC allows a device to configure a GUA without the services of DHCPv6. Devices obtain the necessary information to configure a GUA from the ICMPv6 RA messages of the local router."
+    },
+    "tags": ["ipv6", "slaac", "dynamic-addressing"]
+  },
+  {
+    "id": "ipv6-q14",
+    "module": "ipv6",
+    "source": "itexam-itn-m12",
+    "type": "single",
+    "stem": "Which protocol supports Stateless Address Autoconfiguration (SLAAC) for dynamic assignment of IPv6 addresses to a host?",
+    "choices": ["ARPv6", "DHCPv6", "ICMPv6", "UDP"],
+    "answer": [2],
+    "explain_short": "SLAAC uses ICMPv6 RS/RA messages. There is no ARPv6 — Neighbor Discovery (ICMPv6) replaces ARP.",
+    "explain_lecture": {
+      "module": "ITN-12",
+      "slide": "Dynamic Addressing for IPv6 GUAs — RS and RA Messages",
+      "quote": "Devices obtain GUA addresses dynamically through Internet Control Message Protocol version 6 (ICMPv6) messages."
+    },
+    "tags": ["ipv6", "slaac", "icmpv6"]
+  },
+  {
+    "id": "ipv6-q15",
+    "module": "ipv6",
+    "source": "itexam-itn-m12",
+    "type": "single",
+    "stem": "Which is the compressed format of the IPv6 address 2001:0db8:0000:0000:0000:a0b0:0008:0001?",
+    "choices": [
+      "2001:db8::a0b0:8:1",
+      "2001:db8::ab8:1:0:1000",
+      "2001:db80:0:1::80:1",
+      "2001:db80:::1::80:1"
+    ],
+    "answer": [0],
+    "explain_short": "Drop leading zeros: 2001:db8:0:0:0:a0b0:8:1. Replace the run of three zero hextets with :: → 2001:db8::a0b0:8:1.",
+    "explain_lecture": {
+      "module": "ITN-12",
+      "slide": "IPv6 Address Representation — Rule 1 / Rule 2",
+      "quote": "The first rule to help reduce the notation of IPv6 addresses is to omit any leading 0s (zeros)."
+    },
+    "tags": ["ipv6", "compression"]
+  },
+  {
+    "id": "ipv6-q16",
+    "module": "ipv6",
+    "source": "itexam-itn-m12",
+    "type": "single",
+    "stem": "Which is the compressed format of the IPv6 address fe80:09ea:0000:2200:0000:0000:0fe0:0290?",
+    "choices": [
+      "fe80:9ea:0:2200::fe0:290",
+      "fe80:9:20::b000:290",
+      "fe80:9ea0::2020:0:bf:e0:9290",
+      "fe80:9ea0::2020::bf:e0:9290"
+    ],
+    "answer": [0],
+    "explain_short": "Drop leading zeros (09ea→9ea, 0fe0→fe0, 0290→290). The longest zero run is the two hextets at positions 5–6, replace them with ::.",
+    "explain_lecture": {
+      "module": "ITN-12",
+      "slide": "IPv6 Address Representation — Rule 2 — Double Colon",
+      "quote": "A double colon (::) can replace any single, contiguous string of one or more 16-bit hextets consisting of all zeros."
+    },
+    "tags": ["ipv6", "compression"]
+  },
+  {
+    "id": "ipv6-q17",
+    "module": "ipv6",
+    "source": "itexam-itn-m12",
+    "type": "single",
+    "stem": "Which is the compressed format of the IPv6 address 2002:0042:0010:c400:0000:0000:0000:0909?",
+    "choices": [
+      "2002:42:10:c400::909",
+      "200:420:110:c4b::910:0:90",
+      "2002:4200::25:1090:0:99",
+      "2002:42::25:1090:0:99"
+    ],
+    "answer": [0],
+    "explain_short": "Strip leading zeros (0042→42, 0010→10, 0909→909). Replace the three contiguous zero hextets with ::.",
+    "explain_lecture": null,
+    "tags": ["ipv6", "compression"]
+  },
+  {
+    "id": "ipv6-q18",
+    "module": "ipv6",
+    "source": "itexam-itn-m12",
+    "type": "single",
+    "stem": "Which is the compressed format of the IPv6 address 2001:0db8:0000:0000:0ab8:0001:0000:1000?",
+    "choices": [
+      "2001:db8::ab8:1:0:1000",
+      "2001:db8::a0b0:8:1",
+      "2001:db8:1::ab8:0:1",
+      "2001:db8:0:1::8:1"
+    ],
+    "answer": [0],
+    "explain_short": "Two zero runs exist (positions 3–4 and position 7). Per RFC 5952 you compress the LONGEST run; the first run (2 hextets) wins, so 2001:db8::ab8:1:0:1000.",
+    "explain_lecture": {
+      "module": "ITN-12",
+      "slide": "IPv6 Address Representation — Rule 2 — Double Colon",
+      "quote": "Note: The double colon (::) can only be used once within an address, otherwise there would be more than one possible resulting address."
+    },
+    "tags": ["ipv6", "compression"]
+  },
+  {
+    "id": "ipv6-q19",
+    "module": "ipv6",
+    "source": "itexam-itn-m12",
+    "type": "single",
+    "stem": "Which is the compressed format of the IPv6 address 2002:0420:00c4:1008:0025:0190:0000:0990?",
+    "choices": [
+      "2002:420:c4:1008:25:190::990",
+      "2002:42:10:c400::909",
+      "2002:4200::25:1090:0:99",
+      "2002:42::25:1090:0:99"
+    ],
+    "answer": [0],
+    "explain_short": "Strip leading zeros from each hextet, then replace the single zero hextet at position 7 with ::.",
+    "explain_lecture": null,
+    "tags": ["ipv6", "compression"]
+  },
+  {
+    "id": "ipv6-q20",
+    "module": "ipv6",
+    "source": "itexam-itn-m12",
+    "type": "single",
+    "stem": "Which is the compressed format of the IPv6 address fe80:0000:0000:0000:0220:0b3f:f0e0:0029?",
+    "choices": [
+      "fe80::220:b3f:f0e0:29",
+      "fe80:9ea:0:2200::fe0:290",
+      "fe80:9ea0::2020:0:bf:e0:9290",
+      "fe80:9ea0::2020::bf:e0:9290"
+    ],
+    "answer": [0],
+    "explain_short": "Replace the three contiguous zero hextets after fe80 with :: and strip leading zeros from the remaining hextets.",
+    "explain_lecture": null,
+    "tags": ["ipv6", "compression"]
+  },
+  {
+    "id": "ipv6-q21",
+    "module": "ipv6",
+    "source": "itexam-itn-m12",
+    "type": "fill",
+    "stem": "Type the prefix used by IPv6 link-local unicast addresses (in shortest form, e.g. xx::/yy).",
+    "answer": "FE80::/10",
+    "alt_answers": ["fe80::/10", "fe80::/10", "FE80:/10"],
+    "explain_short": "Link-local addresses are required on every IPv6 interface and live in FE80::/10 (range FE80:: to FEBF::).",
+    "explain_lecture": {
+      "module": "ITN-12",
+      "slide": "IPv6 Address Types — IPv6 LLA",
+      "quote": "IPv6 LLAs are in the fe80::/10 range."
+    },
+    "tags": ["ipv6", "link-local", "lla"]
+  },
+  {
+    "id": "ipv6-q22",
+    "module": "ipv6",
+    "source": "itexam-itn-m12",
+    "type": "fill",
+    "stem": "Type the IPv6 multicast address used to reach all routers on the link (well-known group).",
+    "answer": "FF02::2",
+    "alt_answers": ["ff02::2"],
+    "explain_short": "FF02::2 is the all-routers multicast group; FF02::1 is all-nodes.",
+    "explain_lecture": {
+      "module": "ITN-12",
+      "slide": "IPv6 Multicast Addresses — Well-Known IPv6 Multicast Addresses",
+      "quote": "ff02::2 All-routers multicast group - This is a multicast group that all IPv6 routers join. A router becomes a member of this group when it is enabled as an IPv6 router with the ipv6 unicast-routing global configuration command."
+    },
+    "tags": ["ipv6", "multicast", "ff02"]
+  },
+  {
+    "id": "ipv6-q23",
+    "module": "ipv6",
+    "source": "itexam-itn-m12",
+    "type": "cli",
+    "stem": "On router R1, configure the IPv6 global unicast address 2001:db8:acad:1::1 with prefix length 64 on the currently selected interface.",
+    "prefix": "R1(config-if)#",
+    "answer": "ipv6 address 2001:db8:acad:1::1/64",
+    "explain_short": "Cisco IOS uses 'ipv6 address <addr>/<prefix>' on an interface. Almost identical to 'ip address' for IPv4 — just prefix-length notation instead of mask.",
+    "explain_lecture": {
+      "module": "ITN-12",
+      "slide": "GUA and LLA Static Configuration — Static GUA Configuration on a Router",
+      "quote": "The command to configure an IPv6 GUA on an interface is: ipv6 address ipv6-address/prefix-length."
+    },
+    "tags": ["ipv6", "cli", "gua-config"]
+  },
+  {
+    "id": "ipv6-q24",
+    "module": "ipv6",
+    "source": "itexam-itn-m12",
+    "type": "fill",
+    "stem": "What is the IPv6 loopback address (in shortest form)?",
+    "answer": "::1",
+    "alt_answers": ["::1/128", "0:0:0:0:0:0:0:1"],
+    "explain_short": "::1 (i.e. 0:0:0:0:0:0:0:1) is the IPv6 loopback — the equivalent of 127.0.0.1.",
+    "explain_lecture": {
+      "module": "ITN-8",
+      "slide": "How a Host Routes — Host Forwarding Decision",
+      "quote": "A host can send packets to the following: Itself – 127.0.0.1 (IPv4), ::1 (IPv6)"
+    },
+    "tags": ["ipv6", "loopback"]
+  },
+  {
+    "id": "ipv6-q25",
+    "module": "ipv6",
+    "source": "itexam-itn-m12",
+    "type": "single",
+    "stem": "What is the recommended IPv6 prefix length for LANs and most other types of networks?",
+    "choices": ["/48", "/56", "/64", "/128"],
+    "answer": [2],
+    "explain_short": "IETF recommends /64 for end-host networks because SLAAC requires a 64-bit interface ID.",
+    "explain_lecture": {
+      "module": "ITN-12",
+      "slide": "IPv6 Address Types — IPv6 Prefix Length",
+      "quote": "The IPv6 prefix length can range from 0 to 128. The recommended IPv6 prefix length for LANs and most other types of networks is /64."
+    },
+    "tags": ["ipv6", "prefix-length"]
+  }
+]

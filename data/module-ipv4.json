@@ -1,0 +1,892 @@
+[
+  {
+    "id": "ipv4-q01",
+    "module": "ipv4",
+    "source": "itexam-itn-m8",
+    "type": "single",
+    "stem": "Which information is used by routers to forward a data packet toward its destination?",
+    "choices": [
+      "source IP address",
+      "destination IP address",
+      "source data-link address",
+      "destination data-link address"
+    ],
+    "answer": [1],
+    "explain_short": "Routers make Layer 3 forwarding decisions based on the destination IP address — they look up the longest matching prefix in the routing table.",
+    "explain_lecture": {
+      "module": "ITN-8",
+      "slide": "Network Layer Characteristics — IP Encapsulation",
+      "quote": "IP packet will be examined by all layer 3 devices as it traverses the network. The IP addressing does not change from source to destination."
+    },
+    "tags": ["ipv4", "routing", "network-layer"]
+  },
+  {
+    "id": "ipv4-q02",
+    "module": "ipv4",
+    "source": "itexam-itn-m8",
+    "type": "single",
+    "stem": "A computer has to send a packet to a destination host in the same LAN. How will the packet be sent?",
+    "choices": [
+      "The packet will be sent to the default gateway first, and then, depending on the response from the gateway, it may be sent to the destination host.",
+      "The packet will be sent directly to the destination host.",
+      "The packet will first be sent to the default gateway, and then from the default gateway it will be sent directly to the destination host.",
+      "The packet will be sent only to the default gateway."
+    ],
+    "answer": [1],
+    "explain_short": "If the destination is on the same LAN (same subnet), the source delivers the frame directly to the destination's MAC. The default gateway is only used for remote destinations.",
+    "explain_lecture": {
+      "module": "ITN-8",
+      "slide": "How a Host Routes — Host Forwarding Decision (Cont.)",
+      "quote": "Local traffic is dumped out the host interface to be handled by an intermediary device. Remote traffic is forwarded directly to the default gateway on the LAN."
+    },
+    "tags": ["ipv4", "host-routing", "default-gateway"]
+  },
+  {
+    "id": "ipv4-q03",
+    "module": "ipv4",
+    "source": "itexam-itn-m8",
+    "type": "single",
+    "stem": "A router receives a packet from the Gigabit 0/0 interface and determines that the packet needs to be forwarded out the Gigabit 0/1 interface. What will the router do next?",
+    "choices": [
+      "route the packet out the Gigabit 0/1 interface",
+      "create a new Layer 2 Ethernet frame to be sent to the destination",
+      "look into the ARP cache to determine the destination IP address",
+      "look into the routing table to determine if the destination network is in the routing table"
+    ],
+    "answer": [1],
+    "explain_short": "After the routing decision is made, the router de-encapsulates the old frame and builds a brand-new Layer 2 frame for the egress link (the Layer 3 packet stays the same).",
+    "explain_lecture": {
+      "module": "ITN-8",
+      "slide": "Network Layer Characteristics — The Network Layer",
+      "quote": "The network layer performs four basic operations:\nAddressing end devices\nEncapsulation\nRouting\nDe-encapsulation"
+    },
+    "tags": ["ipv4", "routing", "encapsulation"]
+  },
+  {
+    "id": "ipv4-q04",
+    "module": "ipv4",
+    "source": "itexam-itn-m8",
+    "type": "single",
+    "stem": "Which IPv4 address can a host use to ping the loopback interface?",
+    "choices": [
+      "126.0.0.1",
+      "127.0.0.0",
+      "126.0.0.0",
+      "127.0.0.1"
+    ],
+    "answer": [3],
+    "explain_short": "127.0.0.1 is the standard IPv4 loopback address used to test the local TCP/IP stack.",
+    "explain_lecture": {
+      "module": "ITN-8",
+      "slide": "How a Host Routes — Host Forwarding Decision",
+      "quote": "A host can send packets to the following: Itself – 127.0.0.1 (IPv4), ::1 (IPv6)"
+    },
+    "tags": ["ipv4", "loopback", "special-addresses"]
+  },
+  {
+    "id": "ipv4-q05",
+    "module": "ipv4",
+    "source": "itexam-itn-m8",
+    "type": "single",
+    "stem": "A computer can access devices on the same network but cannot access devices on other networks. What is the probable cause of this problem?",
+    "choices": [
+      "The cable is not connected properly to the NIC.",
+      "The computer has an invalid IP address.",
+      "The computer has an incorrect subnet mask.",
+      "The computer has an invalid default gateway address."
+    ],
+    "answer": [3],
+    "explain_short": "Local LAN traffic still works (so the NIC, IP, and mask are basically OK), but anything off-subnet must go through the default gateway. A bad gateway breaks remote access only.",
+    "explain_lecture": {
+      "module": "ITN-8",
+      "slide": "How a Host Routes — Default Gateway",
+      "quote": "If a device has no default gateway or a bad default gateway, its traffic will not be able to leave the LAN."
+    },
+    "tags": ["ipv4", "default-gateway", "troubleshooting"]
+  },
+  {
+    "id": "ipv4-q06",
+    "module": "ipv4",
+    "source": "itexam-itn-m8",
+    "type": "single",
+    "stem": "Which statement describes a feature of the IP protocol?",
+    "choices": [
+      "IP encapsulation is modified based on network media.",
+      "IP relies on Layer 2 protocols for transmission error control.",
+      "MAC addresses are used during the IP packet encapsulation.",
+      "IP relies on upper layer services to handle situations of missing or out-of-order packets."
+    ],
+    "answer": [3],
+    "explain_short": "IP is connectionless and best-effort — it cannot fix missing or out-of-order packets itself, so upper-layer protocols (e.g., TCP) handle reliability.",
+    "explain_lecture": {
+      "module": "ITN-8",
+      "slide": "Network Layer Characteristics — Media Independent",
+      "quote": "IP is unreliable: It cannot manage or fix undelivered or corrupt packets. IP cannot retransmit after an error. IP cannot realign out of sequence packets. IP must rely on other protocols for these functions."
+    },
+    "tags": ["ipv4", "ip-protocol", "characteristics"]
+  },
+  {
+    "id": "ipv4-q07",
+    "module": "ipv4",
+    "source": "itexam-itn-m8",
+    "type": "single",
+    "stem": "Why is NAT not needed in IPv6?",
+    "choices": [
+      "Because IPv6 has integrated security, there is no need to hide the IPv6 addresses of internal networks.",
+      "Any host or user can get a public IPv6 network address because the number of available IPv6 addresses is extremely large.",
+      "The problems that are induced by NAT applications are solved because the IPv6 header improves packet handling by intermediate routers.",
+      "The end-to-end connectivity problems that are caused by NAT are solved because the number of routes increases with the number of nodes that are connected to the Internet."
+    ],
+    "answer": [1],
+    "explain_short": "IPv6's 128-bit address space (~3.4x10^38 addresses) means every device can have a public address, so the address-conservation reason for NAT disappears.",
+    "explain_lecture": {
+      "module": "ITN-8",
+      "slide": "IPv6 Packets — IPv6 Overview",
+      "quote": "Eliminates the need for NAT – since there is a huge amount of addressing, there is no need to use private addressing internally and be mapped to a shared public address"
+    },
+    "tags": ["ipv4", "ipv6", "nat"]
+  },
+  {
+    "id": "ipv4-q08",
+    "module": "ipv4",
+    "source": "itexam-itn-m8",
+    "type": "single",
+    "stem": "Which parameter does the router use to choose the path to the destination when there are multiple routes available?",
+    "choices": [
+      "the lower metric value that is associated with the destination network",
+      "the lower gateway IP address to get to the destination network",
+      "the higher metric value that is associated with the destination network",
+      "the higher gateway IP address to get to the destination network"
+    ],
+    "answer": [0],
+    "explain_short": "Within the same routing protocol, the route with the lowest metric is preferred (lower = better). Across protocols, administrative distance breaks ties first.",
+    "explain_lecture": null,
+    "tags": ["ipv4", "routing", "metric"]
+  },
+  {
+    "id": "ipv4-q09",
+    "module": "ipv4",
+    "source": "itexam-itn-m8",
+    "type": "multi",
+    "stem": "What are two services provided by the OSI network layer? (Choose two.)",
+    "choices": [
+      "performing error detection",
+      "routing packets toward the destination",
+      "encapsulating PDUs from the transport layer",
+      "placement of frames on the media",
+      "collision detection"
+    ],
+    "answer": [1, 2],
+    "explain_short": "Network layer = addressing, encapsulation, routing, de-encapsulation. Error/collision detection and putting frames on the media are Layer 2 jobs.",
+    "explain_lecture": {
+      "module": "ITN-8",
+      "slide": "Network Layer Characteristics — The Network Layer",
+      "quote": "The network layer performs four basic operations:\nAddressing end devices\nEncapsulation\nRouting\nDe-encapsulation"
+    },
+    "tags": ["ipv4", "network-layer", "osi"]
+  },
+  {
+    "id": "ipv4-q10",
+    "module": "ipv4",
+    "source": "itexam-itn-m8",
+    "type": "single",
+    "stem": "What is a basic characteristic of the IP protocol?",
+    "choices": [
+      "connectionless",
+      "media dependent",
+      "user data segmentation",
+      "reliable end-to-end delivery"
+    ],
+    "answer": [0],
+    "explain_short": "IP is connectionless (no setup before sending), best-effort (no guaranteed delivery), and media-independent. Segmentation is a transport-layer (TCP) function.",
+    "explain_lecture": {
+      "module": "ITN-8",
+      "slide": "Network Layer Characteristics — Characteristics of IP",
+      "quote": "IP is meant to have low overhead and may be described as:\nConnectionless\nBest Effort\nMedia Independent"
+    },
+    "tags": ["ipv4", "ip-protocol", "characteristics"]
+  },
+  {
+    "id": "ipv4-q11",
+    "module": "ipv4",
+    "source": "itexam-itn-m8",
+    "type": "single",
+    "stem": "Which field in the IPv4 header is used to prevent a packet from traversing a network endlessly?",
+    "choices": [
+      "Time-to-Live",
+      "Sequence Number",
+      "Acknowledgment Number",
+      "Differentiated Services"
+    ],
+    "answer": [0],
+    "explain_short": "TTL starts at a positive value and is decremented by each router. When it hits 0 the packet is dropped and ICMP Time Exceeded is returned. Sequence/Ack numbers are TCP fields.",
+    "explain_lecture": {
+      "module": "ITN-8",
+      "slide": "Network Layer — New Terms and Commands",
+      "quote": "Time-to-Live (TTL)"
+    },
+    "tags": ["ipv4", "ttl", "ipv4-header"]
+  },
+  {
+    "id": "ipv4-q12",
+    "module": "ipv4",
+    "source": "itexam-itn-m8",
+    "type": "single",
+    "stem": "What is one advantage that the IPv6 simplified header offers over IPv4?",
+    "choices": [
+      "smaller-sized header",
+      "little requirement for processing checksums",
+      "smaller-sized source and destination IP addresses",
+      "efficient packet handling"
+    ],
+    "answer": [3],
+    "explain_short": "The IPv6 header is fixed-length and has fewer fields, which speeds up processing on routers. It is NOT smaller than IPv4 (40 bytes vs ~20), and addresses are bigger (128 vs 32 bits).",
+    "explain_lecture": {
+      "module": "ITN-8",
+      "slide": "IPv6 Packets — IPv6 Overview",
+      "quote": "Improvements that IPv6 provides:\nIncreased address space – based on 128 bit address, not 32 bits\nImproved packet handling – simplified header with fewer fields"
+    },
+    "tags": ["ipv4", "ipv6", "header"]
+  },
+  {
+    "id": "ipv4-q13",
+    "module": "ipv4",
+    "source": "itexam-itn-m8",
+    "type": "single",
+    "stem": "What IPv4 header field identifies the upper layer protocol carried in the packet?",
+    "choices": [
+      "Protocol",
+      "Identification",
+      "Version",
+      "Differentiated Services"
+    ],
+    "answer": [0],
+    "explain_short": "The Protocol field tells what L4 (or other) protocol is encapsulated: 6=TCP, 17=UDP, 1=ICMP, etc. Version is 4 (or 6), Identification is for fragmentation, DS for QoS.",
+    "explain_lecture": null,
+    "tags": ["ipv4", "ipv4-header", "protocol-field"]
+  },
+  {
+    "id": "ipv4-q14",
+    "module": "ipv4",
+    "source": "itexam-itn-m8",
+    "type": "single",
+    "stem": "What information does the loopback test provide?",
+    "choices": [
+      "The TCP/IP stack on the device is working correctly.",
+      "The device has end-to-end connectivity.",
+      "DHCP is working correctly.",
+      "The Ethernet cable is working correctly.",
+      "The device has the correct IP address on the network."
+    ],
+    "answer": [0],
+    "explain_short": "Pinging 127.0.0.1 never leaves the host — it only proves the local NIC driver and TCP/IP stack are functioning. It does not test the cable, DHCP, or remote reachability.",
+    "explain_lecture": {
+      "module": "ITN-13",
+      "slide": "Ping and Traceroute Tests — Ping the Loopback",
+      "quote": "Ping can be used to test the internal configuration of IPv4 or IPv6 on the local host. To do this, ping the local loopback address of 127.0.0.1 for IPv4 (::1 for IPv6). A response from 127.0.0.1 for IPv4, or ::1 for IPv6, indicates that IP is properly installed on the host."
+    },
+    "tags": ["ipv4", "loopback", "troubleshooting"]
+  },
+  {
+    "id": "ipv4-q15",
+    "module": "ipv4",
+    "source": "itexam-itn-m8",
+    "type": "single",
+    "stem": "What routing table entry has a next hop address associated with a destination network?",
+    "choices": [
+      "directly-connected routes",
+      "local routes",
+      "remote routes",
+      "C and L source routes"
+    ],
+    "answer": [2],
+    "explain_short": "Remote routes (learned statically or via OSPF/EIGRP/RIP) need a next-hop because traffic must traverse another router. Connected (C) and local (L) routes are reached directly without a next-hop.",
+    "explain_lecture": {
+      "module": "ITN-8",
+      "slide": "Introduction to Routing — IP Router Routing Table",
+      "quote": "There three types of routes in a router’s routing table: Directly Connected – These routes are automatically added by the router, provided the interface is active and has addressing. Remote – These are the routes the router does not have a direct connection and may be learned"
+    },
+    "tags": ["ipv4", "routing-table", "next-hop"]
+  },
+  {
+    "id": "ipv4-q16",
+    "module": "ipv4",
+    "source": "itexam-itn-m8",
+    "type": "single",
+    "stem": "How do hosts ensure that their packets are directed to the correct network destination?",
+    "choices": [
+      "They have to keep their own local routing table that contains a route to the loopback interface, a local network route, and a remote default route.",
+      "They always direct their packets to the default gateway, which will be responsible for the packet delivery.",
+      "They search in their own local routing table for a route to the network destination address and pass this information to the default gateway.",
+      "They send a query packet to the default gateway asking for the best route."
+    ],
+    "answer": [0],
+    "explain_short": "Every host has a small routing table (route print / netstat -r). It contains a loopback entry, the connected-network route, and a default route pointing to the gateway.",
+    "explain_lecture": {
+      "module": "ITN-8",
+      "slide": "How a Host Routes — Host Routing Tables",
+      "quote": "On Windows, route print or netstat  -r to display the PC routing table"
+    },
+    "tags": ["ipv4", "host-routing", "routing-table"]
+  },
+  {
+    "id": "ipv4-q17",
+    "module": "ipv4",
+    "source": "itexam-itn-m8",
+    "type": "single",
+    "stem": "When transporting data from real-time applications, such as streaming audio and video, which field in the IPv6 header can be used to inform the routers and switches to maintain the same path for the packets in the same conversation?",
+    "choices": [
+      "Next Header",
+      "Flow Label",
+      "Traffic Class",
+      "Differentiated Services"
+    ],
+    "answer": [1],
+    "explain_short": "The 20-bit Flow Label field marks all packets of one flow so routers keep them on the same path (no reordering). Traffic Class/DS is for QoS priority.",
+    "explain_lecture": {
+      "module": "ITN-8",
+      "slide": "Network Layer — New Terms and Commands",
+      "quote": "Flow Label"
+    },
+    "tags": ["ipv4", "ipv6", "flow-label"]
+  },
+  {
+    "id": "ipv4-q18",
+    "module": "ipv4",
+    "source": "itexam-itn-m8",
+    "type": "multi",
+    "stem": "Which two functions are primary functions of a router? (Choose two.)",
+    "choices": [
+      "packet forwarding",
+      "microsegmentation",
+      "domain name resolution",
+      "path selection",
+      "flow control"
+    ],
+    "answer": [0, 3],
+    "explain_short": "A router's two primary jobs are path selection (consult the routing table) and packet forwarding (send the packet out the chosen interface). Microsegmentation is a switch concept; DNS resolution is an application service.",
+    "explain_lecture": {
+      "module": "ITN-8",
+      "slide": "Module Practice and Quiz — What did I learn in this module?",
+      "quote": "The routing table contains a list of all known network addresses (prefixes) and where to forward the packet."
+    },
+    "tags": ["ipv4", "router-functions"]
+  },
+  {
+    "id": "ipv4-q19",
+    "module": "ipv4",
+    "source": "itexam-itn-m8",
+    "type": "single",
+    "stem": "Which term describes a field in the IPv4 packet header used to identify the next level protocol?",
+    "choices": [
+      "protocol",
+      "destination IPv4 address",
+      "source IPv4 address",
+      "TTL"
+    ],
+    "answer": [0],
+    "explain_short": "The 8-bit Protocol field tells what is encapsulated next: 1=ICMP, 6=TCP, 17=UDP, 89=OSPF.",
+    "explain_lecture": null,
+    "tags": ["ipv4", "ipv4-header", "protocol-field"]
+  },
+  {
+    "id": "ipv4-q20",
+    "module": "ipv4",
+    "source": "itexam-itn-m8",
+    "type": "single",
+    "stem": "Which term describes a field in the IPv4 packet header that contains an 8-bit binary value used to determine the priority of each packet?",
+    "choices": [
+      "differentiated services",
+      "destination IPv4 address",
+      "source IPv4 address",
+      "protocol"
+    ],
+    "answer": [0],
+    "explain_short": "The 8-bit Differentiated Services (DS / DSCP) field carries the QoS priority for the packet.",
+    "explain_lecture": {
+      "module": "ITN-8",
+      "slide": "Network Layer — New Terms and Commands",
+      "quote": "Differentiated Services (DS)"
+    },
+    "tags": ["ipv4", "ipv4-header", "qos", "ds"]
+  },
+  {
+    "id": "ipv4-q21",
+    "module": "ipv4",
+    "source": "itexam-itn-m8",
+    "type": "single",
+    "stem": "Which term describes a field in the IPv4 packet header that contains a 32-bit binary value associated with an interface on the sending device?",
+    "choices": [
+      "source IPv4 address",
+      "destination IPv4 address",
+      "protocol",
+      "TTL"
+    ],
+    "answer": [0],
+    "explain_short": "The Source IPv4 Address (32 bits) is the IP of the sender's interface that originated the packet.",
+    "explain_lecture": null,
+    "tags": ["ipv4", "ipv4-header", "source-address"]
+  },
+  {
+    "id": "ipv4-q22",
+    "module": "ipv4",
+    "source": "itexam-itn-m8",
+    "type": "single",
+    "stem": "Which term describes a field in the IPv4 packet header used to detect corruption in the IPv4 header?",
+    "choices": [
+      "header checksum",
+      "source IPv4 address",
+      "protocol",
+      "TTL"
+    ],
+    "answer": [0],
+    "explain_short": "The Header Checksum field detects bit errors in the IPv4 header. Routers must recompute it because they decrement TTL on each hop.",
+    "explain_lecture": null,
+    "tags": ["ipv4", "ipv4-header", "checksum"]
+  },
+  {
+    "id": "ipv4-q23",
+    "module": "ipv4",
+    "source": "itexam-itn-m8",
+    "type": "single",
+    "stem": "Which term describes a field in the IPv4 packet header that contains a unicast, multicast, or broadcast address?",
+    "choices": [
+      "destination IPv4 address",
+      "protocol",
+      "TTL",
+      "header checksum"
+    ],
+    "answer": [0],
+    "explain_short": "The Destination IPv4 Address holds whichever address type the packet is addressed to: unicast, multicast (224.0.0.0/4), or broadcast (e.g., 255.255.255.255).",
+    "explain_lecture": null,
+    "tags": ["ipv4", "ipv4-header", "destination-address"]
+  },
+  {
+    "id": "ipv4-q24",
+    "module": "ipv4",
+    "source": "itexam-itn-m8",
+    "type": "single",
+    "stem": "Which term describes a field in the IPv4 packet header used to limit the lifetime of a packet?",
+    "choices": [
+      "TTL",
+      "source IPv4 address",
+      "protocol",
+      "header checksum"
+    ],
+    "answer": [0],
+    "explain_short": "The Time-to-Live (TTL) field is decremented by every router. When it reaches 0, the packet is dropped and an ICMP Time Exceeded is returned.",
+    "explain_lecture": {
+      "module": "ITN-8",
+      "slide": "Network Layer — New Terms and Commands",
+      "quote": "Time-to-Live (TTL)"
+    },
+    "tags": ["ipv4", "ipv4-header", "ttl"]
+  },
+  {
+    "id": "ipv4-q25",
+    "module": "ipv4",
+    "source": "itexam-itn-m8",
+    "type": "single",
+    "stem": "Which term describes a field in the IPv4 packet header that contains a 4-bit binary value set to 0100?",
+    "choices": [
+      "version",
+      "source IPv4 address",
+      "protocol",
+      "TTL"
+    ],
+    "answer": [0],
+    "explain_short": "0100 in binary = 4, the value of the Version field for IPv4. (IPv6 uses 0110 = 6.)",
+    "explain_lecture": {
+      "module": "ITN-8",
+      "slide": "Network Layer — New Terms and Commands",
+      "quote": "Version"
+    },
+    "tags": ["ipv4", "ipv4-header", "version"]
+  },
+  {
+    "id": "ipv4-q26",
+    "module": "ipv4",
+    "source": "itexam-itn-m11",
+    "type": "single",
+    "stem": "What is the prefix length notation for the subnet mask 255.255.255.224?",
+    "choices": ["/25", "/26", "/27", "/28"],
+    "answer": [2],
+    "explain_short": "224 in binary = 11100000 — that's 3 ones in the last octet. 24 + 3 = /27.",
+    "explain_lecture": {
+      "module": "ITN-11",
+      "slide": "IPv4 Address Structure — The Prefix Length",
+      "quote": "A prefix length is a less cumbersome method used to identify a subnet mask address. The prefix length is the number of bits set to 1 in the subnet mask. It is written in “slash notation” therefore, count the number of bits in the subnet mask and prepend it with a slash."
+    },
+    "tags": ["ipv4", "subnetting", "prefix-length"]
+  },
+  {
+    "id": "ipv4-q27",
+    "module": "ipv4",
+    "source": "itexam-itn-m11",
+    "type": "single",
+    "stem": "How many valid host addresses are available on an IPv4 subnet that is configured with a /26 mask?",
+    "choices": ["254", "190", "192", "62", "64"],
+    "answer": [3],
+    "explain_short": "/26 leaves 6 host bits. Usable hosts = 2^6 − 2 = 62 (subtract network and broadcast).",
+    "explain_lecture": null,
+    "tags": ["ipv4", "subnetting", "host-count", "calc"]
+  },
+  {
+    "id": "ipv4-q28",
+    "module": "ipv4",
+    "source": "itexam-itn-m11",
+    "type": "single",
+    "stem": "Which subnet mask would be used if 5 host bits are available?",
+    "choices": [
+      "255.255.255.0",
+      "255.255.255.128",
+      "255.255.255.224",
+      "255.255.255.240"
+    ],
+    "answer": [2],
+    "explain_short": "5 host bits → mask has 32 − 5 = 27 network bits → /27 = 255.255.255.224.",
+    "explain_lecture": null,
+    "tags": ["ipv4", "subnetting", "mask"]
+  },
+  {
+    "id": "ipv4-q29",
+    "module": "ipv4",
+    "source": "itexam-itn-m11",
+    "type": "single",
+    "stem": "A network administrator subnets the 192.168.10.0/24 network into subnets with /26 masks. How many equal-sized subnets are created?",
+    "choices": ["1", "2", "4", "8", "16", "64"],
+    "answer": [2],
+    "explain_short": "Borrowing 2 bits from a /24 to get /26 → 2^2 = 4 subnets.",
+    "explain_lecture": null,
+    "tags": ["ipv4", "subnetting", "calc"]
+  },
+  {
+    "id": "ipv4-q30",
+    "module": "ipv4",
+    "source": "itexam-itn-m11",
+    "type": "multi",
+    "stem": "An administrator wants to create four subnetworks from the network address 192.168.1.0/24. What is the network address and subnet mask of the second useable subnet? (Choose two.)",
+    "choices": [
+      "subnetwork 192.168.1.64",
+      "subnet mask 255.255.255.192",
+      "subnetwork 192.168.1.32",
+      "subnet mask 255.255.255.240",
+      "subnetwork 192.168.1.128",
+      "subnetwork 192.168.1.8",
+      "subnet mask 255.255.255.224"
+    ],
+    "answer": [0, 1],
+    "explain_short": "4 subnets need 2 borrowed bits → /26, mask 255.255.255.192. Block size = 64. Subnets: .0, .64, .128, .192. Second usable = 192.168.1.64/26.",
+    "explain_lecture": null,
+    "tags": ["ipv4", "subnetting", "calc"]
+  },
+  {
+    "id": "ipv4-q31",
+    "module": "ipv4",
+    "source": "itexam-itn-m11",
+    "type": "single",
+    "stem": "How many bits must be borrowed from the host portion of an address to accommodate a router with five connected networks?",
+    "choices": ["two", "three", "four", "five"],
+    "answer": [1],
+    "explain_short": "Need ≥5 subnets → 2^n ≥ 5 → n = 3 borrowed bits (gives 8 subnets). 2 bits would only give 4.",
+    "explain_lecture": null,
+    "tags": ["ipv4", "subnetting", "calc"]
+  },
+  {
+    "id": "ipv4-q32",
+    "module": "ipv4",
+    "source": "itexam-itn-m11",
+    "type": "single",
+    "stem": "How many host addresses are available on the 192.168.10.128/26 network?",
+    "choices": ["30", "32", "60", "62", "64"],
+    "answer": [3],
+    "explain_short": "/26 = 6 host bits → 2^6 − 2 = 62 usable hosts.",
+    "explain_lecture": null,
+    "tags": ["ipv4", "subnetting", "host-count", "calc"]
+  },
+  {
+    "id": "ipv4-q33",
+    "module": "ipv4",
+    "source": "itexam-itn-m11",
+    "type": "single",
+    "stem": "How many host addresses are available on the network 172.16.128.0 with a subnet mask of 255.255.252.0?",
+    "choices": ["510", "512", "1022", "1024", "2046", "2048"],
+    "answer": [2],
+    "explain_short": "255.255.252.0 = /22 → 10 host bits → 2^10 − 2 = 1022 usable hosts.",
+    "explain_lecture": null,
+    "tags": ["ipv4", "subnetting", "host-count", "calc"]
+  },
+  {
+    "id": "ipv4-q34",
+    "module": "ipv4",
+    "source": "itexam-itn-m11",
+    "type": "multi",
+    "stem": "What three blocks of addresses are defined by RFC 1918 for private network use? (Choose three.)",
+    "choices": [
+      "10.0.0.0/8",
+      "172.16.0.0/12",
+      "192.168.0.0/16",
+      "100.64.0.0/14",
+      "169.254.0.0/16",
+      "239.0.0.0/8"
+    ],
+    "answer": [0, 1, 2],
+    "explain_short": "RFC 1918 private blocks: 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16. 169.254/16 is link-local (APIPA), 100.64/10 is CGN, 239/8 is multicast.",
+    "explain_lecture": {
+      "module": "ITN-11",
+      "slide": "Types of IPv4 Addresses — Public and Private IPv4 Addresses",
+      "quote": "As defined in in RFC 1918, public IPv4 addresses are globally routed between internet service provider (ISP) routers. However, private addresses are not globally routable."
+    },
+    "tags": ["ipv4", "rfc1918", "private-addresses"]
+  },
+  {
+    "id": "ipv4-q35",
+    "module": "ipv4",
+    "source": "itexam-itn-m11",
+    "type": "single",
+    "stem": "An administrator must send a message to everyone on the router A network. What is the broadcast address for network 172.16.16.0/22?",
+    "choices": [
+      "172.16.16.255",
+      "172.16.20.255",
+      "172.16.19.255",
+      "172.16.23.255",
+      "172.16.255.255"
+    ],
+    "answer": [2],
+    "explain_short": "/22 mask = 255.255.252.0. Block size in 3rd octet = 4. Subnet 172.16.16.0/22 spans 172.16.16.0–172.16.19.255, so broadcast is 172.16.19.255.",
+    "explain_lecture": null,
+    "tags": ["ipv4", "subnetting", "broadcast", "calc"]
+  },
+  {
+    "id": "ipv4-q36",
+    "module": "ipv4",
+    "source": "itexam-itn-m11",
+    "type": "single",
+    "stem": "A site administrator has been told that a particular network at the site must accommodate 126 hosts. Which subnet mask would be used that contains the required number of host bits?",
+    "choices": [
+      "255.255.255.0",
+      "255.255.255.128",
+      "255.255.255.224",
+      "255.255.255.240"
+    ],
+    "answer": [1],
+    "explain_short": "126 hosts → 7 host bits (2^7 − 2 = 126). 32 − 7 = /25 → 255.255.255.128.",
+    "explain_lecture": null,
+    "tags": ["ipv4", "subnetting", "calc"]
+  },
+  {
+    "id": "ipv4-q37",
+    "module": "ipv4",
+    "source": "itexam-itn-m11",
+    "type": "single",
+    "stem": "Considering the addresses already used and having to remain within the 10.16.10.0/24 network range, which subnet address could be assigned to the network containing 25 hosts?",
+    "choices": [
+      "10.16.10.160/26",
+      "10.16.10.128/28",
+      "10.16.10.64/27",
+      "10.16.10.224/26",
+      "10.16.10.240/27",
+      "10.16.10.240/28"
+    ],
+    "answer": [2],
+    "explain_short": "25 hosts need 5 host bits → /27. Of the available unused ranges, 10.16.10.64/27 fits (provides 30 usable hosts).",
+    "explain_lecture": null,
+    "tags": ["ipv4", "subnetting", "vlsm", "calc"]
+  },
+  {
+    "id": "ipv4-q38",
+    "module": "ipv4",
+    "source": "itexam-itn-m11",
+    "type": "single",
+    "stem": "What is the usable number of host IP addresses on a network that has a /26 mask?",
+    "choices": ["256", "254", "64", "62", "32", "16"],
+    "answer": [3],
+    "explain_short": "/26 = 6 host bits → 2^6 = 64 total, 64 − 2 = 62 usable.",
+    "explain_lecture": null,
+    "tags": ["ipv4", "subnetting", "calc"]
+  },
+  {
+    "id": "ipv4-q39",
+    "module": "ipv4",
+    "source": "itexam-itn-m11",
+    "type": "single",
+    "stem": "Which address prefix range is reserved for IPv4 multicast?",
+    "choices": [
+      "240.0.0.0 – 254.255.255.255",
+      "224.0.0.0 – 239.255.255.255",
+      "169.254.0.0 – 169.254.255.255",
+      "127.0.0.0 – 127.255.255.255"
+    ],
+    "answer": [1],
+    "explain_short": "Class D (224.0.0.0/4 = 224.0.0.0–239.255.255.255) is reserved for multicast. 240/4 is experimental/reserved, 169.254/16 is link-local, 127/8 is loopback.",
+    "explain_lecture": {
+      "module": "ITN-11",
+      "slide": "Types of IPv4 Addresses — Legacy Classful Addressing",
+      "quote": "Class D (224.0.0.0 to 239.0.0.0)"
+    },
+    "tags": ["ipv4", "multicast", "special-addresses"]
+  },
+  {
+    "id": "ipv4-q40",
+    "module": "ipv4",
+    "source": "itexam-itn-m11",
+    "type": "single",
+    "stem": "A high school in New York (school A) is using videoconferencing technology to establish student interactions with another high school (school B) in Russia. The videoconferencing is conducted between two end devices through the Internet. The network administrator of school A configures the end device with the IP address 209.165.201.10. The administrator sends a request for the IP address for the end device in school B and the response is 192.168.25.10. Neither school is using a VPN. The administrator knows immediately that this IP will not work. Why?",
+    "choices": [
+      "This is a loopback address.",
+      "This is a link-local address.",
+      "This is a private IP address.",
+      "There is an IP address conflict."
+    ],
+    "answer": [2],
+    "explain_short": "192.168.0.0/16 is RFC 1918 private space. Private addresses are not routed across the public Internet, so school A cannot reach school B at that address without NAT/VPN.",
+    "explain_lecture": {
+      "module": "ITN-11",
+      "slide": "Types of IPv4 Addresses — Public and Private IPv4 Addresses",
+      "quote": "Private IPv4 addresses are not unique and can be used internally within any network."
+    },
+    "tags": ["ipv4", "private-addresses", "rfc1918"]
+  },
+  {
+    "id": "ipv4-q41",
+    "module": "ipv4",
+    "source": "itexam-itn-m11",
+    "type": "multi",
+    "stem": "Which three addresses are valid public addresses? (Choose three.)",
+    "choices": [
+      "198.133.219.17",
+      "192.168.1.245",
+      "10.15.250.5",
+      "128.107.12.117",
+      "172.31.1.25",
+      "64.104.78.227"
+    ],
+    "answer": [0, 3, 5],
+    "explain_short": "Private blocks: 10/8, 172.16-31/12, 192.168/16. Everything else is public. So 192.168.1.245, 10.15.250.5, and 172.31.1.25 are private; the other three are public.",
+    "explain_lecture": {
+      "module": "ITN-11",
+      "slide": "Types of IPv4 Addresses — Public and Private IPv4 Addresses",
+      "quote": "As defined in in RFC 1918, public IPv4 addresses are globally routed between internet service provider (ISP) routers. However, private addresses are not globally routable."
+    },
+    "tags": ["ipv4", "public-addresses", "rfc1918"]
+  },
+  {
+    "id": "ipv4-q42",
+    "module": "ipv4",
+    "source": "itexam-itn-m11",
+    "type": "single",
+    "stem": "A message is sent to all hosts on a remote network. Which type of message is it?",
+    "choices": [
+      "limited broadcast",
+      "multicast",
+      "directed broadcast",
+      "unicast"
+    ],
+    "answer": [2],
+    "explain_short": "A directed broadcast (e.g., 172.16.16.255 for 172.16.16.0/22) targets all hosts on a specific remote subnet. A limited broadcast (255.255.255.255) stays on the local network.",
+    "explain_lecture": {
+      "module": "ITN-11",
+      "slide": "IPv4 Unicast, Broadcast, and Multicast — Broadcast",
+      "quote": "Broadcast transmission is sending a packet to all other destination IP addresses."
+    },
+    "tags": ["ipv4", "broadcast", "directed-broadcast"]
+  },
+  {
+    "id": "ipv4-q43",
+    "module": "ipv4",
+    "source": "itexam-itn-m11",
+    "type": "multi",
+    "stem": "A company has a network address of 192.168.1.64 with a subnet mask of 255.255.255.192. The company wants to create two subnetworks that would contain 10 hosts and 18 hosts respectively. Which two networks would achieve that? (Choose two.)",
+    "choices": [
+      "192.168.1.16/28",
+      "192.168.1.64/27",
+      "192.168.1.128/27",
+      "192.168.1.96/28",
+      "192.168.1.192/28"
+    ],
+    "answer": [1, 3],
+    "explain_short": "18 hosts → /27 (30 usable). 10 hosts → /28 (14 usable). Both must fall inside 192.168.1.64/26 (64–127). 192.168.1.64/27 (64–95) and 192.168.1.96/28 (96–111) fit.",
+    "explain_lecture": null,
+    "tags": ["ipv4", "vlsm", "subnetting", "calc"]
+  },
+  {
+    "id": "ipv4-q44",
+    "module": "ipv4",
+    "source": "itexam-itn-m11",
+    "type": "single",
+    "stem": "Which subnet would include the address 192.168.1.96 as a usable host address?",
+    "choices": [
+      "192.168.1.64/26",
+      "192.168.1.32/27",
+      "192.168.1.32/28",
+      "192.168.1.64/29"
+    ],
+    "answer": [0],
+    "explain_short": "192.168.1.64/26 spans .64–.127 with usable .65–.126, which includes .96. The other masks either don't reach .96 or have it as broadcast.",
+    "explain_lecture": null,
+    "tags": ["ipv4", "subnetting", "calc"]
+  },
+  {
+    "id": "ipv4-q45",
+    "module": "ipv4",
+    "source": "itexam-itn-m11",
+    "type": "single",
+    "stem": "A host is transmitting a broadcast. Which host or hosts will receive it?",
+    "choices": [
+      "all hosts in the same subnet",
+      "a specially defined group of hosts",
+      "the closest neighbor on the same network",
+      "all hosts on the Internet"
+    ],
+    "answer": [0],
+    "explain_short": "An IPv4 broadcast (255.255.255.255 or directed broadcast) is delivered to every host in the same broadcast domain / subnet, but routers do not forward broadcasts off the LAN.",
+    "explain_lecture": {
+      "module": "ITN-11",
+      "slide": "Network Segmentation — Broadcast Domains and Segmentation",
+      "quote": "Each router interface connects to a broadcast domain and broadcasts are only propagated within that specific broadcast domain."
+    },
+    "tags": ["ipv4", "broadcast"]
+  },
+  {
+    "id": "ipv4-q46",
+    "module": "ipv4",
+    "source": "itexam-itn-m11",
+    "type": "single",
+    "stem": "A host is transmitting a unicast. Which host or hosts will receive it?",
+    "choices": [
+      "one specific host",
+      "a specially defined group of hosts",
+      "all hosts on the Internet",
+      "the closest neighbor on the same network"
+    ],
+    "answer": [0],
+    "explain_short": "Unicast = one-to-one delivery to a single destination IP.",
+    "explain_lecture": {
+      "module": "ITN-11",
+      "slide": "IPv4 Unicast, Broadcast, and Multicast — Unicast",
+      "quote": "Unicast transmission is sending a packet to one destination IP address."
+    },
+    "tags": ["ipv4", "unicast"]
+  },
+  {
+    "id": "ipv4-q47",
+    "module": "ipv4",
+    "source": "itexam-itn-m11",
+    "type": "single",
+    "stem": "A host is transmitting a multicast. Which host or hosts will receive it?",
+    "choices": [
+      "a specially defined group of hosts",
+      "the closest neighbor on the same network",
+      "one specific host",
+      "directly connected network devices"
+    ],
+    "answer": [0],
+    "explain_short": "Multicast (224.0.0.0/4) goes to the group of hosts that have joined that multicast group — not everyone, not just one.",
+    "explain_lecture": {
+      "module": "ITN-11",
+      "slide": "IPv4 Unicast, Broadcast, and Multicast — Multicast",
+      "quote": "Multicast transmission is sending a packet to a multicast address group."
+    },
+    "tags": ["ipv4", "multicast"]
+  }
+]

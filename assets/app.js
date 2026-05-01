@@ -5,7 +5,30 @@ const grid = document.getElementById("moduleGrid");
 const stats = document.getElementById("stats");
 const resetBtn = document.getElementById("resetBtn");
 
+function renderSkeletons() {
+  // 8 module-card skeletons match the manifest length
+  grid.innerHTML = Array.from({ length: 8 }).map(() => `
+    <div class="module-card">
+      <span class="skeleton sk-line lg sk-w-60"></span>
+      <span class="skeleton sk-line sk-w-40"></span>
+      <span class="skeleton sk-bar sk-w-100"></span>
+      <span class="skeleton sk-line sk-w-30"></span>
+      <div style="display:flex;gap:6px;margin-top:4px;">
+        <span class="skeleton sk-pill"></span>
+        <span class="skeleton sk-pill"></span>
+      </div>
+    </div>
+  `).join("");
+  stats.innerHTML = Array.from({ length: 3 }).map(() => `
+    <div class="stat">
+      <span class="skeleton sk-line lg sk-w-50" style="margin:0 auto 6px;"></span>
+      <span class="skeleton sk-line sk-w-70" style="margin:0 auto;height:9px;"></span>
+    </div>
+  `).join("");
+}
+
 async function init() {
+  renderSkeletons();
   const manifest = await loadManifest();
   const allQs = await loadAllQuestions(manifest);
   const progress = storage.getProgress();

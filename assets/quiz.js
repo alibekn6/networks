@@ -18,7 +18,27 @@ const state = {
 };
 
 if (isResults) renderResults();
-else initQuiz();
+else { renderQuizSkeleton(); initQuiz(); }
+
+function renderQuizSkeleton() {
+  const card = document.getElementById("qcard");
+  if (!card) return;
+  card.innerHTML = `
+    <div class="qmeta">
+      <span class="skeleton sk-line sk-w-20" style="height:11px;"></span>
+    </div>
+    <span class="skeleton sk-line lg sk-w-80" style="margin-bottom:6px;"></span>
+    <span class="skeleton sk-line lg sk-w-60" style="margin-bottom:18px;"></span>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <span class="skeleton sk-block"></span>
+      <span class="skeleton sk-block"></span>
+      <span class="skeleton sk-block"></span>
+      <span class="skeleton sk-block"></span>
+    </div>
+  `;
+  const t = document.getElementById("progressText");
+  if (t) t.textContent = "— / —";
+}
 
 // =========================================================
 // QUIZ INIT

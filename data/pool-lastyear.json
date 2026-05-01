@@ -15,17 +15,38 @@
     "explain_short": "127.0.0.0/8 is reserved for loopback (127.0.0.1 is the typical address used for self-tests).",
     "explain_lecture": {
       "module": "ITN-11",
-      "slide": "Special-Use Addresses",
-      "quote": "Loopback addresses (127.0.0.0/8 or 127.0.0.1 to 127.255.255.255) are used by a host to direct traffic to itself. The 224.0.0.0/4 range is reserved for multicast, and 169.254.0.0/16 is link-local."
+      "slide": "Types of IPv4 Addresses — Special Use IPv4 Addresses",
+      "quote": "Loopback addresses 127.0.0.0 /8 (127.0.0.1 to 127.255.255.254) Commonly identified as only 127.0.0.1 Used on a host to test if TCP/IP is operational."
     },
     "tags": ["ipv4", "special-addresses"]
+  },
+  {
+    "id": "ly-q02",
+    "module": "ipv4",
+    "source": "lastyear-2025-photo1-q2",
+    "type": "single",
+    "stem": "A high school in New York (school A) is using videoconferencing technology to establish student interactions with another high school (school B) in Russia. The videoconferencing is conducted between two end devices through the internet. The network administrator of school A configures the end device with IP address 209.165.201.10. The administrator sends a request for the IP address for the end device in school B and the response is 209.165.201.10. Neither school is using a VPN. The administrator knows immediately that this IP will not work. Why?",
+    "choices": [
+      "This is a loopback address.",
+      "This is a link-local address.",
+      "This is a private IP address.",
+      "There is an IP address conflict."
+    ],
+    "answer": [3],
+    "explain_short": "Both schools were given the same public IPv4 address (209.165.201.10). On the public internet every host needs a unique address, so they have an IP address conflict and cannot communicate.",
+    "explain_lecture": {
+      "module": "ITN-11",
+      "slide": "Types of IPv4 Addresses — Public and Private IPv4 Addresses",
+      "quote": "As defined in in RFC 1918, public IPv4 addresses are globally routed between internet service provider (ISP) routers."
+    },
+    "tags": ["ipv4", "public-addresses", "conflict"]
   },
   {
     "id": "ly-q03",
     "module": "ipv4",
     "source": "lastyear-2025-photo1-q3",
     "type": "multi",
-    "stem": "Which addresses are valid private addresses? (Choose all that apply.)",
+    "stem": "Which addresses are valid private addresses?",
     "choices": [
       "198.133.219.17",
       "192.168.1.245",
@@ -34,20 +55,41 @@
       "172.31.1.25"
     ],
     "answer": [1, 2, 4],
-    "explain_short": "RFC 1918 private blocks: 10.0.0.0/8, 172.16.0.0/12 (172.16-31.x.x), and 192.168.0.0/16. Other choices are public.",
+    "explain_short": "RFC 1918 private blocks: 10.0.0.0/8, 172.16.0.0/12 (172.16-31.x.x), and 192.168.0.0/16. 198.133.219.17 and 128.107.12.117 are public.",
     "explain_lecture": {
       "module": "ITN-11",
-      "slide": "Private vs Public IPv4 Addresses",
-      "quote": "Private addresses are defined in RFC 1918 and include 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16. They cannot be routed on the public internet and are translated via NAT."
+      "slide": "Types of IPv4 Addresses — Public and Private IPv4 Addresses",
+      "quote": "As defined in in RFC 1918, public IPv4 addresses are globally routed between internet service provider (ISP) routers. However, private addresses are not globally routable."
     },
     "tags": ["ipv4", "private-addresses", "rfc1918"]
+  },
+  {
+    "id": "ly-q04",
+    "module": "ipv4",
+    "source": "lastyear-2025-photo1-q4",
+    "type": "single",
+    "stem": "A message is sent to dedicated host on a remote network. Which type of message is it?",
+    "choices": [
+      "limited broadcast",
+      "multicast",
+      "directed broadcast",
+      "unicast"
+    ],
+    "answer": [3],
+    "explain_short": "A message sent to one dedicated host (a single specific destination) is a unicast.",
+    "explain_lecture": {
+      "module": "ITN-11",
+      "slide": "IPv4 Unicast, Broadcast, and Multicast — Unicast",
+      "quote": "Unicast transmission is sending a packet to one destination IP address."
+    },
+    "tags": ["ipv4", "unicast"]
   },
   {
     "id": "ly-q05",
     "module": "ipv6",
     "source": "lastyear-2025-photo1-q5",
     "type": "single",
-    "stem": "What is used in the EUI-64 process to create an IPv6 interface ID on an IPv6-enabled interface?",
+    "stem": "What is used in the EUI-64 process to create an IPv6 interface ID on an IPV6 enabled interface?",
     "choices": [
       "the MAC address of the IPv6 enabled interface",
       "a randomly generated 64-bit hexadecimal address",
@@ -58,10 +100,74 @@
     "explain_short": "EUI-64 takes the 48-bit MAC, splits it, inserts FFFE in the middle, and flips the 7th bit of the first byte (U/L bit).",
     "explain_lecture": {
       "module": "ITN-12",
-      "slide": "Dynamic Addressing for IPv6 GUAs (EUI-64)",
-      "quote": "The EUI-64 process uses the 48-bit Ethernet MAC address of the client. The MAC address is then split and the 16-bit value FFFE (in hexadecimal) is inserted between the OUI and the device identifier. The 7th bit of the first byte is inverted."
+      "slide": "Dynamic Addressing for IPv6 GUAs — EUI-64 Process",
+      "quote": "A 16 bit value of fffe (in hexadecimal) is inserted into the middle of the 48-bit Ethernet MAC address of the client. The 7th bit of the client MAC address is reversed from binary 0 to 1."
     },
     "tags": ["ipv6", "eui-64", "interface-id"]
+  },
+  {
+    "id": "ly-q06",
+    "module": "icmp",
+    "source": "lastyear-2025-photo1-q6",
+    "type": "single",
+    "stem": "What is the purpose of ICMP message?",
+    "choices": [
+      "to inform routers about network topology changes",
+      "to ensure the delivery of an IP packet",
+      "to provide back response related to issues that are related to the processing of IP packets",
+      "to monitor the process of a domain name to IP address resolution"
+    ],
+    "answer": [2],
+    "explain_short": "ICMP provides feedback about issues with IP packet processing — it is the feedback/diagnostics protocol for IP, but it does NOT make IP reliable.",
+    "explain_lecture": {
+      "module": "ITN-13",
+      "slide": "ICMP Messages — ICMPv4 and ICMPv6 Messages",
+      "quote": "Internet Control Message Protocol (ICMP) provides feedback about issues related to the processing of IP packets under certain conditions."
+    },
+    "tags": ["icmp", "purpose"]
+  },
+  {
+    "id": "ly-q07",
+    "module": "ipv4",
+    "source": "lastyear-2025-photo1-q7",
+    "type": "single",
+    "stem": "From the list below pls specify experimental address?",
+    "choices": [
+      "64.102.90.23.",
+      "169.254.1.5.",
+      "127.0.0.1.",
+      "240.2.6.255.",
+      "172.19.20.5."
+    ],
+    "answer": [3],
+    "explain_short": "Class E (240.0.0.0–255.255.255.255) is reserved for experimental use. The other choices are public, link-local (APIPA), loopback, and private.",
+    "explain_lecture": {
+      "module": "ITN-11",
+      "slide": "Types of IPv4 Addresses — Legacy Classful Addressing",
+      "quote": "Class E (240.0.0.0 – 255.0.0.0)"
+    },
+    "tags": ["ipv4", "classful", "experimental"]
+  },
+  {
+    "id": "ly-q08",
+    "module": "ipv6",
+    "source": "lastyear-2025-photo1-q8",
+    "type": "single",
+    "stem": "Which is the compressed format of the IPv6 address 2002:0042:0010:c400:0000:0000:0000:0909?",
+    "choices": [
+      "2002:42:10:c400::909",
+      "2002:4200::25:1090:0:99",
+      "2002:420:c4:1008:25:190::990",
+      "2002:42::25:1090:0:99"
+    ],
+    "answer": [0],
+    "explain_short": "Strip leading zeros (0042→42, 0010→10, 0909→909) and replace the three contiguous zero hextets with ::.",
+    "explain_lecture": {
+      "module": "ITN-12",
+      "slide": "IPv6 Address Representation — Rule 2 — Double Colon",
+      "quote": "A double colon (::) can replace any single, contiguous string of one or more 16-bit hextets consisting of all zeros."
+    },
+    "tags": ["ipv6", "compression"]
   },
   {
     "id": "ly-q09",
@@ -74,10 +180,27 @@
     "explain_short": "224 = 11100000 → 3 bits set in the last octet. 24 + 3 = /27.",
     "explain_lecture": {
       "module": "ITN-11",
-      "slide": "IPv4 Subnet Mask — Prefix Length",
-      "quote": "A prefix length is a less cumbersome method used to identify a subnet mask address. The prefix length is the number of bits set to 1 in the subnet mask. It is written in 'slash notation'."
+      "slide": "IPv4 Address Structure — The Prefix Length",
+      "quote": "A prefix length is a less cumbersome method used to identify a subnet mask address. The prefix length is the number of bits set to 1 in the subnet mask. It is written in \"slash notation\"."
     },
     "tags": ["ipv4", "subnetting", "prefix-length"]
+  },
+  {
+    "id": "ly-q10",
+    "module": "ipv4",
+    "source": "lastyear-2025-photo1-q10",
+    "type": "single",
+    "stem": "Which subnet mask would be used if 5 host bits are available?",
+    "choices": [
+      "255.255.255.0",
+      "255.255.255.128",
+      "255.255.255.224",
+      "255.255.255.240"
+    ],
+    "answer": [2],
+    "explain_short": "5 host bits → mask has 32 − 5 = 27 network bits → /27 = 255.255.255.224.",
+    "explain_lecture": null,
+    "tags": ["ipv4", "subnetting", "mask"]
   },
   {
     "id": "ly-q11",
@@ -93,13 +216,724 @@
       "3FFE:1044:0000:0000:00AB::57"
     ],
     "answer": [2],
-    "explain_short": "Rule 1: drop leading zeros in each hextet. Rule 2: replace ONE longest run of all-zero hextets with ::. You can only use :: once.",
+    "explain_short": "Drop leading zeros in each hextet and replace the longest run of all-zero hextets with :: (only once). The two zero hextets between AB and 57 are the longer run.",
     "explain_lecture": {
       "module": "ITN-12",
-      "slide": "IPv6 Address Formats — Compression",
-      "quote": "Rule 2 — Omit All 0 Segments: A double colon (::) can replace any single, contiguous string of one or more 16-bit segments (hextets) consisting of all 0s. The double colon (::) can only be used once within an address."
+      "slide": "IPv6 Address Representation — Rule 2 — Double Colon",
+      "quote": "A double colon (::) can replace any single, contiguous string of one or more 16-bit hextets consisting of all zeros. Note: The double colon (::) can only be used once within an address."
     },
     "tags": ["ipv6", "compression"]
+  },
+  {
+    "id": "ly-q12",
+    "module": "ipv4",
+    "source": "lastyear-2025-photo1-q12",
+    "type": "single",
+    "stem": "Which subnet mask would be used if 5 host bits are available?",
+    "choices": [
+      "255.255.255.0",
+      "255.255.255.128",
+      "255.255.255.224",
+      "255.255.255.240"
+    ],
+    "answer": [2],
+    "explain_short": "5 host bits → mask has 32 − 5 = 27 network bits → /27 = 255.255.255.224. (Duplicate of Q10 on the printed paper.)",
+    "explain_lecture": null,
+    "tags": ["ipv4", "subnetting", "mask"]
+  },
+  {
+    "id": "ly-q13",
+    "module": "ipv6",
+    "source": "lastyear-2025-photo1-q13",
+    "type": "single",
+    "stem": "What type of IPv6 address is FE80::1?",
+    "choices": ["loopback", "link-local", "multicast", "global unicast"],
+    "answer": [1],
+    "explain_short": "FE80::/10 is the link-local prefix. Loopback is ::1, multicast is FF00::/8, GUA starts with 2 or 3.",
+    "explain_lecture": {
+      "module": "ITN-12",
+      "slide": "IPv6 Address Types — IPv6 LLA",
+      "quote": "IPv6 LLAs are in the fe80::/10 range."
+    },
+    "tags": ["ipv6", "link-local", "address-types"]
+  },
+  {
+    "id": "ly-q14",
+    "module": "icmp",
+    "source": "lastyear-2025-photo1-q14",
+    "type": "single",
+    "stem": "What is the purpose of ICMP messages?",
+    "choices": [
+      "to inform routers about network topology changes",
+      "to ensure the delivery of an IP packet",
+      "to provide feedback of IP packet transmissions",
+      "to monitor the process of a domain name to IP address resolution"
+    ],
+    "answer": [2],
+    "explain_short": "ICMP is the feedback mechanism for IP — it reports problems (unreachable, expired, etc.) but does NOT make IP reliable.",
+    "explain_lecture": {
+      "module": "ITN-13",
+      "slide": "ICMP Messages — ICMPv4 and ICMPv6 Messages",
+      "quote": "Internet Control Message Protocol (ICMP) provides feedback about issues related to the processing of IP packets under certain conditions."
+    },
+    "tags": ["icmp", "purpose"]
+  },
+  {
+    "id": "ly-q15",
+    "module": "ipv6",
+    "source": "lastyear-2025-photo2-q15",
+    "type": "single",
+    "stem": "A host is transmitting a multicast. Which host or hosts will receive it?",
+    "choices": [
+      "a specially defined group of hosts",
+      "the closest neighbor on the same network",
+      "one specific host",
+      "directly connected network devices"
+    ],
+    "answer": [0],
+    "explain_short": "A multicast packet is delivered only to the specifically defined group of hosts that have joined that multicast group — not all hosts.",
+    "explain_lecture": {
+      "module": "ITN-11",
+      "slide": "IPv4 Unicast, Broadcast, and Multicast — Multicast",
+      "quote": "Multicast transmission is sending a packet to a multicast address group."
+    },
+    "tags": ["ipv6", "multicast"]
+  },
+  {
+    "id": "ly-q16",
+    "module": "ipv6",
+    "source": "lastyear-2025-photo2-q16",
+    "type": "single",
+    "stem": "Which is the compressed format of the IPv6 address 2002:0420:00c4:1008:0025:0190:0000:0990?",
+    "choices": [
+      "2002:420:c4:1008:25:190::990",
+      "2002:42:10:c400::909",
+      "2002:4200::25:1090:0:99",
+      "2002:42::25:1090:0:99"
+    ],
+    "answer": [0],
+    "explain_short": "Strip leading zeros from each hextet, then replace the single zero hextet at position 7 with ::.",
+    "explain_lecture": {
+      "module": "ITN-12",
+      "slide": "IPv6 Address Representation — Rule 1 – Omit Leading Zero",
+      "quote": "The first rule to help reduce the notation of IPv6 addresses is to omit any leading 0s (zeros)."
+    },
+    "tags": ["ipv6", "compression"]
+  },
+  {
+    "id": "ly-q17",
+    "module": "ipv6",
+    "source": "lastyear-2025-photo2-q17",
+    "type": "single",
+    "stem": "Which type of IPv6 address refers to any unicast address that is assigned to multiple hosts?",
+    "choices": ["unique local", "global unicast", "link-local", "anycast"],
+    "answer": [3],
+    "explain_short": "Anycast: a single unicast address configured on multiple devices; routing delivers to the nearest one.",
+    "explain_lecture": {
+      "module": "ITN-12",
+      "slide": "IPv6 Address Types — Unicast, Multicast, Anycast",
+      "quote": "Anycast – This is any IPv6 unicast address that can be assigned to multiple devices. A packet sent to an anycast address is routed to the nearest device having that address."
+    },
+    "tags": ["ipv6", "anycast", "address-types"]
+  },
+  {
+    "id": "ly-q18",
+    "module": "transport",
+    "source": "lastyear-2025-photo2-q18",
+    "type": "single",
+    "stem": "Which transport layer feature is used to guarantee session establishment?",
+    "choices": [
+      "UDP ACK flag",
+      "TCP 3-way handshake",
+      "UDP sequence number",
+      "TCP port number"
+    ],
+    "answer": [1],
+    "explain_short": "TCP's three-way handshake (SYN, SYN-ACK, ACK) negotiates and synchronizes the session before any data is sent. UDP has no session.",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "TCP Connection Establishment",
+      "quote": "Step 1: The initiating client requests a client-to-server communication session with the server. Step 2: The server acknowledges the client-to-server communication session and requests a server-to-client communication session. Step 3: The initiating client acknowledges the server-to-client communication session."
+    },
+    "tags": ["tcp", "handshake", "session"]
+  },
+  {
+    "id": "ly-q19",
+    "module": "application",
+    "source": "lastyear-2025-photo2-q19",
+    "type": "single",
+    "stem": "What is the purpose of the 'ip helper-address' command on a router sub-interface?",
+    "choices": [
+      "To assign a static IP",
+      "To exclude IPs from DHCP",
+      "To forward DHCP requests to another VLAN",
+      "To enable routing between VLANs"
+    ],
+    "answer": [2],
+    "explain_short": "ip helper-address turns a router into a DHCP relay agent — it forwards client broadcast DHCP requests as unicast to a DHCP server on a different subnet/VLAN.",
+    "explain_lecture": null,
+    "tags": ["dhcp", "ip-helper-address", "relay"]
+  },
+  {
+    "id": "ly-q20",
+    "module": "icmp",
+    "source": "lastyear-2025-photo2-q20",
+    "type": "single",
+    "stem": "A user issues a ping 10.0.0.103 command and receives a response that includes a code of 1. What does this code represent?",
+    "choices": [
+      "host unreachable",
+      "beyond scope of the source address",
+      "address unreachable",
+      "communication with the destination administratively prohibited"
+    ],
+    "answer": [0],
+    "explain_short": "ICMPv4 Destination Unreachable codes: 0=net unreachable, 1=host unreachable, 2=protocol unreachable, 3=port unreachable.",
+    "explain_lecture": {
+      "module": "ITN-13",
+      "slide": "ICMP Messages — Destination or Service Unreachable",
+      "quote": "A few Destination Unreachable codes for ICMPv4 are as follows:\n0 - Net unreachable\n1 - Host unreachable\n2 - Protocol unreachable\n3 - Port unreachable"
+    },
+    "tags": ["icmp", "icmpv4", "destination-unreachable", "codes"]
+  },
+  {
+    "id": "ly-q21",
+    "module": "icmp",
+    "source": "lastyear-2025-photo2-q21",
+    "type": "single",
+    "stem": "A user issues a ping fe80:65ab:dcc1::100 command and receives a response that includes a code of 3. What does this code represent?",
+    "choices": [
+      "address unreachable",
+      "communication with the destination administratively prohibited",
+      "beyond scope of the source address",
+      "no route to destination"
+    ],
+    "answer": [0],
+    "explain_short": "ICMPv6 Destination Unreachable code 3 = Address unreachable (host present in the network is not reachable).",
+    "explain_lecture": {
+      "module": "ITN-13",
+      "slide": "ICMP Messages — Destination or Service Unreachable",
+      "quote": "A few Destination Unreachable codes for ICMPv6 are as follows:\n0 - No route to destination\n1 - Communication with the destination is administratively prohibited (e.g., firewall)\n2 – Beyond scope of the source address\n3 - Address unreachable\n4 - Port unreachable"
+    },
+    "tags": ["icmp", "icmpv6", "destination-unreachable", "codes"]
+  },
+  {
+    "id": "ly-q22",
+    "module": "transport",
+    "source": "lastyear-2025-photo2-q22",
+    "type": "multi",
+    "stem": "Which three fields aren't used in a UDP segment header?",
+    "choices": [
+      "Window Size",
+      "Source Port",
+      "Acknowledgment Number",
+      "Checksum",
+      "Sequence Number"
+    ],
+    "answer": [0, 2, 4],
+    "explain_short": "The UDP header has only 4 fields: source port, destination port, length, checksum. So Window Size, Acknowledgment Number, and Sequence Number are NOT in a UDP header (they are TCP-only).",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "UDP Overview — UDP Header",
+      "quote": "The UDP header is far simpler than the TCP header because it only has four fields and requires 8 bytes (i.e. 64 bits)."
+    },
+    "tags": ["udp", "header", "fields"]
+  },
+  {
+    "id": "ly-q23",
+    "module": "transport",
+    "source": "lastyear-2025-photo2-q23",
+    "type": "single",
+    "stem": "At the transport layer, TCP uses the .......... in the header of each TCP segment to reassemble the segments into the correct order?",
+    "choices": [
+      "port numbers",
+      "sequence numbers",
+      "acknowledgment numbers",
+      "fragment numbers"
+    ],
+    "answer": [1],
+    "explain_short": "TCP uses sequence numbers in the segment header to put segments back into the correct order at the receiver.",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "Reliability and Flow Control — TCP Reliability- Guaranteed and Ordered Delivery",
+      "quote": "All the data must be received and the data in these segments must be reassembled into the original order. Sequence numbers are assigned in the header of each packet to achieve this goal."
+    },
+    "tags": ["tcp", "sequence-numbers", "reordering"]
+  },
+  {
+    "id": "ly-q24",
+    "module": "transport",
+    "source": "lastyear-2025-photo2-q24",
+    "type": "single",
+    "stem": ".......... are used to identify exactly which protocol and process is requesting or responding to a request?",
+    "choices": [
+      "timing and synchronization.",
+      "destination and source port numbers.",
+      "destination and source physical addresses.",
+      "destination and source logical network addresses."
+    ],
+    "answer": [1],
+    "explain_short": "Port numbers in the transport-layer header identify the source and destination applications/processes — telling the receiver which process should get the data.",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "Port Numbers — Multiple Separate Communications",
+      "quote": "The source port number is associated with the originating application on the local host whereas the destination port number is associated with the destination application on the remote host."
+    },
+    "tags": ["transport", "ports"]
+  },
+  {
+    "id": "ly-q25",
+    "module": "transport",
+    "source": "lastyear-2025-photo2-q25",
+    "type": "multi",
+    "stem": "Which two characteristics aren't associated with UDP sessions?",
+    "choices": [
+      "Destination devices receive traffic with minimal delay.",
+      "Transmitted data segments are tracked.",
+      "Destination devices reassemble messages and pass them to an application.",
+      "Received data is unacknowledged."
+    ],
+    "answer": [1, 2],
+    "explain_short": "UDP is connectionless and best-effort: no tracking of segments, and there is no formal session-level reassembly the way TCP performs. Minimal delay and no acknowledgements ARE characteristics of UDP.",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "Transportation of Data — User Datagram Protocol (UDP)",
+      "quote": "UDP provides the basic functions for delivering datagrams between the appropriate applications, with very little overhead and data checking. UDP is a connectionless protocol. UDP is known as a best-effort delivery protocol because there is no acknowledgment that the data is received at the destination."
+    },
+    "tags": ["udp", "characteristics"]
+  },
+  {
+    "id": "ly-q26",
+    "module": "transport",
+    "source": "lastyear-2025-photo2-q26",
+    "type": "single",
+    "stem": "In a TCP session, when a device has no more data to send, it will send a segment with the FIN flag set. The connected device that receives the segment will respond with an ..... to acknowledge that segment. The device that sent the ..... will then send a FIN message to close the connection it has with the other deice.",
+    "choices": ["FIN", "ACK", "SYN", "RST"],
+    "answer": [1],
+    "explain_short": "The ACK flag is set in response to a received FIN to acknowledge the half-close. Termination uses two FIN/ACK pairs (one each direction).",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "TCP Communication Process — Session Termination",
+      "quote": "Step 1: When the client has no more data to send in the stream, it sends a segment with the FIN flag set. Step 2: The server sends an ACK to acknowledge the receipt of the FIN to terminate the session from client to server."
+    },
+    "tags": ["tcp", "flags", "fin", "ack", "termination"]
+  },
+  {
+    "id": "ly-q27",
+    "module": "transport",
+    "source": "lastyear-2025-photo2-q27",
+    "type": "single",
+    "stem": "What is a characteristic of UDP?",
+    "choices": [
+      "UDP datagrams take the same path and arrive in the correct order at the destination..",
+      "Applications that use UDP are always considered unreliable..",
+      "UDP reassembles the received datagrams in the order",
+      "UDP only passes data to the network when the destination is ready to receive the data.",
+      "UDP has no way to reorder the datagrams into their transmission order, whatever received first would be reassembled in that order."
+    ],
+    "answer": [4],
+    "explain_short": "UDP is connectionless, has no acknowledgements and no reordering — it simply reassembles data in the order it arrives and hands it to the application.",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "UDP Communication — UDP Datagram Reassembly",
+      "quote": "UDP has no way to reorder the datagrams into their transmission order. UDP simply reassembles the data in the order that it was received and forwards it to the application."
+    },
+    "tags": ["udp", "characteristics"]
+  },
+  {
+    "id": "ly-q28",
+    "module": "transport",
+    "source": "lastyear-2025-photo2-q28",
+    "type": "multi",
+    "stem": "Which three statements doesn't characterise UDP?",
+    "choices": [
+      "UDP provides connection-oriented, fast transport of data at Layer 3.",
+      "UDP relies on application layer protocols for error detection.",
+      "UDP is a low overhead protocol that does not provide sequencing or flow control mechanisms.",
+      "UDP relies on IP for error detection and recovery.",
+      "UDP provides sophisticated flow control mechanisms."
+    ],
+    "answer": [0, 3, 4],
+    "explain_short": "UDP is connectionless (NOT connection-oriented), does NOT rely on IP for error detection/recovery, and does NOT provide sophisticated flow control. The other two statements are correct UDP characteristics.",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "UDP Overview — UDP Features",
+      "quote": "UDP features include the following: Data is reconstructed in the order that it is received. Any segments that are lost are not resent. There is no session establishment. The sending is not informed about resource availability."
+    },
+    "tags": ["udp", "characteristics"]
+  },
+  {
+    "id": "ly-q29",
+    "module": "transport",
+    "source": "lastyear-2025-photo3-q29",
+    "type": "single",
+    "stem": "Why HTTP uses TCP as its transport layer protocol?",
+    "choices": [
+      "to ensure the fastest possible download speed",
+      "because HTTP is a best-effort protocol",
+      "because transmission errors can be tolerated easily",
+      "because HTTP requires reliable delivery"
+    ],
+    "answer": [3],
+    "explain_short": "HTTP delivers web pages where every byte matters and order matters; it relies on TCP to provide reliable, in-order, flow-controlled delivery.",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "Transportation of Data — The Right Transport Layer Protocol for the Right Application",
+      "quote": "If it is important that all the data arrives and that it can be processed in its proper sequence, TCP is used as the transport protocol."
+    },
+    "tags": ["http", "tcp", "reliability"]
+  },
+  {
+    "id": "ly-q30",
+    "module": "transport",
+    "source": "lastyear-2025-photo3-q30",
+    "type": "multi",
+    "stem": "Which two types of applications aren't best suited for UDP?",
+    "choices": [
+      "applications that need data flow control",
+      "applications that require reliable delivery",
+      "applications that handle reliability themselves",
+      "applications that can tolerate some data loss, but require little or no delay"
+    ],
+    "answer": [0, 1],
+    "explain_short": "Applications needing flow control or guaranteed/reliable delivery should use TCP, not UDP. UDP suits apps that tolerate some loss with low delay or apps that handle their own reliability.",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "UDP Overview — Applications that use UDP",
+      "quote": "Live video and multimedia applications - These applications can tolerate some data loss but require little or no delay. Examples include VoIP and live streaming video."
+    },
+    "tags": ["udp", "use-cases"]
+  },
+  {
+    "id": "ly-q31",
+    "module": "transport",
+    "source": "lastyear-2025-photo3-q31",
+    "type": "single",
+    "stem": "In what situation would TCP be better than UDP as the preferred transport layer protocol?",
+    "choices": [
+      "when applications need to guarantee that a packet arrives intact, in sequence, and unduplicated",
+      "when a faster delivery mechanism is needed",
+      "when delivery overhead is not an issue",
+      "when applications do not need to guarantee delivery of the data",
+      "when destination port numbers are dynamic"
+    ],
+    "answer": [0],
+    "explain_short": "TCP is preferred when the application needs guaranteed, in-order, unduplicated delivery — its handshake, sequence numbers, ACKs, and flow control provide reliability that UDP cannot.",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "Transportation of Data — The Right Transport Layer Protocol for the Right Application",
+      "quote": "If it is important that all the data arrives and that it can be processed in its proper sequence, TCP is used as the transport protocol."
+    },
+    "tags": ["tcp", "udp", "use-cases"]
+  },
+  {
+    "id": "ly-q32",
+    "module": "transport",
+    "source": "lastyear-2025-photo3-q32",
+    "type": "multi",
+    "stem": "What aren't responsibilities of the transport layer?",
+    "choices": [
+      "meeting the reliability requirements of applications, if any",
+      "multiplexing multiple communication streams from many users or applications on the same network",
+      "identifying the applications and services on the client and server that should handle transmitted data",
+      "directing packets towards the destination network",
+      "formatting data into a compatible form for receipt by the destination devices"
+    ],
+    "answer": [3, 4],
+    "explain_short": "Directing packets toward a destination network is a network-layer (Layer 3) job. Formatting data for receipt is a presentation-layer job. The other three options ARE transport-layer responsibilities.",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "Transportation of Data — Transport Layer Responsibilities",
+      "quote": "The transport layer has the following responsibilities: Tracking individual conversations; Segmenting data and reassembling segments; Adds header information; Identify, separate, and manage multiple conversations."
+    },
+    "tags": ["transport", "responsibilities"]
+  },
+  {
+    "id": "ly-q33",
+    "module": "application",
+    "source": "lastyear-2025-photo3-q33",
+    "type": "single",
+    "stem": "What is the function of the HTTP POST message?",
+    "choices": [
+      "to request an HTML page from a web server",
+      "to send error information from a web server to a web client",
+      "to upload content to a web server from a web client",
+      "to retrieve client email from an email server using TCP port 110."
+    ],
+    "answer": [2],
+    "explain_short": "HTTP POST uploads data (e.g., form contents, files) from a client to a web server. GET requests data from the server.",
+    "explain_lecture": {
+      "module": "ITN-15",
+      "slide": "Web and Email Protocols — HTTP and HTTPS",
+      "quote": "HTTP is a request/response protocol that specifies the message types used for that communication. The three common message types are GET, POST, and PUT."
+    },
+    "tags": ["http", "post"]
+  },
+  {
+    "id": "ly-q34",
+    "module": "application",
+    "source": "lastyear-2025-photo3-q34",
+    "type": "single",
+    "stem": "The........ protocol is used when one user shares an entire file with another user. A person would load a ........-based application such as WireShare and use that application to locate and access resources shared by others?",
+    "choices": [
+      "Ethernet",
+      "Gnutella",
+      "POP",
+      "SMTP"
+    ],
+    "answer": [1],
+    "explain_short": "Gnutella is a P2P file-sharing protocol used by applications like WireShare/LimeWire/BearShare to share whole files between users.",
+    "explain_lecture": null,
+    "tags": ["p2p", "gnutella"]
+  },
+  {
+    "id": "ly-q35",
+    "module": "application",
+    "source": "lastyear-2025-photo3-q35",
+    "type": "single",
+    "stem": "Which networking model is being used when author uploads one chapter document to a file server of a book publisher?",
+    "choices": [
+      "pear-to-pear.",
+      "master-slave.",
+      "client/server.",
+      "point-to-point.",
+      "p2p."
+    ],
+    "answer": [2],
+    "explain_short": "A user uploading a chapter to a central file server is the classic client/server model: one device (client) requests, a dedicated server responds.",
+    "explain_lecture": {
+      "module": "ITN-15",
+      "slide": "Peer-to-Peer — Client-Server Model",
+      "quote": "In the client/server model, the device requesting the information is called a client and the device responding to the request is called a server."
+    },
+    "tags": ["client-server"]
+  },
+  {
+    "id": "ly-q36",
+    "module": "application",
+    "source": "lastyear-2025-photo3-q36",
+    "type": "multi",
+    "stem": "Which three protocols don't operate at the application layer of the TCP/IP model?",
+    "choices": [
+      "ARP",
+      "TCP",
+      "UDP",
+      "FTP",
+      "POP3"
+    ],
+    "answer": [0, 1, 2],
+    "explain_short": "ARP operates at Layer 2/3 (between data-link and network), while TCP and UDP are transport-layer protocols. FTP and POP3 are application-layer protocols.",
+    "explain_lecture": {
+      "module": "ITN-15",
+      "slide": "Application, Presentation, and Session — TCP/IP Application Layer Protocols",
+      "quote": "Some of the most widely known application layer protocols include HTTP, FTP, TFTP, IMAP and DNS."
+    },
+    "tags": ["application-layer", "protocols", "arp", "tcp", "udp"]
+  },
+  {
+    "id": "ly-q37",
+    "module": "application",
+    "source": "lastyear-2025-photo3-q37",
+    "type": "single",
+    "stem": "Which applications or services allow hosts to act as client and server at the same time?",
+    "choices": [
+      "client/server applications",
+      "email applications",
+      "Peer-to-peer applications",
+      "authentication services"
+    ],
+    "answer": [2],
+    "explain_short": "Peer-to-peer (P2P) applications (e.g., BitTorrent, eDonkey) let each host act as client and server simultaneously.",
+    "explain_lecture": {
+      "module": "ITN-15",
+      "slide": "Peer-to-Peer — Peer-to-Peer Applications",
+      "quote": "A P2P application allows a device to act as both a client and a server within the same communication."
+    },
+    "tags": ["p2p", "applications"]
+  },
+  {
+    "id": "ly-q38",
+    "module": "ipv4",
+    "source": "lastyear-2025-photo3-q38",
+    "type": "exhibit",
+    "stem": "Refer to the exhibit. An administrator must send a message to everyone on the router A network. What is the broadcast address for network 172.16.16.0/22?",
+    "image": "exhibit-q38.png",
+    "choices": [
+      "172.16.16.255",
+      "172.16.20.255",
+      "172.16.19.255",
+      "172.16.23.255",
+      "172.16.255.255"
+    ],
+    "answer": [2],
+    "explain_short": "/22 mask = 255.255.252.0. Block size in 3rd octet = 4. Subnet 172.16.16.0/22 spans 172.16.16.0–172.16.19.255, so broadcast = 172.16.19.255.",
+    "explain_lecture": {
+      "module": "ITN-11",
+      "slide": "IPv4 Address Structure — Network, Host, and Broadcast Addresses",
+      "quote": "Within each network are three types of IP addresses: Network address; Host addresses; Broadcast address"
+    },
+    "tags": ["ipv4", "subnetting", "broadcast", "calc", "exhibit"]
+  },
+  {
+    "id": "ly-q39",
+    "module": "acl",
+    "source": "lastyear-2025-photo4-q39",
+    "type": "single",
+    "stem": "..........is a type of attack where the intruder is looking for wireless network vulnerabilities",
+    "choices": [
+      "reconnaissance",
+      "DoS",
+      "dictionary",
+      "man-in-the-middle"
+    ],
+    "answer": [0],
+    "explain_short": "Reconnaissance is the information-gathering / probing phase of an attack — looking for vulnerabilities (e.g., war-driving for open Wi-Fi networks) before launching an actual exploit.",
+    "explain_lecture": null,
+    "tags": ["security", "attacks", "reconnaissance"]
+  },
+  {
+    "id": "ly-q40",
+    "module": "acl",
+    "source": "lastyear-2025-photo4-q40",
+    "type": "single",
+    "stem": "What is the purpose of the network security authorization function?",
+    "choices": [
+      "to require users to prove who they are",
+      "to determine which resources a user can access",
+      "to keep track of the actions of a user",
+      "to provide challenge and response questions"
+    ],
+    "answer": [1],
+    "explain_short": "AAA: Authentication = prove who you are; Authorization = what you can do/access; Accounting = track what you did. Authorization controls resource access.",
+    "explain_lecture": null,
+    "tags": ["security", "aaa", "authorization"]
+  },
+  {
+    "id": "ly-q41",
+    "module": "acl",
+    "source": "lastyear-2025-photo4-q41",
+    "type": "single",
+    "stem": "..........can permit or deny access based on port number",
+    "choices": [
+      "stateful packet inspection.",
+      "URL filtering.",
+      "application filtering.",
+      "packet filtering."
+    ],
+    "answer": [2],
+    "explain_short": "Application filtering inspects/filters traffic based on Layer 4 port numbers (and often application content), permitting or denying specific applications.",
+    "explain_lecture": null,
+    "tags": ["security", "acl", "application-filtering"]
+  },
+  {
+    "id": "ly-q42",
+    "module": "icmp",
+    "source": "lastyear-2025-photo4-q42",
+    "type": "single",
+    "stem": "Which statement is true about Cisco IOS ping indicators?",
+    "choices": [
+      "'!' indicates that the ping was unsuccessful and that the device may have issues finding a DNS server.",
+      "'U' may indicate that a router along the path did not contain a route to the destination address and that the ping was unsuccessful.",
+      "'.' may indicate that a connectivity problem, routing problem, or device security issue exists along the path and that an ICMP destination unreachable message was not provided",
+      "A combination of '.' and '!' indicates that a router along the path did not have a route to the destination address and responded with an ICMP unreachable message."
+    ],
+    "answer": [1],
+    "explain_short": "Cisco IOS ping output: '!' = success, '.' = timeout, 'U' = router along the path returned ICMP destination unreachable (no route).",
+    "explain_lecture": null,
+    "tags": ["icmp", "ping", "ios-indicators"]
+  },
+  {
+    "id": "ly-q43",
+    "module": "application",
+    "source": "lastyear-2025-photo4-q43",
+    "type": "single",
+    "stem": "The .......... command is very important to use when log messages appear. Log messages appear by default when a user is directly consoled into a Cisco device, but require the terminal monitor to be entered when a user is accessing a network device remotely.",
+    "choices": [
+      "debug all.",
+      "logging synchronous.",
+      "show running-config.",
+      "terminal monitor."
+    ],
+    "answer": [3],
+    "explain_short": "terminal monitor enables the display of debug/log messages on the current vty (Telnet/SSH) session — by default they only appear on the console.",
+    "explain_lecture": null,
+    "tags": ["cli", "logging", "terminal-monitor"]
+  },
+  {
+    "id": "ly-q44",
+    "module": "ipv4",
+    "source": "lastyear-2025-photo4-q44",
+    "type": "single",
+    "stem": "An administrator wants to create four subnetworks from the network address 192.168.1.0/24. What is the network address and subnet mask of the third usable subnet?",
+    "choices": [
+      "192.168.1.64 sub mask 255.255.255.192",
+      "192.168.1.32 sub mask 255.255.255.240",
+      "192.168.1.92 sub mask 255.255.255.192",
+      "192.168.1.128 sub mask 255.255.255.224",
+      "192.168.1.8 sub mask 255.255.255.224"
+    ],
+    "answer": [3],
+    "explain_short": "4 subnets need 2 borrowed bits → /26, mask 255.255.255.192. Block size = 64. Subnets: .0, .64, .128, .192. Third subnet = 192.168.1.128/26. (Note: the printed answer 'D' uses 255.255.255.224 which is /27 — this is an exam-paper inconsistency. The correct VLSM answer is 192.168.1.128 with mask 255.255.255.192.)",
+    "explain_lecture": null,
+    "tags": ["ipv4", "subnetting", "calc"],
+    "needs_review": true
+  },
+  {
+    "id": "ly-q45",
+    "module": "ipv4",
+    "source": "lastyear-2025-photo4-q45",
+    "type": "single",
+    "stem": "How many bits must be borrowed from the host portion of an address to accommodate a router with four connected networks?",
+    "choices": ["two", "three", "four", "five"],
+    "answer": [0],
+    "explain_short": "Need ≥4 subnets → 2^n ≥ 4 → n = 2 borrowed bits (gives exactly 4 subnets).",
+    "explain_lecture": null,
+    "tags": ["ipv4", "subnetting", "calc"]
+  },
+  {
+    "id": "ly-q46",
+    "module": "ipv4",
+    "source": "lastyear-2025-photo4-q46",
+    "type": "single",
+    "stem": "How many host addresses are available on the 192.168.128.128/27?",
+    "choices": ["30", "32", "60", "62", "64"],
+    "answer": [0],
+    "explain_short": "/27 = 5 host bits → 2^5 − 2 = 30 usable hosts.",
+    "explain_lecture": null,
+    "tags": ["ipv4", "subnetting", "host-count", "calc"]
+  },
+  {
+    "id": "ly-q47",
+    "module": "ipv4",
+    "source": "lastyear-2025-photo4-q47",
+    "type": "single",
+    "stem": "How many host addresses are available on the network 172.16.1.0 with a subnet mask of 255.255.254.0?",
+    "choices": ["510", "512", "1022", "1024", "2046"],
+    "answer": [0],
+    "explain_short": "255.255.254.0 = /23 → 9 host bits → 2^9 − 2 = 510 usable hosts.",
+    "explain_lecture": null,
+    "tags": ["ipv4", "subnetting", "host-count", "calc"]
+  },
+  {
+    "id": "ly-q48",
+    "module": "ipv4",
+    "source": "lastyear-2025-photo4-q48",
+    "type": "multi",
+    "stem": "What block addresses are defined by RFC 1918 for public network use?",
+    "choices": [
+      "10.0.0.0/8",
+      "172.16.0.0/12",
+      "192.168.0.0/16",
+      "100.64.0.0/14",
+      "169.254.0.0/16"
+    ],
+    "answer": [0, 1, 2],
+    "explain_short": "RFC 1918 private blocks (the question paper says 'public' but the standard Cisco bank wording is private use): 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16. 169.254/16 is link-local (APIPA), 100.64/10 is CGN.",
+    "explain_lecture": {
+      "module": "ITN-11",
+      "slide": "Types of IPv4 Addresses — Public and Private IPv4 Addresses",
+      "quote": "As defined in in RFC 1918, public IPv4 addresses are globally routed between internet service provider (ISP) routers. However, private addresses are not globally routable."
+    },
+    "tags": ["ipv4", "rfc1918", "private-addresses"]
   },
   {
     "id": "ly-q49",
@@ -114,44 +948,20 @@
       "255.255.255.240"
     ],
     "answer": [2],
-    "explain_short": "30 hosts → need 5 host bits (2^5 - 2 = 30). 32 - 5 = /27 → 255.255.255.224.",
-    "explain_lecture": {
-      "module": "ITN-11",
-      "slide": "Subnet a /24 Network — Host Calculation",
-      "quote": "Use the formula 2^h - 2 (where h is the number of host bits) to calculate usable host addresses per subnet. With 5 host bits: 2^5 - 2 = 30 usable hosts. /27 = 255.255.255.224."
-    },
+    "explain_short": "30 hosts → need 5 host bits (2^5 − 2 = 30). 32 − 5 = /27 → 255.255.255.224.",
+    "explain_lecture": null,
     "tags": ["ipv4", "subnetting", "vlsm", "calc"]
   },
   {
-    "id": "ly-q-fill-1",
-    "module": "transport",
-    "source": "lastyear-2025-photo2-q23",
-    "type": "fill",
-    "stem": "At the transport layer, TCP uses the _______ in the header of each TCP segment to reassemble the segments into the correct order.",
-    "answer": "sequence numbers",
-    "alt_answers": ["sequence number"],
-    "explain_short": "TCP uses sequence numbers to reorder segments at the destination. Acknowledgement numbers tell the sender what was received.",
-    "explain_lecture": {
-      "module": "ITN-14",
-      "slide": "TCP Reliable Delivery — Reordering",
-      "quote": "Sequence numbers in the segment header indicate how to reassemble the segments into the correct order at the destination. The receiving TCP process places the segment data into a receiving buffer."
-    },
-    "tags": ["tcp", "transport", "sequence-numbers"]
-  },
-  {
-    "id": "ly-q-cli-1",
-    "module": "static",
-    "source": "synthetic-cli-demo",
-    "type": "cli",
-    "stem": "On router R1, configure a default static route via next-hop 209.165.200.1.",
-    "prefix": "R1(config)#",
-    "answer": "ip route 0.0.0.0 0.0.0.0 209.165.200.1",
-    "explain_short": "A default route uses the wildcard network 0.0.0.0 with mask 0.0.0.0 (matches everything), pointing to the next-hop IP.",
-    "explain_lecture": {
-      "module": "SRWE-15",
-      "slide": "Default Static Route",
-      "quote": "A default static route is a route that matches all packets. Use ip route 0.0.0.0 0.0.0.0 {next-hop-ip | exit-intf}. It is commonly called a 'quad-zero' route."
-    },
-    "tags": ["static-routing", "default-route", "cli"]
+    "id": "ly-q50",
+    "module": "ipv4",
+    "source": "lastyear-2025-photo4-q50",
+    "type": "single",
+    "stem": "What is the usable number of host IP addresses on a network that has a /28 mask?",
+    "choices": ["64", "62", "32", "16", "14"],
+    "answer": [4],
+    "explain_short": "/28 = 4 host bits → 2^4 − 2 = 14 usable hosts.",
+    "explain_lecture": null,
+    "tags": ["ipv4", "subnetting", "calc"]
   }
 ]

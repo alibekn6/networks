@@ -927,7 +927,9 @@
       "169.254.0.0/16"
     ],
     "answer": [0, 1, 2],
-    "explain_short": "RFC 1918 private blocks (the question paper says 'public' but the standard Cisco bank wording is private use): 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16. 169.254/16 is link-local (APIPA), 100.64/10 is CGN.",
+    "explain_short": "BANK-ERROR WORDING: RFC 1918 defines PRIVATE blocks, not public — the exam paper copied a buggy stem from the Cisco bank. Answer with the three RFC 1918 private blocks anyway: 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16. The grader keys to the bank, not the wording. (169.254.0.0/16 = link-local APIPA, 100.64.0.0/14 = carrier-grade NAT — both red herrings.)",
+    "bank_error": true,
+    "bank_error_note": "Stem says 'public network use' but RFC 1918 only defines private blocks. Match the bank, not the literal English.",
     "explain_lecture": {
       "module": "ITN-11",
       "slide": "Types of IPv4 Addresses — Public and Private IPv4 Addresses",

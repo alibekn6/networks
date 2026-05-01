@@ -137,6 +137,7 @@ function render() {
       ${q.type === "multi" ? `<span class="multi-hint">CHOOSE ALL THAT APPLY</span>` : ""}
       ${q.type === "fill" ? `<span class="multi-hint">FILL IN</span>` : ""}
       ${q.type === "cli" ? `<span class="multi-hint">TYPE THE COMMAND</span>` : ""}
+      ${q.bank_error ? `<span class="bank-error" title="${escapeHtml(q.bank_error_note || "")}">⚠ BANK-ERROR WORDING</span>` : ""}
     </div>
     ${q.image ? `<img class="exhibit" src="assets/img/${q.image}" alt="exhibit" />` : ""}
     <p class="stem">${escapeHtml(q.stem)}</p>

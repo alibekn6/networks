@@ -12,6 +12,7 @@
     { "id": "acl", "title": "ACLs / Security", "src": "B3 ENSA 4, 5", "file": "module-acl.json", "color": "m-acl" }
   ],
   "pools": [
-    { "id": "lastyear", "title": "Last-Year Real Endterm 2025", "file": "pool-lastyear.json" }
+    { "id": "lastyear", "title": "Last-Year Real Endterm 2025", "file": "pool-lastyear.json" },
+    { "id": "variant", "title": "Endterm Variant 2026", "file": "pool-variant.json" }
   ]
 }

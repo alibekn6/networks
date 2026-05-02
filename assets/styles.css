@@ -90,6 +90,9 @@ button { font-family: inherit; }
 @media (min-width: 640px) {
   .featured { grid-template-columns: 1fr 1fr; }
 }
+@media (min-width: 920px) {
+  .featured { grid-template-columns: repeat(3, 1fr); }
+}
 .card {
   background: var(--surface);
   border: 1px solid var(--border);

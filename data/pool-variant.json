@@ -1,0 +1,545 @@
+[
+  {
+    "id": "var-q01",
+    "module": "ipv4",
+    "source": "variant-2026-q01",
+    "type": "single",
+    "stem": "Which address prefix range is reserved for IPv4 loopback?",
+    "choices": [
+      "240.0.0.0-254.255.255.255",
+      "224.0.0.0-239.255.255.255",
+      "169.254.0.0-169.254.255.255",
+      "127.0.0.0-127.255.255.255"
+    ],
+    "answer": [3],
+    "explain_short": "127.0.0.0/8 is reserved for loopback (127.0.0.1 is the typical address used for self-tests).",
+    "explain_lecture": {
+      "module": "ITN-11",
+      "slide": "Types of IPv4 Addresses — Special Use IPv4 Addresses",
+      "quote": "Loopback addresses 127.0.0.0 /8 (127.0.0.1 to 127.255.255.254) Commonly identified as only 127.0.0.1 Used on a host to test if TCP/IP is operational."
+    },
+    "tags": ["ipv4", "special-addresses"]
+  },
+  {
+    "id": "var-q02",
+    "module": "ipv4",
+    "source": "variant-2026-q02",
+    "type": "single",
+    "stem": "A message is sent to dedicated host on a remote network. Which type of message is it?",
+    "choices": [
+      "limited broadcast",
+      "multicast",
+      "directed broadcast",
+      "unicast"
+    ],
+    "answer": [3],
+    "explain_short": "A message sent to one dedicated host (a single specific destination) is a unicast.",
+    "explain_lecture": {
+      "module": "ITN-11",
+      "slide": "IPv4 Unicast, Broadcast, and Multicast — Unicast",
+      "quote": "Unicast transmission is sending a packet to one destination IP address."
+    },
+    "tags": ["ipv4", "unicast"]
+  },
+  {
+    "id": "var-q03",
+    "module": "ipv4",
+    "source": "variant-2026-q03",
+    "type": "single",
+    "stem": "From the list below pls specify experimental address?",
+    "choices": [
+      "64.102.90.23.",
+      "169.254.1.5.",
+      "127.0.0.1.",
+      "240.2.6.255.",
+      "172.19.20.5."
+    ],
+    "answer": [3],
+    "explain_short": "Class E (240.0.0.0–255.255.255.255) is reserved for experimental use. The other choices are public, link-local (APIPA), loopback, and private.",
+    "explain_lecture": {
+      "module": "ITN-11",
+      "slide": "Types of IPv4 Addresses — Legacy Classful Addressing",
+      "quote": "Class E (240.0.0.0 – 255.0.0.0)"
+    },
+    "tags": ["ipv4", "classful", "experimental"]
+  },
+  {
+    "id": "var-q04",
+    "module": "ipv6",
+    "source": "variant-2026-q04",
+    "type": "single",
+    "stem": "A host is transmitting a multicast. Which host or hosts will receive it?",
+    "choices": [
+      "a specially defined group of hosts",
+      "the closest neighbor on the same network",
+      "one specific host",
+      "directly connected network devices"
+    ],
+    "answer": [0],
+    "explain_short": "A multicast packet is delivered only to the specifically defined group of hosts that have joined that multicast group — not all hosts.",
+    "explain_lecture": {
+      "module": "ITN-11",
+      "slide": "IPv4 Unicast, Broadcast, and Multicast — Multicast",
+      "quote": "Multicast transmission is sending a packet to a multicast address group."
+    },
+    "tags": ["ipv6", "multicast"]
+  },
+  {
+    "id": "var-q05",
+    "module": "application",
+    "source": "variant-2026-q05",
+    "type": "single",
+    "stem": "What is the purpose of the 'ip helper-address' command on a router sub-interface?",
+    "choices": [
+      "To assign a static IP",
+      "To exclude IPs from DHCP",
+      "To forward DHCP requests to another VLAN",
+      "To enable routing between VLANs"
+    ],
+    "answer": [2],
+    "explain_short": "ip helper-address turns a router into a DHCP relay agent — it forwards client broadcast DHCP requests as unicast to a DHCP server on a different subnet/VLAN.",
+    "explain_lecture": null,
+    "tags": ["dhcp", "ip-helper-address", "relay"]
+  },
+  {
+    "id": "var-q06",
+    "module": "transport",
+    "source": "variant-2026-q06",
+    "type": "multi",
+    "stem": "Which three fields aren't used in a UDP segment header?",
+    "choices": [
+      "Window Size",
+      "Source Port",
+      "Acknowledgment Number",
+      "Checksum",
+      "Sequence Number"
+    ],
+    "answer": [0, 2, 4],
+    "explain_short": "The UDP header has only 4 fields: source port, destination port, length, checksum. So Window Size, Acknowledgment Number, and Sequence Number are NOT in a UDP header (they are TCP-only).",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "UDP Overview — UDP Header",
+      "quote": "The UDP header is far simpler than the TCP header because it only has four fields and requires 8 bytes (i.e. 64 bits)."
+    },
+    "tags": ["udp", "header", "fields"]
+  },
+  {
+    "id": "var-q07",
+    "module": "transport",
+    "source": "variant-2026-q07",
+    "type": "multi",
+    "stem": "Which two characteristics aren't associated with UDP sessions?",
+    "choices": [
+      "Destination devices receive traffic with minimal delay.",
+      "Transmitted data segments are tracked.",
+      "Destination devices reassemble messages and pass them to an application.",
+      "Received data is unacknowledged."
+    ],
+    "answer": [1, 2],
+    "explain_short": "UDP is connectionless and best-effort: no tracking of segments, and there is no formal session-level reassembly the way TCP performs. Minimal delay and no acknowledgements ARE characteristics of UDP.",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "Transportation of Data — User Datagram Protocol (UDP)",
+      "quote": "UDP provides the basic functions for delivering datagrams between the appropriate applications, with very little overhead and data checking. UDP is a connectionless protocol."
+    },
+    "tags": ["udp", "characteristics"]
+  },
+  {
+    "id": "var-q08",
+    "module": "transport",
+    "source": "variant-2026-q08",
+    "type": "multi",
+    "stem": "Which three statements doesn't characterise UDP?",
+    "choices": [
+      "UDP provides connection-oriented, fast transport of data at Layer 3.",
+      "UDP relies on application layer protocols for error detection.",
+      "UDP is a low overhead protocol that does not provide sequencing or flow control mechanisms.",
+      "UDP relies on IP for error detection and recovery.",
+      "UDP provides sophisticated flow control mechanisms."
+    ],
+    "answer": [0, 3, 4],
+    "explain_short": "UDP is connectionless (NOT connection-oriented), does NOT rely on IP for error detection/recovery, and does NOT provide sophisticated flow control. The other two statements are correct UDP characteristics.",
+    "explain_lecture": {
+      "module": "ITN-14",
+      "slide": "UDP Overview — UDP Features",
+      "quote": "UDP features include the following: Data is reconstructed in the order that it is received. Any segments that are lost are not resent. There is no session establishment."
+    },
+    "tags": ["udp", "characteristics"]
+  },
+  {
+    "id": "var-q09",
+    "module": "ipv4",
+    "source": "variant-2026-q09",
+    "type": "single",
+    "stem": "Which subnet mask would be used if 5 host bits are available?",
+    "choices": [
+      "255.255.255.0",
+      "255.255.255.128",
+      "255.255.255.224",
+      "255.255.255.240"
+    ],
+    "answer": [2],
+    "explain_short": "5 host bits → mask has 32 − 5 = 27 network bits → /27 = 255.255.255.224.",
+    "explain_lecture": null,
+    "tags": ["ipv4", "subnetting", "mask"]
+  },
+  {
+    "id": "var-q10",
+    "module": "application",
+    "source": "variant-2026-q10",
+    "type": "single",
+    "stem": "Which applications or services allow hosts to act as client and server at the same time?",
+    "choices": [
+      "client/server applications",
+      "email applications",
+      "Peer-to-peer applications",
+      "authentication services"
+    ],
+    "answer": [2],
+    "explain_short": "Peer-to-peer (P2P) applications (e.g., BitTorrent, eDonkey) let each host act as client and server simultaneously.",
+    "explain_lecture": {
+      "module": "ITN-15",
+      "slide": "Peer-to-Peer — Peer-to-Peer Applications",
+      "quote": "A P2P application allows a device to act as both a client and a server within the same communication."
+    },
+    "tags": ["p2p", "applications"]
+  },
+  {
+    "id": "var-q11",
+    "module": "acl",
+    "source": "variant-2026-q11",
+    "type": "single",
+    "stem": "What is the purpose of the network security authorization function?",
+    "choices": [
+      "to require users to prove who they are",
+      "to determine which resources a user can access",
+      "to keep track of the actions of a user",
+      "to provide challenge and response questions"
+    ],
+    "answer": [1],
+    "explain_short": "AAA: Authentication = prove who you are; Authorization = what you can do/access; Accounting = track what you did. Authorization controls resource access.",
+    "explain_lecture": null,
+    "tags": ["security", "aaa", "authorization"]
+  },
+  {
+    "id": "var-q12",
+    "module": "application",
+    "source": "variant-2026-q12",
+    "type": "single",
+    "stem": "The .......... command is very important to use when log messages appear. Log messages appear by default when a user is directly consoled into a Cisco device, but require this command to be entered when a user is accessing a network device remotely.",
+    "choices": [
+      "debug all.",
+      "logging synchronous.",
+      "show running-config.",
+      "terminal monitor."
+    ],
+    "answer": [3],
+    "explain_short": "terminal monitor enables the display of debug/log messages on the current vty (Telnet/SSH) session — by default they only appear on the console.",
+    "explain_lecture": null,
+    "tags": ["cli", "logging", "terminal-monitor"]
+  },
+  {
+    "id": "var-q13",
+    "module": "ipv4",
+    "source": "variant-2026-q13",
+    "type": "single",
+    "stem": "How many host addresses are available on the 192.168.128.128/27?",
+    "choices": ["30", "32", "60", "62", "64"],
+    "answer": [0],
+    "explain_short": "/27 = 5 host bits → 2^5 − 2 = 30 usable hosts.",
+    "explain_lecture": null,
+    "tags": ["ipv4", "subnetting", "host-count", "calc"]
+  },
+  {
+    "id": "var-q14",
+    "module": "ipv4",
+    "source": "variant-2026-q14",
+    "type": "single",
+    "stem": "A site administrator has been told that a particular network at the site must accommodate 30 hosts. Which subnet mask would be used that contains the required number of host bits?",
+    "choices": [
+      "255.255.255.0",
+      "255.255.255.128",
+      "255.255.255.224",
+      "255.255.255.240"
+    ],
+    "answer": [2],
+    "explain_short": "30 hosts → need 5 host bits (2^5 − 2 = 30). 32 − 5 = /27 → 255.255.255.224.",
+    "explain_lecture": null,
+    "tags": ["ipv4", "subnetting", "vlsm", "calc"]
+  },
+  {
+    "id": "var-q15",
+    "module": "routing",
+    "source": "variant-2026-q15",
+    "type": "single",
+    "stem": "What route would have the lowest administrative distance?",
+    "choices": [
+      "a directly connected network",
+      "a static route",
+      "a route received through the EIGRP routing protocol",
+      "a route received through the OSPF routing protocol"
+    ],
+    "answer": [0],
+    "explain_short": "Directly connected networks have AD = 0, the lowest possible value (most trusted). Static = 1, EIGRP internal = 90, OSPF = 110.",
+    "explain_lecture": {
+      "module": "SRWE-14",
+      "slide": "Administrative Distance (Cont.)",
+      "quote": "Directly connected 0, Static route 1, EIGRP summary route 5, External BGP 20, Internal EIGRP 90, OSPF 110, IS-IS 115, RIP 120, External EIGRP 170, Internal BGP 200."
+    },
+    "tags": ["routing", "administrative-distance"]
+  },
+  {
+    "id": "var-q16",
+    "module": "ospf",
+    "source": "variant-2026-q16",
+    "type": "single",
+    "stem": "Which OSPF packet contains the different types of link-state advertisements?",
+    "choices": ["hello", "DBD", "LSR", "LSU", "LSAck"],
+    "answer": [3],
+    "explain_short": "LSU (Link-State Update) packets carry one or more LSAs. The five OSPF packets are Hello, DBD, LSR, LSU, and LSAck.",
+    "explain_lecture": null,
+    "tags": ["ospf", "lsa-packets", "spf"]
+  },
+  {
+    "id": "var-q17",
+    "module": "nat",
+    "source": "variant-2026-q17",
+    "type": "single",
+    "stem": "What is a disadvantage of NAT?",
+    "choices": [
+      "There is no end-to-end addressing.",
+      "The router does not need to alter the checksum of the IPv4 packets.",
+      "The internal hosts have to use a single public IPv4 address for external communication.",
+      "The costs of readdressing hosts can be significant for a publicly addressed network."
+    ],
+    "answer": [0],
+    "explain_short": "NAT rewrites IP headers, so true end-to-end addressing (and traceability) is lost. The router must recompute the checksum because of the change.",
+    "explain_lecture": null,
+    "tags": ["nat", "disadvantages"]
+  },
+  {
+    "id": "var-q18",
+    "module": "application",
+    "source": "variant-2026-q18",
+    "type": "single",
+    "stem": "A client creates a packet to send to a server. The client is requesting SSH service. What number will be used as the destination port number in the sending packet?",
+    "choices": ["22", "69", "67", "80"],
+    "answer": [0],
+    "explain_short": "SSH listens on TCP port 22 for secure remote management of network devices.",
+    "explain_lecture": null,
+    "tags": ["ports", "ssh", "tcp-22"]
+  },
+  {
+    "id": "var-q19",
+    "module": "acl",
+    "source": "variant-2026-q19",
+    "type": "single",
+    "stem": "What is the difference between a virus and a worm?",
+    "choices": [
+      "Viruses self-replicate but worms do not.",
+      "Worms self-replicate but viruses do not.",
+      "Worms require a host file but viruses do not.",
+      "Viruses hide in legitimate programs but worms do not."
+    ],
+    "answer": [1],
+    "explain_short": "Worms self-replicate and spread across networks on their own; viruses require a host file/program and user action to spread.",
+    "explain_lecture": null,
+    "tags": ["security", "malware", "virus", "worm"]
+  },
+  {
+    "id": "var-q20",
+    "module": "ipv4",
+    "source": "variant-2026-q20",
+    "type": "multi",
+    "stem": "Which addresses are valid private addresses?",
+    "choices": [
+      "198.133.219.17",
+      "192.168.1.245",
+      "10.15.250.5",
+      "128.107.12.117",
+      "172.31.1.25"
+    ],
+    "answer": [1, 2, 4],
+    "explain_short": "RFC 1918 private blocks: 10.0.0.0/8, 172.16.0.0/12 (172.16-31.x.x), and 192.168.0.0/16. 198.133.219.17 and 128.107.12.117 are public.",
+    "explain_lecture": {
+      "module": "ITN-11",
+      "slide": "Types of IPv4 Addresses — Public and Private IPv4 Addresses",
+      "quote": "As defined in RFC 1918, public IPv4 addresses are globally routed between internet service provider (ISP) routers. However, private addresses are not globally routable."
+    },
+    "tags": ["ipv4", "private-addresses", "rfc1918"]
+  },
+  {
+    "id": "var-q21",
+    "module": "application",
+    "source": "variant-2026-q21",
+    "type": "multi",
+    "stem": "Which three protocols operate at the application layer of the TCP/IP model? (Choose three.)",
+    "choices": ["ARP", "TCP", "UDP", "FTP", "POP3", "DHCP"],
+    "answer": [3, 4, 5],
+    "explain_short": "FTP, DHCP, and POP3 are all application-layer protocols of the TCP/IP model. ARP operates between L2/L3, TCP and UDP are transport-layer.",
+    "explain_lecture": {
+      "module": "ITN-15",
+      "slide": "Application, Presentation, and Session — TCP/IP Application Layer Protocols",
+      "quote": "Some of the most widely known application layer protocols include HTTP, FTP, TFTP, IMAP and DNS."
+    },
+    "tags": ["application-layer", "protocols"]
+  },
+  {
+    "id": "var-q22",
+    "module": "application",
+    "source": "variant-2026-q22",
+    "type": "single",
+    "stem": "A dedicated server is needed when implementing a peer-to-peer network. (true/false)",
+    "choices": ["true", "false"],
+    "answer": [1],
+    "explain_short": "False. In a P2P network there is no dedicated server — every peer can act as both client and server.",
+    "explain_lecture": {
+      "module": "ITN-15",
+      "slide": "Peer-to-Peer — Peer-to-Peer Networks",
+      "quote": "In a peer-to-peer (P2P) network, two or more computers are connected via a network and can share resources (such as printers and files) without having a dedicated server."
+    },
+    "tags": ["p2p", "true-false"]
+  },
+  {
+    "id": "var-q23",
+    "module": "ospf",
+    "source": "variant-2026-q23",
+    "type": "single",
+    "stem": "What does OSPF use to determine the best path through a network? OSPF uses the cumulative bandwidth of links along the path.",
+    "choices": [
+      "the amount of traffic and the probability of failure of links.",
+      "the amount of packet delivery time and lowest bandwidth.",
+      "the number of hops along the routing path.",
+      "the cumulative bandwidth that is used along the routing path."
+    ],
+    "answer": [3],
+    "explain_short": "OSPF computes cost from cumulative bandwidth (cost = 10^8 / BW). Lower total cost = better path. It is a link-state protocol — not hop-count or delivery-time.",
+    "explain_lecture": null,
+    "tags": ["ospf", "metric", "cost"],
+    "needs_review": true
+  },
+  {
+    "id": "var-q24",
+    "module": "ipv4",
+    "source": "variant-2026-q24",
+    "type": "fill",
+    "stem": "A network administrator is designing an IPv4 addressing scheme and requires these subnets:\n1 subnet of 100 hosts\n2 subnets of 80 hosts\n2 subnets of 30 hosts\n4 subnets of 20 hosts\n\nWhich combination of subnets and masks will provide the best addressing plan for these requirements?\nA) 9 subnets of 126 hosts with 255.255.255.128 mask",
+    "choices": [
+      "9 subnets of 126 hosts with 255.255.255.128 mask",
+      "1 subnet of 126 hosts with 255.255.255.128 mask, 2 subnets of 80 hosts with 255.255.255.128 mask, 2 subnets of 30 hosts with 255.255.255.224 mask, 4 subnets of 20 hosts with 255.255.255.224 mask",
+      "1 subnet of 126 hosts with 255.255.255.128 mask, 2 subnets of 80 hosts with 255.255.255.128 mask, 2 subnets of 30 hosts with 255.255.255.240 mask, 4 subnets of 20 hosts with 255.255.255.240 mask",
+      "1 subnet of 126 hosts with 255.255.255.128 mask, 2 subnets of 80 hosts with 255.255.255.128 mask, 2 subnets of 30 hosts with 255.255.255.224 mask, 4 subnets of 20 hosts with 255.255.255.240 mask"
+    ],
+    "answer": null,
+    "explain_short": "Likely D: 100 hosts → /25 (126 hosts), 80 hosts → /25 (126 hosts each), 30 hosts → /27 (30 hosts each), 20 hosts → /27 (30 hosts each). VLSM logic. Need to verify against actual printed paper choices.",
+    "explain_lecture": null,
+    "tags": ["ipv4", "vlsm", "calc"],
+    "needs_review": true
+  },
+  {
+    "id": "var-q25",
+    "module": "ipv4",
+    "source": "variant-2026-q25",
+    "type": "single",
+    "stem": "Each subnet is the same as a single network. (Subnet planning question — exact stem unclear from photo.)",
+    "choices": [],
+    "answer": null,
+    "explain_short": "Photo unreadable — could not transcribe choices.",
+    "explain_lecture": null,
+    "tags": ["ipv4", "subnetting"],
+    "needs_review": true
+  },
+  {
+    "id": "var-q26",
+    "module": "ospf",
+    "source": "variant-2026-q26",
+    "type": "single",
+    "stem": "Why does OSPF require a routing process responsible for processing learned routes? (Photo blurred — exact stem and choices unclear.)",
+    "choices": [],
+    "answer": null,
+    "explain_short": "Photo unreadable for this question — needs manual transcription.",
+    "explain_lecture": null,
+    "tags": ["ospf"],
+    "needs_review": true
+  },
+  {
+    "id": "var-q27",
+    "module": "ospf",
+    "source": "variant-2026-q27",
+    "type": "single",
+    "stem": "What does OSPF use to create the OSPF neighbor table? (Photo blurred — exact wording unclear.)",
+    "choices": [
+      "adjacency database",
+      "link-state database",
+      "forwarding database",
+      "routing table"
+    ],
+    "answer": [0],
+    "explain_short": "OSPF maintains an adjacency database (neighbor table) which lists all confirmed neighboring routers with established adjacencies.",
+    "explain_lecture": null,
+    "tags": ["ospf", "neighbor-table"],
+    "needs_review": true
+  },
+  {
+    "id": "var-q28",
+    "module": "ospf",
+    "source": "variant-2026-q28",
+    "type": "multi",
+    "stem": "What are two functions of a router? (Choose two.)",
+    "choices": [
+      "It controls the flow of data via the use of Layer 2 addresses.",
+      "It determines the best path to send packets.",
+      "It provides segmentation at Layer 2.",
+      "It builds a routing table based on ARP requests.",
+      "It connects multiple IP networks."
+    ],
+    "answer": [1, 4],
+    "explain_short": "A router determines the best path for packets and connects multiple IP networks (different broadcast/IP domains).",
+    "explain_lecture": null,
+    "tags": ["routing", "router-functions"],
+    "needs_review": true
+  },
+  {
+    "id": "var-q29",
+    "module": "ospf",
+    "source": "variant-2026-q29",
+    "type": "single",
+    "stem": "What is an accurate description of redundancy?",
+    "choices": [
+      "configuring a router with a complete MAC address database to ensure that all frames can be forwarded to the correct destination.",
+      "configuring a switch with proper security to ensure that all traffic forwarded through an interface is filtered.",
+      "designing a network to use multiple virtual devices to ensure that all traffic uses the best path through the internetwork.",
+      "designing a network to use multiple paths between switches to ensure there is no single point of failure."
+    ],
+    "answer": [3],
+    "explain_short": "Redundancy = multiple paths/components so a single failure does not break connectivity. Multiple physical paths between switches eliminate single points of failure.",
+    "explain_lecture": null,
+    "tags": ["redundancy", "design"]
+  },
+  {
+    "id": "var-q30",
+    "module": "ipv6",
+    "source": "variant-2026-q30",
+    "type": "single",
+    "stem": "Refer to the exhibit. Which IP addressing scheme should be changed?",
+    "choices": [],
+    "answer": null,
+    "explain_short": "Exhibit-based question. Photo unclear — choices not transcribed.",
+    "explain_lecture": null,
+    "tags": ["ipv4", "exhibit"],
+    "needs_review": true
+  },
+  {
+    "id": "var-q31",
+    "module": "ipv6",
+    "source": "variant-2026-q31",
+    "type": "fill",
+    "stem": "Fill in the blank. When a router receives a packet, it examines the destination address of the packet and looks up this address in its _______ to determine the best path. (Likely 'routing table' or 'global configuration'.)",
+    "choices": [],
+    "answer": null,
+    "explain_short": "Likely 'routing table' — that is what a router consults to determine the best path / next-hop for an incoming packet.",
+    "explain_lecture": null,
+    "tags": ["routing", "fill"],
+    "needs_review": true
+  }
+]

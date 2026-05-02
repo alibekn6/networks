@@ -13,6 +13,7 @@
   ],
   "pools": [
     { "id": "lastyear", "title": "Last-Year Real Endterm 2025", "file": "pool-lastyear.json" },
-    { "id": "variant", "title": "Endterm Variant 2026", "file": "pool-variant.json" }
+    { "id": "variant1", "title": "Endterm Variant 1 (PDF, full key)", "file": "pool-variant1.json" },
+    { "id": "variant", "title": "Endterm Variant 2 (PDF, full key)", "file": "pool-variant.json" }
   ]
 }

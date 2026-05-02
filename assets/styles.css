@@ -87,11 +87,8 @@ button { font-family: inherit; }
   grid-template-columns: 1fr;
   margin-bottom: 28px;
 }
-@media (min-width: 640px) {
+@media (min-width: 560px) {
   .featured { grid-template-columns: 1fr 1fr; }
-}
-@media (min-width: 920px) {
-  .featured { grid-template-columns: repeat(3, 1fr); }
 }
 .card {
   background: var(--surface);
